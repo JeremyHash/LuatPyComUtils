@@ -1,0 +1,8 @@
+BASE='BASE.txt'
+FTP='FTP.txt'
+HTTP='HTTP.txt'
+INIT='INIT.txt'
+MQTT='MQTT.txt'
+SMS='SMS.txt'
+TCPIP='TCPIP.txt'
+TMP='TMP.txt'
