@@ -1,6 +1,7 @@
 import serial
 import ATListFileName
 import Logger
+import sys
 
 
 class ATestUtils:
@@ -21,24 +22,36 @@ class ATestUtils:
     def loadATList(self):
         for ATListFile in self.tmp_ATListFileNames:
             with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
+                print()
+                print("【正在加载的ATListFileName：】" + ATListFile)
+                print()
                 lines = file.readlines()
+                tmp_count = 0
                 for line in lines:
                     if not line.startswith("#"):
                         if not line.isspace():
                             cmd_contents = line.replace("\n", "").split("====")
+                            print("ATCmd:" + cmd_contents[0])
                             self.ATList.append(cmd_contents)
+                            tmp_count += 1
+            print()
+            print("【成功加载---" + ATListFile + "---ATCmd" + str(tmp_count) + "条】")
+            print()
 
     def ATest(self, ATListFileNames):
         self.tmp_ATListFileNames = ATListFileNames
         if self.ser.is_open:
             self.loadATList()
             while True:
+                if len(self.ATList) == 0:
+                    print("ATList为空")
+                    sys.exit(0)
                 for ATCmd in self.ATList:
                     self.ser.timeout = int(ATCmd[2])
                     tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
                     self.ser.write(tmp1)
                     self.log.logger.debug("【发送AT】:" + ATCmd[0])
-                    res = self.ser.read(500)
+                    res = self.ser.read(5000)
                     tmp2 = res.decode(encoding="UTF8")
                     self.log.logger.debug("【串口返回】:" + tmp2)
                     if ATCmd[1] in tmp2:

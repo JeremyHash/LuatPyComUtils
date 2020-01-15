@@ -1,7 +1,7 @@
 import ATestUtils
 import ATListFileName
 
-port = "COM4"
+port = "COM6"
 baud_rate = 115200
 ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP]
 
@@ -17,5 +17,9 @@ class Application:
         app = ATestUtils.ATestUtils(self.port, self.baud_rate)
         app.ATest(self.ATListFileNames)
 
+
+print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
+print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
+print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
 
 Application(port, baud_rate, ATListFileNames).run()

@@ -1,6 +1,6 @@
 #初始化操作
 
-ATE0====OK====1
-AT*EXASSERT=1;&W====OK====1
+#ATE0====OK====1
+#AT*EXASSERT=1;&W====OK====1
 #AT+CIPSHUT====SHUT OK====5
 
