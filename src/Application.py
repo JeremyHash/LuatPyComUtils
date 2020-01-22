@@ -1,7 +1,7 @@
-import ATestUtils
-import ATListFileName
+from utils import ATestUtils
+from domain import ATListFileName
 
-port = "COM6"
+port = "COM3"
 baud_rate = 115200
 ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP]
 

@@ -1,4 +1,4 @@
-import ConsoleColorUtils
+from utils import ConsoleColorUtils
 import logging
 from logging import handlers
 

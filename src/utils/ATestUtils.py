@@ -1,6 +1,6 @@
 import serial
-import ATListFileName
-import Logger
+from domain import ATListFileName
+from utils import Logger
 import sys
 
 
@@ -51,7 +51,7 @@ class ATestUtils:
                     tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
                     self.ser.write(tmp1)
                     self.log.logger.debug("【发送AT】:" + ATCmd[0])
-                    res = self.ser.read(5000)
+                    res = self.ser.read(1000)
                     tmp2 = res.decode(encoding="UTF8")
                     self.log.logger.debug("【串口返回】:" + tmp2)
                     if ATCmd[1] in tmp2:
