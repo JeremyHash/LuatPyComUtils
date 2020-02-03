@@ -3,6 +3,8 @@ from utils import Logger
 from domain import ATListFileName
 import sys
 
+test = None
+
 
 class https_download_test:
     log = Logger.Logger('./log/log.txt', level='debug')
@@ -41,6 +43,7 @@ class https_download_test:
             print()
 
     def ATest(self):
+        global test
         if self.ser.is_open:
             self.loadATList()
             if len(self.ATList) == 0:
@@ -55,7 +58,7 @@ class https_download_test:
                 tmp2 = res.decode(encoding="UTF8")
                 self.log.logger.debug("【串口返回】:" + tmp2)
             i = 0
-            j = 99999
+            j = 9999
 
             while True:
                 self.ser.timeout = 2
@@ -70,16 +73,32 @@ class https_download_test:
                 cmd = b'AT+HTTPACTION=0\r\n'
                 self.log.logger.debug("【发送AT】:" + cmd.decode())
                 self.ser.write(cmd)
-                self.log.logger.debug("【串口返回】:" + self.ser.read(2000).decode())
+                temp = self.ser.read(2000).decode()
+                self.log.logger.debug("【串口返回】:" + temp)
+                if "416" in temp:
+                    try:
+                        test.ser.close()
+                        test = https_download_test('COM3', 115200)
+                        test.ATest()
+                    except KeyboardInterrupt as ke:
+                        test.ser.close()
+                        sys.exit()
                 cmd = b'AT+HTTPREAD\r\n'
                 self.log.logger.debug("【发送AT】:" + cmd.decode())
                 self.ser.write(cmd)
-                self.log.logger.debug(self.ser.read(200000))
-                i += 100000
-                j += 100000
+                self.log.logger.debug("【串口返回】:")
+                self.log.logger.debug(self.ser.read(20000))
+                print()
+                i += 10000
+                j += 10000
             # self.ser.close()
         else:
             print(self.ser.port, "端口打开失败")
 
 
-https_download_test('COM38', 115200).ATest()
+try:
+    test = https_download_test('COM3', 115200)
+    test.ATest()
+except KeyboardInterrupt as ke:
+    test.ser.close()
+    sys.exit()
