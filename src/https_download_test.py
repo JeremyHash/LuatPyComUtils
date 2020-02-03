@@ -3,6 +3,10 @@ from utils import Logger
 from domain import ATListFileName
 import sys
 
+port = None
+if len(sys.argv) == 2:
+    port = sys.argv[1]
+    print("正在使用的端口号为：", port)
 test = None
 
 
@@ -78,10 +82,11 @@ class https_download_test:
                 if "416" in temp:
                     try:
                         test.ser.close()
-                        test = https_download_test('COM3', 115200)
+                        test = https_download_test(port, 115200)
                         test.ATest()
                     except KeyboardInterrupt as ke:
                         test.ser.close()
+                        print("exit...")
                         sys.exit()
                 cmd = b'AT+HTTPREAD\r\n'
                 self.log.logger.debug("【发送AT】:" + cmd.decode())
@@ -97,8 +102,9 @@ class https_download_test:
 
 
 try:
-    test = https_download_test('COM3', 115200)
+    test = https_download_test(port, 115200)
     test.ATest()
 except KeyboardInterrupt as ke:
     test.ser.close()
+    print("exit...")
     sys.exit()
