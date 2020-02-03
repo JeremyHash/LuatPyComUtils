@@ -7,7 +7,6 @@ port = None
 if len(sys.argv) == 2:
     port = sys.argv[1]
     print("正在使用的端口号为：", port)
-test = None
 
 
 class https_download_test:
@@ -47,9 +46,7 @@ class https_download_test:
             print()
 
     def ATest(self):
-        global test
         if self.ser.is_open:
-            self.loadATList()
             if len(self.ATList) == 0:
                 print("ATList为空")
                 sys.exit(0)
@@ -65,7 +62,7 @@ class https_download_test:
             j = 9999
 
             while True:
-                self.ser.timeout = 2
+                self.ser.timeout = 1
                 cmd = b'AT+HTTPPARA=BREAK,%d\r\n' % i
                 self.log.logger.debug("【发送AT】:" + cmd.decode())
                 self.ser.write(cmd)
@@ -74,20 +71,14 @@ class https_download_test:
                 self.log.logger.debug("【发送AT】:" + cmd.decode())
                 self.ser.write(cmd)
                 self.log.logger.debug("【串口返回】:" + self.ser.read(2000).decode())
+                self.ser.timeout = 5
                 cmd = b'AT+HTTPACTION=0\r\n'
                 self.log.logger.debug("【发送AT】:" + cmd.decode())
                 self.ser.write(cmd)
                 temp = self.ser.read(2000).decode()
                 self.log.logger.debug("【串口返回】:" + temp)
                 if "416" in temp:
-                    try:
-                        test.ser.close()
-                        test = https_download_test(port, 115200)
-                        test.ATest()
-                    except KeyboardInterrupt as ke:
-                        test.ser.close()
-                        print("exit...")
-                        sys.exit()
+                    break
                 cmd = b'AT+HTTPREAD\r\n'
                 self.log.logger.debug("【发送AT】:" + cmd.decode())
                 self.ser.write(cmd)
@@ -103,8 +94,9 @@ class https_download_test:
 
 try:
     test = https_download_test(port, 115200)
-    test.ATest()
+    test.loadATList()
+    while True:
+        test.ATest()
 except KeyboardInterrupt as ke:
-    test.ser.close()
     print("exit...")
     sys.exit()
