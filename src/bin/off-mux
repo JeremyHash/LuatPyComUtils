@@ -1,0 +1,33 @@
+#!/bin/sh
+######################################################################
+#
+# Determine the device to be terminated.
+# Author: jiangyanfeng@gmail.com
+# Date: Apr-7,2008
+#
+#if [ "$1" = "" ]; then
+#	echo "ERROR: Parameter error"
+#	echo "eg: $0 /dev/ttyUSB0"
+#	exit 1
+#else
+#	DEVICE=$1
+#fi
+######################################################################
+#
+#DEVICE=/dev/ttyGSM1
+PID=`ps -ef | grep -v grep | grep "cmux" | awk '{ print $2; exit }'`
+if test $PID; then
+        kill -15 $PID
+
+        if [ ! "$?" = "0" ]; then
+                echo "ERROR: Terminated cmux failed"
+                exit 3
+        fi
+#
+# Success. wait 3 seconds to let pppd clean up its own junk.
+        echo "cmux terminated"
+        exit 0
+fi
+#
+echo "ERROR: cmux is not active on"
+exit 2
