@@ -9,7 +9,7 @@ if len(sys.argv) == 2:
     print("正在使用的端口号为：", port)
 
 
-class https_download_test:
+class Https_download_test:
     log = Logger.Logger('./log/log.txt', level='debug')
     tmp_ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP]
     ATList = []
@@ -93,7 +93,7 @@ class https_download_test:
 
 
 try:
-    test = https_download_test(port, 115200)
+    test = Https_download_test(port, 115200)
     test.loadATList()
     while True:
         test.ATest()
