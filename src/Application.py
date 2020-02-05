@@ -1,7 +1,11 @@
 from utils import ATestUtils
 from domain import ATListFileName
+import sys
 
-port = "COM8"
+port = None
+if len(sys.argv) == 2:
+    port = sys.argv[1]
+    print("正在使用的端口号为：", port)
 baud_rate = 115200
 ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP]
 
