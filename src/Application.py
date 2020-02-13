@@ -3,6 +3,9 @@ from domain import ATListFileName
 import sys
 
 port = None
+if len(sys.argv) == 1:
+    print('请指定设备端口号')
+    sys.exit()
 if len(sys.argv) == 2:
     port = sys.argv[1]
     print("正在使用的端口号为：", port)
@@ -25,5 +28,10 @@ class Application:
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
-
-Application(port, baud_rate, ATListFileNames).run()
+try:
+    Application(port, baud_rate, ATListFileNames).run()
+except KeyboardInterrupt as ke:
+    print("exit...")
+    sys.exit()
+except Exception as e:
+    print(e.__cause__)

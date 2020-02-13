@@ -54,35 +54,35 @@ class Https_download_test:
                 self.ser.timeout = int(ATCmd[2])
                 tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
                 self.ser.write(tmp1)
-                self.log.logger.debug("【发送AT】:" + ATCmd[0])
+                self.log.logger.debug("发→◇  " + ATCmd[0])
                 res = self.ser.read(1000)
                 tmp2 = res.decode(encoding="UTF8")
-                self.log.logger.debug("【串口返回】:" + tmp2)
+                self.log.logger.debug("收←◆  " + tmp2)
             i = 0
             j = 9999
 
             while True:
                 self.ser.timeout = 1
                 cmd = b'AT+HTTPPARA=BREAK,%d\r\n' % i
-                self.log.logger.debug("【发送AT】:" + cmd.decode())
+                self.log.logger.debug("发→◇  " + cmd.decode())
                 self.ser.write(cmd)
-                self.log.logger.debug("【串口返回】:" + self.ser.read(2000).decode())
+                self.log.logger.debug("收←◆  " + self.ser.read(2000).decode())
                 cmd = b'AT+HTTPPARA=BREAKEND,%d\r\n' % j
-                self.log.logger.debug("【发送AT】:" + cmd.decode())
+                self.log.logger.debug("发→◇" + cmd.decode())
                 self.ser.write(cmd)
-                self.log.logger.debug("【串口返回】:" + self.ser.read(2000).decode())
+                self.log.logger.debug("收←◆  " + self.ser.read(2000).decode())
                 self.ser.timeout = 5
                 cmd = b'AT+HTTPACTION=0\r\n'
-                self.log.logger.debug("【发送AT】:" + cmd.decode())
+                self.log.logger.debug("发→◇  " + cmd.decode())
                 self.ser.write(cmd)
                 temp = self.ser.read(2000).decode()
-                self.log.logger.debug("【串口返回】:" + temp)
+                self.log.logger.debug("收←◆  " + temp)
                 if "416" in temp:
                     break
                 cmd = b'AT+HTTPREAD\r\n'
-                self.log.logger.debug("【发送AT】:" + cmd.decode())
+                self.log.logger.debug("发→◇  " + cmd.decode())
                 self.ser.write(cmd)
-                self.log.logger.debug("【串口返回】:")
+                self.log.logger.debug("收←◆  ")
                 self.log.logger.debug(self.ser.read(20000))
                 print()
                 i += 10000
@@ -100,3 +100,5 @@ try:
 except KeyboardInterrupt as ke:
     print("exit...")
     sys.exit()
+except Exception as e:
+    print(e.__cause__)

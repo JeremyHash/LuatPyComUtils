@@ -50,10 +50,10 @@ class ATestUtils:
                     self.ser.timeout = int(ATCmd[2])
                     tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
                     self.ser.write(tmp1)
-                    self.log.logger.debug("【发送AT】:" + ATCmd[0])
+                    self.log.logger.debug("发→◇  " + ATCmd[0])
                     res = self.ser.read(1000)
                     tmp2 = res.decode(encoding="UTF8")
-                    self.log.logger.debug("【串口返回】:" + tmp2)
+                    self.log.logger.debug("收←◆  " + tmp2)
                     if ATCmd[1] in tmp2:
                         self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
                     else:
