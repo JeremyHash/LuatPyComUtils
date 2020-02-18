@@ -4,6 +4,9 @@ from domain import ATListFileName
 import sys
 
 port = None
+if len(sys.argv) == 1:
+    print('请指定设备端口号')
+    sys.exit()
 if len(sys.argv) == 2:
     port = sys.argv[1]
     print("正在使用的端口号为：", port)
