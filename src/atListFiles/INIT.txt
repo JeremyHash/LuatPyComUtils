@@ -1,8 +1,8 @@
 #初始化操作
 
-ATE0====OK====1
-AT+SAPBR=0,1====OK====2
-AT*EXASSERT=1;&W====OK====1
-AT+CIPSHUT====SHUT OK====5
-AT+HTTPTERM====OK====5
+#ATE0====OK====1
+#AT+SAPBR=0,1====OK====2
+#AT*EXASSERT=1;&W====OK====1
+#AT+CIPSHUT====SHUT OK====5
+#AT+HTTPTERM====OK====5
 

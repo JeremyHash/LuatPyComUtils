@@ -1,6 +1,7 @@
 from utils import ATestUtils
 from domain import ATListFileName
 import sys
+import traceback
 
 port = None
 if len(sys.argv) == 1:
@@ -10,7 +11,7 @@ if len(sys.argv) == 2:
     port = sys.argv[1]
     print("正在使用的端口号为：", port)
 baud_rate = 115200
-ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP]
+ATListFileNames = [ATListFileName.TMP, ]
 
 
 class Application:
@@ -34,4 +35,6 @@ except KeyboardInterrupt as ke:
     print("exit...")
     sys.exit()
 except Exception as e:
-    print(e.__cause__)
+    print(e)
+    print("---------------")
+    print(traceback.format_exc())
