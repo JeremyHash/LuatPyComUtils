@@ -11,7 +11,7 @@ if len(sys.argv) == 2:
     port = sys.argv[1]
     print("正在使用的端口号为：", port)
 baud_rate = 115200
-ATListFileNames = [ATListFileName.TMP, ]
+ATListFileNames = [ATListFileName.INIT,ATListFileName.TMP ]
 
 
 class Application:

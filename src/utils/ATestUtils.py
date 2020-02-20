@@ -41,21 +41,21 @@ class ATestUtils:
         self.tmp_ATListFileNames = ATListFileNames
         if self.ser.is_open:
             self.loadATList()
-            # while True:
-            if len(self.ATList) == 0:
-                print("ATList为空")
-                sys.exit(0)
-            for ATCmd in self.ATList:
-                self.ser.timeout = int(ATCmd[2])
-                tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
-                self.ser.write(tmp1)
-                self.log.logger.debug("发→◇  " + ATCmd[0])
-                res = self.ser.read(1000)
-                tmp2 = res.decode(encoding="UTF8")
-                self.log.logger.debug("收←◆  " + tmp2)
-                # if ATCmd[1] in tmp2:
-                #     self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
-                # else:
-                #     self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
+            while True:
+                if len(self.ATList) == 0:
+                    print("ATList为空")
+                    sys.exit(0)
+                for ATCmd in self.ATList:
+                    self.ser.timeout = int(ATCmd[2])
+                    tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
+                    self.ser.write(tmp1)
+                    self.log.logger.debug("发→◇  " + ATCmd[0])
+                    res = self.ser.read(1000)
+                    tmp2 = res.decode(encoding="UTF8")
+                    self.log.logger.debug("收←◆  " + tmp2)
+                    # if ATCmd[1] in tmp2:
+                    #     self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
+                    # else:
+                    #     self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
         else:
             print(self.ser.port, "端口打开失败")
