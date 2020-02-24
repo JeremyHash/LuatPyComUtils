@@ -5,8 +5,10 @@ import os
 import traceback
 import platform
 
-system_cate = print(platform.system())
+system_cate = platform.system()
+print(system_cate)
 if system_cate == 'Linux':
+    print('当前操作系统为Linux')
     ports = os.popen('python3 -m serial.tools.list_ports').read()
     print(ports)
 port = input('请输入测试设备端口号：')
