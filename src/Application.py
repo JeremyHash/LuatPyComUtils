@@ -1,9 +1,14 @@
 from utils import ATestUtils
 from domain import ATListFileName
 import serial
-import sys
+import os
 import traceback
+import platform
 
+system_cate = print(platform.system())
+if system_cate == 'Linux':
+    ports = os.popen('python3 -m serial.tools.list_ports').read()
+    print(ports)
 port = input('请输入测试设备端口号：')
 baud_rate = 115200
 ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP]
