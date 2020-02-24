@@ -1,6 +1,7 @@
 from utils import ATestUtils
 from domain import ATListFileName
 import serial
+import sys
 import os
 import traceback
 import platform
@@ -15,6 +16,7 @@ try:
 except KeyboardInterrupt:
     print()
     print('Exit...')
+    sys.exit()
 baud_rate = 115200
 ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP, ]
 
@@ -39,6 +41,7 @@ try:
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")
+    sys.exit()
 except serial.serialutil.SerialException as se:
     print(se)
     if ('No such file or directory' in traceback.format_exc()):
