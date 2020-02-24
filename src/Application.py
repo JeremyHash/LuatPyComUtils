@@ -4,6 +4,7 @@ import serial
 import sys
 import os
 import traceback
+import multiprocessing
 import platform
 
 system_cate = platform.system()
@@ -36,9 +37,16 @@ class Application:
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
-diag_res = os.popen(f"./bin/diag trace/log - - /dev/ttyUSB3").read()
-print(diag_res)
+
+
+def start_trace():
+    os.popen(f"./bin/diag trace/log - - /dev/ttyUSB3")
+    print(f'Run diag process {os.getpid()}...')
+
+
 try:
+    print(f'Application process {os.getpid()}')
+    multiprocessing.Process(target=start_trace).start()
     Application(port, baud_rate, ATListFileNames).run()
 except KeyboardInterrupt as ke:
     print()
