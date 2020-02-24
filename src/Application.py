@@ -36,7 +36,8 @@ class Application:
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
-os.popen(f"./bin/diag trace/log - - /dev/ttyUSB3")
+diag_res = os.popen(f"./bin/diag trace/log - - /dev/ttyUSB3").read()
+print(diag_res)
 try:
     Application(port, baud_rate, ATListFileNames).run()
 except KeyboardInterrupt as ke:
