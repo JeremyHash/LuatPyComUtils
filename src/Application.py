@@ -1,5 +1,6 @@
 from utils import ATestUtils
 from domain import ATListFileName
+import serial
 import sys
 import traceback
 
@@ -27,7 +28,10 @@ try:
     Application(port, baud_rate, ATListFileNames).run()
 except KeyboardInterrupt as ke:
     print("exit...")
-    sys.exit()
+except serial.serialutil.SerialException as se:
+    print(se)
+    if ('No such file or directory' in traceback.format_exc()):
+        print('输入的端口不存在')
 except Exception as e:
     print(e)
     print("---------------")
