@@ -9,8 +9,7 @@ class ATestUtils:
     log = Logger.Logger('./log/log.txt', level='debug')
 
     def serialFactory(self, port, baud_rate):
-        with serial.Serial(port=port, baudrate=baud_rate) as s:
-            return s
+        return serial.Serial(port=port, baudrate=baud_rate)
 
     def print_hex(bytes_data):
         l = [hex(int(i)) for i in bytes_data]
@@ -59,4 +58,4 @@ class ATestUtils:
                     # else:
                     #     self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
         else:
-            print(self.ser.port, "端口打开失败")
+            print(f"{self.ser.port}端口打开失败")
