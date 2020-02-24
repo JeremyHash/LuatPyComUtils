@@ -6,14 +6,17 @@ import traceback
 import platform
 
 system_cate = platform.system()
-print(system_cate)
+print(f'当前操作系统为：{system_cate}')
 if system_cate == 'Linux':
-    print('当前操作系统为Linux')
     ports = os.popen('python3 -m serial.tools.list_ports').read()
     print(ports)
-port = input('请输入测试设备端口号：')
+try:
+    port = input('请输入测试设备端口号：')
+except KeyboardInterrupt:
+    print()
+    print('Exit...')
 baud_rate = 115200
-ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP]
+ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP, ]
 
 
 class Application:
@@ -34,7 +37,8 @@ print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYA
 try:
     Application(port, baud_rate, ATListFileNames).run()
 except KeyboardInterrupt as ke:
-    print("exit...")
+    print()
+    print("Exit...")
 except serial.serialutil.SerialException as se:
     print(se)
     if ('No such file or directory' in traceback.format_exc()):

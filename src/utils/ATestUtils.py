@@ -9,7 +9,8 @@ class ATestUtils:
     log = Logger.Logger('./log/log.txt', level='debug')
 
     def serialFactory(self, port, baud_rate):
-        return serial.Serial(port=port, baudrate=baud_rate)
+        with serial.Serial(port=port, baudrate=baud_rate) as s:
+            return s
 
     def print_hex(bytes_data):
         l = [hex(int(i)) for i in bytes_data]
