@@ -43,9 +43,9 @@ diag_pid = 0
 
 
 def start_trace():
-    print(f'Run diag process {os.getpid()}...')
     global diag_pid
     diag_pid = os.getpid()
+    print(f'Run diag process {diag_pid}...')
     os.popen(f"./bin/diag trace/log - - /dev/ttyUSB3")
 
 
