@@ -6,6 +6,7 @@ import os
 import traceback
 import multiprocessing
 import platform
+import signal
 
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')
@@ -38,10 +39,14 @@ print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYA
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
 
+diag_pid = 0
+
 
 def start_trace():
-    os.popen(f"./bin/diag trace/log - - /dev/ttyUSB3")
     print(f'Run diag process {os.getpid()}...')
+    global diag_pid
+    diag_pid = os.getpid()
+    os.popen(f"./bin/diag trace/log - - /dev/ttyUSB3")
 
 
 try:
@@ -51,12 +56,15 @@ try:
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")
+    os.kill(diag_pid, signal.SIGKILL)
     sys.exit()
 except serial.serialutil.SerialException as se:
     print(se)
+    os.kill(diag_pid, signal.SIGKILL)
     if ('No such file or directory' in traceback.format_exc()):
         print('输入的端口不存在')
 except Exception as e:
+    os.kill(diag_pid, signal.SIGKILL)
     print(e)
     print("---------------")
     print(traceback.format_exc())
