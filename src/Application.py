@@ -20,7 +20,7 @@ except KeyboardInterrupt:
     print('Exit...')
     sys.exit()
 baud_rate = 115200
-ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP, ]
+ATListFileNames = [ATListFileName.INIT, ATListFileName.MQTT, ]
 
 
 class Application:
