@@ -8,19 +8,37 @@ import multiprocessing
 import platform
 import signal
 
+ATListFileNames = [ATListFileName.INIT, ]
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')
 if system_cate == 'Linux':
     ports = os.popen('python3 -m serial.tools.list_ports').read()
     print(ports)
+else:
+    ports = os.popen('python -m serial.tools.list_ports').read()
+    print(ports)
 try:
     port = input('请输入测试设备端口号：')
+    while True:
+        fileName = input('请输入要测试的功能（FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
+        if fileName == 'END':
+            break
+        if fileName == 'ALL':
+            ATListFileNames.append('FTP.txt')
+            ATListFileNames.append('HTTP.txt')
+            ATListFileNames.append('MQTT.txt')
+            # ATListFileNames.append('SMS.txt')
+            ATListFileNames.append('TCPIP.txt')
+            break
+        if fileName not in ('FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP','ALL'):
+            print('输入的功能名称有误,请重新输入')
+            continue
+        ATListFileNames.append(f'{fileName}.txt')
 except KeyboardInterrupt:
     print()
     print('Exit...')
     sys.exit()
 baud_rate = 115200
-ATListFileNames = [ATListFileName.INIT, ATListFileName.MQTT, ]
 
 
 class Application:
@@ -51,20 +69,24 @@ def start_trace():
 
 try:
     print(f'Application process {os.getpid()}')
-    multiprocessing.Process(target=start_trace).start()
+    if system_cate == 'Linux':
+        multiprocessing.Process(target=start_trace).start()
     Application(port, baud_rate, ATListFileNames).run()
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")
-    os.kill(diag_pid, signal.SIGKILL)
+    if system_cate == 'Linux':
+        os.kill(diag_pid, signal.SIGKILL)
     sys.exit()
 except serial.serialutil.SerialException as se:
     print(se)
-    os.kill(diag_pid, signal.SIGKILL)
+    if system_cate == 'Linux':
+        os.kill(diag_pid, signal.SIGKILL)
     if ('No such file or directory' in traceback.format_exc()):
         print('输入的端口不存在')
 except Exception as e:
-    os.kill(diag_pid, signal.SIGKILL)
+    if system_cate == 'Linux':
+        os.kill(diag_pid, signal.SIGKILL)
     print(e)
     print("---------------")
     print(traceback.format_exc())

@@ -1,6 +1,6 @@
 AT+SAPBR=3,1,"Contype","GPRS"====OK====1
 AT+SAPBR=3,1,"APN",""====OK====1
-AT+SAPBR=1,1====OK====3000
+AT+SAPBR=1,1====OK====3
 AT+FTPCID=1====OK====1
 AT+FTPSERV="36.7.87.100"====OK====1
 AT+FTPUN=User====OK====1
