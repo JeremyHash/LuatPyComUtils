@@ -85,6 +85,8 @@ except KeyboardInterrupt as ke:
     sys.exit()
 except serial.serialutil.SerialException as se:
     print(se)
+    print("---------------")
+    print(traceback.format_exc())
     if system_cate == 'Linux' and enable_trace == 'y':
         os.kill(diag_pid, signal.SIGKILL)
     if 'No such file or directory' in traceback.format_exc():
