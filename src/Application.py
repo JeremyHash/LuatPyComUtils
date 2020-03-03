@@ -89,7 +89,7 @@ except serial.serialutil.SerialException as se:
     if 'No such file or directory' in traceback.format_exc():
         print('输入的端口不存在')
 except Exception as e:
-    if system_cate == 'Linux' & enable_trace == 'y':
+    if system_cate == 'Linux' and enable_trace == 'y':
         os.kill(diag_pid, signal.SIGKILL)
     print(e)
     print("---------------")
