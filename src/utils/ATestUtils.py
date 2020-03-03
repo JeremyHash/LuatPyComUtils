@@ -1,5 +1,4 @@
 import serial
-from domain import ATListFileName
 from utils import Logger
 import sys
 
