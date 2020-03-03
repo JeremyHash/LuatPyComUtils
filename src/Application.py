@@ -1,5 +1,4 @@
 from utils import ATestUtils
-from domain import ATListFileName
 import serial
 import sys
 import os
@@ -8,7 +7,7 @@ import multiprocessing
 import platform
 import signal
 
-ATListFileNames = [ATListFileName.INIT, ]
+ATListFileNames = ['INIT.txt', ]
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')
 if system_cate == 'Linux':
@@ -30,10 +29,15 @@ try:
             # ATListFileNames.append('SMS.txt')
             ATListFileNames.append('TCPIP.txt')
             break
-        if fileName not in ('FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP','ALL'):
+        if fileName not in ('FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
             print('输入的功能名称有误,请重新输入')
             continue
         ATListFileNames.append(f'{fileName}.txt')
+
+    if system_cate == 'Linux':
+        enable_trace = input('是否抓取trace？（y/n）')
+        if enable_trace == 'y':
+            diag_port = input('请输入diag诊断口端口：')
 except KeyboardInterrupt:
     print()
     print('Exit...')
@@ -64,28 +68,28 @@ def start_trace():
     global diag_pid
     diag_pid = os.getpid()
     print(f'Run diag process {diag_pid}')
-    os.popen(f"./bin/diag trace/log - - /dev/ttyUSB3")
+    os.popen(f"./bin/diag trace/log - - {diag_port}")
 
 
 try:
     print(f'Application process {os.getpid()}')
-    if system_cate == 'Linux':
+    if system_cate == 'Linux' & enable_trace == 'y':
         multiprocessing.Process(target=start_trace).start()
     Application(port, baud_rate, ATListFileNames).run()
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")
-    if system_cate == 'Linux':
+    if system_cate == 'Linux' & enable_trace == 'y':
         os.kill(diag_pid, signal.SIGKILL)
     sys.exit()
 except serial.serialutil.SerialException as se:
     print(se)
-    if system_cate == 'Linux':
+    if system_cate == 'Linux' & enable_trace == 'y':
         os.kill(diag_pid, signal.SIGKILL)
-    if ('No such file or directory' in traceback.format_exc()):
+    if 'No such file or directory' in traceback.format_exc():
         print('输入的端口不存在')
 except Exception as e:
-    if system_cate == 'Linux':
+    if system_cate == 'Linux' & enable_trace == 'y':
         os.kill(diag_pid, signal.SIGKILL)
     print(e)
     print("---------------")
