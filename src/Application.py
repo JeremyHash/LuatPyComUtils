@@ -17,7 +17,12 @@ else:
     ports = os.popen('python -m serial.tools.list_ports').read()
     print(ports)
 try:
-    port = input('请输入测试设备端口号：')
+    while True:
+        port = input('请输入测试设备端口号：')
+        if port not in ports:
+            print('输入的端口不存在，请重新输入')
+        else:
+            break
     while True:
         fileName = input('请输入要测试的功能（FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
         if fileName == 'END':
@@ -36,7 +41,7 @@ try:
 
     enable_trace = 'n'
     if system_cate == 'Linux':
-        enable_trace = input('是否抓取trace？（y/n）')
+        enable_trace = input('当前操作系统为Linux，是否抓取trace？（y/n）')
         if enable_trace == 'y':
             diag_port = input('请输入diag诊断口端口：')
 except KeyboardInterrupt:
@@ -91,6 +96,8 @@ except serial.serialutil.SerialException as se:
         os.kill(diag_pid, signal.SIGKILL)
     if 'No such file or directory' in traceback.format_exc():
         print('输入的端口不存在')
+    if 'PermissionError' in traceback.format_exc():
+        print('端口被占用,请检查是否有其他程序正在占用设备端口')
 except Exception as e:
     if system_cate == 'Linux' and enable_trace == 'y':
         os.kill(diag_pid, signal.SIGKILL)
