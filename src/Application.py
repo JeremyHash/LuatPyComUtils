@@ -7,7 +7,9 @@ import multiprocessing
 import platform
 import signal
 
-ATListFileNames = ['INIT.txt', ]
+ATListFileNames = ['INIT.txt', 'TCPIP.txt', 'MQTT.txt', 'FTP.txt']
+# ATListFileNames = ['INIT.txt', 'TCPIP.txt']
+loopTimes = int(input('请输入循环次数：'))
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')
 if system_cate == 'Linux':
@@ -18,26 +20,27 @@ else:
     print(ports)
 try:
     while True:
-        port = input('请输入测试设备端口号：')
+        # port = input('请输入测试设备端口号：')
+        port = 'COM6'
         if port not in ports:
             print('输入的端口不存在，请重新输入')
         else:
             break
-    while True:
-        fileName = input('请输入要测试的功能（FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
-        if fileName == 'END':
-            break
-        if fileName == 'ALL':
-            ATListFileNames.append('FTP.txt')
-            ATListFileNames.append('HTTP.txt')
-            ATListFileNames.append('MQTT.txt')
-            # ATListFileNames.append('SMS.txt')
-            ATListFileNames.append('TCPIP.txt')
-            break
-        if fileName not in ('FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
-            print('输入的功能名称有误,请重新输入')
-            continue
-        ATListFileNames.append(f'{fileName}.txt')
+    # while True:
+    #     fileName = input('请输入要测试的功能（FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
+    #     if fileName == 'END':
+    #         break
+    #     if fileName == 'ALL':
+    #         ATListFileNames.append('FTP.txt')
+    #         ATListFileNames.append('HTTP.txt')
+    #         ATListFileNames.append('MQTT.txt')
+    #         # ATListFileNames.append('SMS.txt')
+    #         ATListFileNames.append('TCPIP.txt')
+    #         break
+    #     if fileName not in ('FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
+    #         print('输入的功能名称有误,请重新输入')
+    #         continue
+    #     ATListFileNames.append(f'{fileName}.txt')
 
     enable_trace = 'n'
     if system_cate == 'Linux':
@@ -53,14 +56,15 @@ baud_rate = 115200
 
 class Application:
 
-    def __init__(self, port, baud_rate, ATListFileNames):
+    def __init__(self, port, baud_rate, ATListFileNames, loopTimes):
         self.port = port
         self.baud_rate = baud_rate
         self.ATListFileNames = ATListFileNames
+        self.loopTimes = loopTimes
 
     def run(self):
         app = ATestUtils.ATestUtils(self.port, self.baud_rate)
-        app.ATest(self.ATListFileNames)
+        app.ATest(self.ATListFileNames, self.loopTimes)
 
 
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
@@ -81,7 +85,7 @@ try:
     print(f'Application process {os.getpid()}')
     if system_cate == 'Linux' and enable_trace == 'y':
         multiprocessing.Process(target=start_trace).start()
-    Application(port, baud_rate, ATListFileNames).run()
+    Application(port, baud_rate, ATListFileNames, loopTimes).run()
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")

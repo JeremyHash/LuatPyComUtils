@@ -36,7 +36,7 @@ class ATestUtils:
             print(f"【成功加载---{ATListFile}---ATCmd{str(tmp_count)}条】")
             print()
 
-    def ATest(self, ATListFileNames):
+    def ATest(self, ATListFileNames,loopTimes):
         self.tmp_ATListFileNames = ATListFileNames
         if self.ser.is_open:
             self.loadATList()
@@ -44,7 +44,7 @@ class ATestUtils:
                 print("ATList为空")
                 sys.exit(0)
             # while True:
-            for i in range(1):
+            for i in range(loopTimes):
                 for ATCmd in self.ATList:
                     self.ser.timeout = int(ATCmd[2])
                     tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
