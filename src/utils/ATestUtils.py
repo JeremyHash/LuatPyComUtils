@@ -10,7 +10,7 @@ class ATestUtils:
     def serialFactory(self, port, baud_rate):
         return serial.Serial(port=port, baudrate=baud_rate)
 
-    def print_hex(bytes_data):
+    def print_hex(self, bytes_data):
         l = [hex(int(i)) for i in bytes_data]
         print(" ".join(l))
 
@@ -36,7 +36,7 @@ class ATestUtils:
             print(f"【成功加载---{ATListFile}---ATCmd{str(tmp_count)}条】")
             print()
 
-    def ATest(self, ATListFileNames,loopTimes):
+    def ATest(self, ATListFileNames, loopTimes):
         self.tmp_ATListFileNames = ATListFileNames
         if self.ser.is_open:
             self.loadATList()

@@ -1,6 +1,5 @@
 import serial
 from utils import Logger
-from domain import ATListFileName
 import sys
 
 port = None
@@ -14,7 +13,7 @@ if len(sys.argv) == 2:
 
 class Https_download_test:
     log = Logger.Logger('./log/log.txt', level='debug')
-    tmp_ATListFileNames = [ATListFileName.INIT, ATListFileName.TMP]
+    tmp_ATListFileNames = ['INIT.txt', 'TMP.TXT']
     ATList = []
 
     def serialFactory(self, port, baud_rate):

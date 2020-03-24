@@ -7,8 +7,8 @@ import multiprocessing
 import platform
 import signal
 
-ATListFileNames = ['INIT.txt', 'TCPIP.txt', 'MQTT.txt', 'FTP.txt']
-# ATListFileNames = ['INIT.txt', 'TCPIP.txt']
+# ATListFileNames = ['INIT.txt', 'TCPIP.txt', 'HTTP.txt', 'MQTT.txt', 'FTP.txt']
+ATListFileNames = ['INIT.txt', 'HTTP.txt']
 loopTimes = int(input('请输入循环次数：'))
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')
@@ -21,7 +21,7 @@ else:
 try:
     while True:
         # port = input('请输入测试设备端口号：')
-        port = 'COM6'
+        port = 'COM8'
         if port not in ports:
             print('输入的端口不存在，请重新输入')
         else:
