@@ -50,7 +50,7 @@ class ATestUtils:
                     tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
                     self.ser.write(tmp1)
                     self.log.logger.debug(f"发→◇  {ATCmd[0]}")
-                    res = self.ser.read(5000)
+                    res = self.ser.read(210000)
                     tmp2 = res.decode(encoding="UTF8")
                     self.log.logger.debug(f"收←◆  {tmp2}")
                     # if ATCmd[1] in tmp2:
