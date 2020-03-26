@@ -6,7 +6,7 @@ AT+SAPBR=2,1====OK====2
 AT+HTTPINIT====OK====2
 AT+HTTPPARA="CID",1====OK====2
 AT+HTTPPARA="URL","http://www.baidu.com"====OK====2
-AT+HTTPACTION=0====227====8
+AT+HTTPACTION=0====227====60
 AT+HTTPREAD=0,319488====OK====2
 AT+HTTPTERM====OK====5
 AT+SAPBR=0,1====OK====2

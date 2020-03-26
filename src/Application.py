@@ -20,8 +20,8 @@ else:
     print(ports)
 try:
     while True:
-        # port = input('请输入测试设备端口号：')
-        port = 'COM35'
+        port = input('请输入测试设备端口号：')
+        # port = 'COM74'
         if port not in ports:
             print('输入的端口不存在，请重新输入')
         else:
