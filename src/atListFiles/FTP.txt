@@ -1,60 +1,73 @@
-AT+SAPBR=3,1,"Contype","GPRS"====OK====1
-AT+SAPBR=3,1,"APN",""====OK====1
-AT+SAPBR=1,1====OK====3
-AT+SAPBR=2,1====OK====2
-AT+FTPCID=1====OK====1
-AT+FTPSERV="36.7.87.100"====OK====1
-AT+FTPUN=User====OK====1
-AT+FTPPW=123456====OK====1
-AT+FTPGETPATH="/"====OK====1
-AT+FTPLIST=1====1====5
-AT+FTPLIST=2,1460====OK====5
-AT+FTPLIST=2,1460====OK====5
-AT+FTPLIST=2,1460====OK====5
-AT+FTPQUIT====86====2
-AT+FTPGETNAME="1.txt"====OK====2
-AT+FTPGET=1====OK====5
-AT+FTPGET=2,1460====OK====5
-AT+FTPQUIT====86====2
-AT+FTPSIZE====OK====2
-AT+FTPGETPATH="/JeremyTest/"====OK====2
-AT+FTPMKD====OK====2
-AT+FTPRMD====OK====2
-AT+FTPSERV="36.7.87.99"====OK====2
-AT+FTPGET=1====OK====10
-AT+FTPGET=2,1460====OK====2
-AT+FTPSERV="36.7.87.100"====OK====1
-AT+FTPPW=123456-w====OK====1
-AT+FTPGET=1====OK====10
-AT+FTPGET=2,1460====OK====2
-AT+FTPPW=123456====OK====1
-AT+FTPPUTPATH="/Jeremy/"====OK====2
-AT+FTPPUTNAME="jeremytry.txt"====OK====2
-AT+FTPPUT=1====OK====2
-AT+FTPPUT=2,5====OK====2
-123====OK====2
-AT+FTPQUIT====86====2
-#====OK====2
-#====OK====2
-#====OK====2
-#====OK====2
-#====OK====2
-#====OK====2
-#====OK====2
-#====OK====2
-#====OK====2
+#FTPLIST测试
+AT+SAPBR=3,1,"Contype","GPRS"====.*OK.*====1
+AT+SAPBR=3,1,"APN",""====.*OK.*====1
+AT+SAPBR=1,1====.*OK.*====3
+AT+SAPBR=2,1====.*\+SAPBR:.*OK.*====2
+AT+FTPCID=1====.*OK.*====1
+AT+FTPSERV="36.7.87.100"====.*OK.*====1
+AT+FTPUN=User====.*OK.*====1
+AT+FTPPW=123456====.*OK.*====1
+AT+FTPGETPATH="/"====.*OK.*====1
+AT+FTPLIST=1====.*OK.*\+FTPLIST: 1,1.*====5
+AT+FTPLIST=2,1460====.*\+FTPLIST: 2,1460.*OK.*====5
+AT+FTPLIST=2,1460====.*\+FTPLIST: 2,1460.*OK.*====5
+AT+FTPLIST=2,1460====.*\+FTPLIST: 2,.*OK.*====5
+AT+FTPQUIT====.*OK.*\+FTPLIST: 1,86.*====2
+AT+FTPGETNAME="1.txt"====.*OK.*====2
+AT+FTPGET=1====.*OK.*\+FTPGET: 1,1.*====5
+AT+FTPGET=2,1460====.*\+FTPGET: 2,107\d*OK.*====5
+AT+FTPQUIT====.*OK.*\+FTPGET: 1,86.*====2
+
+#FTP读取文件大小测试
+AT+FTPSIZE====.*OK.*\+FTPSIZE: 1,0,107.*====2
+
+#FTP创建删除目录测试
+AT+FTPGETPATH="/JeremyTest/"====.*OK.*====2
+AT+FTPMKD====.*OK.*\+FTPMKD: 1,0.*====2
+AT+FTPRMD====.*OK.*\+FTPRMD: 1,0.*====2
+
+#错误FTP地址测试
+AT+FTPSERV="36.7.87.99"====.*OK.*====2
+AT+FTPGET=1====.*OK.*\+FTPGET: 1,63.*====10
+AT+FTPGET=2,1460====.*\+CME ERROR: 3.*====2
+
+#错误FTP密码测试
+AT+FTPSERV="36.7.87.100"====.*OK.*====1
+AT+FTPPW=123456-w====.*OK.*====1
+AT+FTPGET=1====.*OK.*\+FTPGET: 1,72====10
+AT+FTPGET=2,1460====\+CME ERROR: 3====2
+
+#FTP文件上传测试
+AT+FTPPW=123456====.*OK.*====1
+AT+FTPPUTPATH="/Jeremy/"====.*OK.*====2
+AT+FTPPUTNAME="jeremytry.txt"====.*OK.*====2
+AT+FTPPUT=1====.*OK.*\+FTPPUT: 1,1,1360.*====2
+AT+FTPPUT=2,5====.*\+FTPPUT: 2,5.*====2
+123====.*OK.*\+FTPPUT: 1,1,1360.*====2
+AT+FTPQUIT====.*OK.*\+FTPPUT: 1,86.*====2
 
 
-AT+FTPPORT?====OK====2
-AT+FTPPORT=?====OK====2
-AT+FTPMODE?====OK====2
-AT+FTPMODE=?====OK====2
-AT+FTPTYPE?====OK====2
-AT+FTPTYPE=?====OK====2
-AT+FTPPUTOPT?====OK====2
-AT+FTPPUTOPT=?====OK====2
-AT+FTPREST?====OK====2
-AT+FTPREST=?====OK====2
-AT+SAPBR=0,1====OK====2
-#====OK====2
-#====OK====2
+#====.*OK.*====2
+#====.*OK.*====2
+#====.*OK.*====2
+#====.*OK.*====2
+#====.*OK.*====2
+#====.*OK.*====2
+#====.*OK.*====2
+#====.*OK.*====2
+#====.*OK.*====2
+
+#FTP基本命令测试
+AT+FTPPORT?====.*\+FTPPORT: 21.*OK.*====2
+AT+FTPPORT=?====.*OK.*====2
+AT+FTPMODE?====.*\+FTPMODE: 1.*OK.*====2
+AT+FTPMODE=?====.*OK.*====2
+AT+FTPTYPE?====.*\+FTPTYPE: "I".*OK.*====2
+AT+FTPTYPE=?====.*OK.*====2
+AT+FTPPUTOPT?====.*\+FTPPUTOPT: "STOR".*OK.*====2
+AT+FTPPUTOPT=?====.*OK.*====2
+AT+FTPREST?====.*\+FTPREST: 0.*OK.*====2
+AT+FTPREST=?====.*OK.*====2
+AT+SAPBR=0,1====.*OK.*====2
+#====.*OK.*====2
+#====.*OK.*====2

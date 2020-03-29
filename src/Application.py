@@ -7,8 +7,9 @@ import multiprocessing
 import platform
 import signal
 
-ATListFileNames = ['INIT.txt', 'TCPIP.txt', 'HTTP.txt', 'MQTT.txt', 'FTP.txt']
-# ATListFileNames = ['INIT.txt', 'HTTP.txt']
+# ATListFileNames = ['INIT.txt', 'TCPIP.txt', 'HTTP.txt', 'MQTT.txt', 'FTP.txt']
+ATListFileNames = ['INIT.txt', 'FTP.txt']
+# ATListFileNames = ['TMP.txt']
 loopTimes = int(input('请输入循环次数：'))
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')

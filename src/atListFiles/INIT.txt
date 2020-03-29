@@ -1,14 +1,14 @@
 #初始化操作
 
-ATE0====OK====1
-AT*EXASSERT=1;&W====OK====1
-AT*I====OK====1
-AT+CREG=2;+CEREG=2;+CGREG=2====OK====1
-AT+CREG?;+CEREG?;+CGREG?====OK====1
-AT+CGDCONT?====OK====1
-AT+SAPBR=0,1====OK====2
-AT+CIPSHUT====SHUT OK====5
-AT+HTTPTERM====OK====5
-AT+FTPQUIT====OK====2
-AT+MDISCONNECT====OK====3
-AT+MIPCLOSE====OK====3
+ATE0====.*OK.*====1
+AT*EXASSERT=1;&W====.*OK.*====1
+AT*I====Manufacturer.*OK.*====1
+AT+CREG=2;+CEREG=2;+CGREG=2====.*OK.*====1
+AT+CREG?;+CEREG?;+CGREG?====\+CREG.*OK.*====1
+AT+CGDCONT?====\+CGDCONT:.*OK.*====1
+AT+SAPBR=0,1====.*====2
+AT+CIPSHUT====.*SHUT OK.*====5
+AT+HTTPTERM====.*====5
+AT+FTPQUIT====.*====2
+AT+MDISCONNECT====.*====3
+AT+MIPCLOSE====.*====3
