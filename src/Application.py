@@ -8,8 +8,9 @@ import platform
 import signal
 
 # ATListFileNames = ['INIT.txt', 'TCPIP.txt', 'HTTP.txt', 'MQTT.txt', 'FTP.txt']
-ATListFileNames = ['INIT.txt', 'FTP.txt']
+# ATListFileNames = ['INIT.txt', 'FTP.txt']
 # ATListFileNames = ['TMP.txt']
+ATListFileNames = ['INIT.txt']
 loopTimes = int(input('请输入循环次数：'))
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')
@@ -27,21 +28,21 @@ try:
             print('输入的端口不存在，请重新输入')
         else:
             break
-    # while True:
-    #     fileName = input('请输入要测试的功能（FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
-    #     if fileName == 'END':
-    #         break
-    #     if fileName == 'ALL':
-    #         ATListFileNames.append('FTP.txt')
-    #         ATListFileNames.append('HTTP.txt')
-    #         ATListFileNames.append('MQTT.txt')
-    #         # ATListFileNames.append('SMS.txt')
-    #         ATListFileNames.append('TCPIP.txt')
-    #         break
-    #     if fileName not in ('FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
-    #         print('输入的功能名称有误,请重新输入')
-    #         continue
-    #     ATListFileNames.append(f'{fileName}.txt')
+    while True:
+        fileName = input('请输入要测试的功能（FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
+        if fileName == 'END':
+            break
+        if fileName == 'ALL':
+            ATListFileNames.append('FTP.txt')
+            ATListFileNames.append('HTTP.txt')
+            ATListFileNames.append('MQTT.txt')
+            # ATListFileNames.append('SMS.txt')
+            ATListFileNames.append('TCPIP.txt')
+            break
+        if fileName not in ('FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
+            print('输入的功能名称有误,请重新输入')
+            continue
+        ATListFileNames.append(f'{fileName}.txt')
 
     enable_trace = 'n'
     if system_cate == 'Linux':
