@@ -1,6 +1,7 @@
 #初始化操作
 
 ATE0====.*OK.*====1
+AT+CSCON=0====.*OK.*====1
 AT*EXASSERT=1====.*OK.*====1
 AT*I====Manufacturer.*OK.*====1
 AT+CREG=2;+CEREG=2;+CGREG=2====.*OK.*====1
