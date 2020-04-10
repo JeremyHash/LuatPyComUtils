@@ -10,7 +10,7 @@ import signal
 # ATListFileNames = ['INIT.txt', 'TCPIP.txt', 'HTTP.txt', 'MQTT.txt', 'FTP.txt']
 # ATListFileNames = ['INIT.txt', 'FTP.txt']
 # ATListFileNames = ['TMP.txt']
-ATListFileNames = ['INIT.txt']
+ATListFileNames = []
 loopTimes = int(input('请输入循环次数：'))
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')
@@ -29,10 +29,11 @@ try:
         else:
             break
     while True:
-        fileName = input('请输入要测试的功能（FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
+        fileName = input('请输入要测试的功能（INIT,FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
         if fileName == 'END':
             break
         if fileName == 'ALL':
+            ATListFileNames.append('INIT.txt')
             ATListFileNames.append('FTP.txt')
             ATListFileNames.append('HTTP.txt')
             ATListFileNames.append('MQTT.txt')
