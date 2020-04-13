@@ -37,7 +37,7 @@ AT+FTPGET=2,1460====.*\+CME ERROR: 3.*====2
 AT+FTPSERV="36.7.87.100"====.*OK.*====1
 AT+FTPPW=123456-w====.*OK.*====1
 AT+FTPGET=1====.*OK.*\+FTPGET: 1,72====15
-AT+FTPGET=2,1460====\+CME ERROR: 3====2
+AT+FTPGET=2,1460====.*\+CME ERROR: 3.*====2
 
 #FTP文件上传测试
 AT+FTPPW=123456====.*OK.*====1

@@ -1,56 +1,56 @@
 #8910ATest
-#AT+CGMI====OK====2
-#AT+CGMM====OK====2
-#AT+CGMR====OK====2
-#AT+CGMR=?====OK====2
-#AT+CGSN====OK====2
-#AT+CGSN=?====OK====2
-#AT+CCID====OK====2
-#AT+ICCID====OK====2
-#AT+CIMI====OK====2
-#ATI====OK====2
-#AT+VER====OK====2
-#AT^HVER====OK====2
-#AT*I====OK====2
-#AT+WISN?====OK====2
-#AT+CPAS====OK====2
-#AT+CPAS=?====OK====2
-#AT+CFUN?====OK====2
-#AT+CFUN=?====OK====2
-#AT+CPIN?====OK====2
-#AT+CPIN=?====OK====2
-#AT+CLCK=?====OK====2
-#AT+CPWD=?====OK====2
-#AT+SLEDS?====OK====2
-#AT+SLEDS=?====OK====2
-#AT+IPR?====OK====2
-#AT+IPR=?====OK====2
-#AT+ICF?====OK====2
-#AT+ICF=?====OK====2
-#ATS4?====OK====2
-#AT+IFC?====OK====2
-#AT+IFC=?====OK====2
-#AT+CMUX?====OK====2
-#AT+CMUX=?====OK====2
-#AT+CSDT?====OK====2
-#AT+CSDT=?====OK====2
-#AT*SIMDETEC=?====OK====2
-#AT*SIMDETEC=1====OK====2
-#AT*SIMDETEC=2====OK====2
-#AT^CARDMODE?====OK====2
-#AT^CARDMODE=?====OK====2
-#AT*EUICC?====OK====2
-#AT+CSCLK?====OK====2
-#AT+CSCLK=?====OK====2
-#AT+WAKETIM?====OK====2
-#AT+CFGRI?====OK====2
-#AT+MIFIMAC=R====OK====2
-#AT+CADC?====OK====2
-#AT+CBC====OK====2
-#AT+CBC=?====OK====2
-#AT+CNETLIGHT?====OK====2
-#AT+CADC?====OK====2
-#AT+CADC?====OK====2
+AT+CGMI====.*\+CGMI: "AirM2M".*OK.*====2
+AT+CGMM====.*\+CGMM: ".*".*OK.*====2
+AT+CGMR====.*\+CGMR: ".*".*OK.*====2
+AT+CGMR=?====.*OK.*====2
+AT+CGSN====.*\d+.*OK.*====2
+AT+CGSN=?====.*OK.*====2
+AT+CCID====.*\d+.*OK.*====2
+AT+ICCID====.*\+ICCID: \d+.*OK.*====2
+AT+CIMI====.*\d.*OK.*====2
+ATI====.*AirM2M.*OK.*====2
+AT+VER====.*AirM2M.*OK.*====2
+AT^HVER====.*\^HVER: .*OK.*====2
+AT*I====.*Manufacturer: .*OK.*====2
+AT+WISN="1234567890"====.*OK.*====2
+AT+WISN?====.*1234567890.*OK.*====2
+AT+CPAS====.*\+CPAS: \d.*OK.*====2
+AT+CPAS=?====.*\+CPAS: .*OK.*====2
+AT+CFUN?====.*\+CFUN: \d.*OK.*====2
+AT+CFUN=?====.*\+CFUN: .*OK.*====2
+AT+CPIN?====.*\+CPIN: .*OK.*====2
+AT+CPIN=?====.*OK.*====2
+AT+CLCK=?====.*\+CLCK: .*OK.*====2
+AT+CPWD=?====.*\+CPWD: .*OK.*====2
+AT+SLEDS?====.*\+SLEDS: .*OK.*====2
+AT+SLEDS=?====.*\+SLEDS: .*OK.*====2
+AT+IPR?====.*\+IPR: .*OK.*====2
+AT+IPR=?====.*\+IPR: .*OK.*====2
+AT+ICF?====.*\+ICF: .*OK.*====2
+AT+ICF=?====.*\+ICF: .*OK.*====2
+ATS4?====.*10.*OK.*====2
+AT+IFC?====.*\+IFC: .*OK.*====2
+AT+IFC=?====.*\+IFC: .*OK.*====2
+AT+CMUX?====.*\+CMUX: .*OK.*====2
+AT+CMUX=?====.*\+CMUX: .*OK.*====2
+AT+CSDT?====.*\+CSDT: .*OK.*====2
+AT+CSDT=?====.*\+CSDT: .*OK.*====2
+AT*SIMDETEC=?====OK====2
+AT*SIMDETEC=1====OK====2
+AT*SIMDETEC=2====OK====2
+AT^CARDMODE?====.*\^CARDMODE: .*OK.*====2
+AT^CARDMODE=?====.*\^CARDMODE: \(0-1\).*OK.*====2
+AT*EUICC?====.*\*EUICC: \d.*OK.*====2
+AT+CSCLK?====.*\+CSCLK: \d.*OK.*====2
+AT+CSCLK=?====.*\+CSCLK: \(0-2\).*OK.*====2
+AT+WAKETIM?====.*\+WAKETIM: \d.*OK.*====2
+AT+CFGRI?====.*\+CFGRI: \d.*OK.*====2
+AT+MIFIMAC=R====OK====2
+AT+CADC?====.*\+CADC:\d,\d+.*OK.*====2
+AT+CBC====.*\+CBC: \d, \d+, \d+.*OK.*====2
+AT+CBC=?====.*\+CBC: \(0-2\),\(0-100\),\(voltage\).*OK.*====2
+AT+CNETLIGHT?====.*\+CNETLIGHT: \d.*OK.*====2
+AT+CADC?====.*\+CADC:\d,\d+.*OK.*====2
 
 #AT+CGMI====OK====1
 #AT+CGMM====OK====1
@@ -61,7 +61,6 @@
 #ATI====OK====1
 #AT+VER====OK====1
 #AT^HVER====OK====1
-#AT*I====OK====1
 #AT^HVER====OK====1
 #AT^HVER====OK====1
 #AT^HVER====OK====1

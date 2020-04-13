@@ -29,18 +29,19 @@ try:
         else:
             break
     while True:
-        fileName = input('请输入要测试的功能（INIT,FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
+        fileName = input('请输入要测试的功能（INIT,BASE,FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
         if fileName == 'END':
             break
         if fileName == 'ALL':
             ATListFileNames.append('INIT.txt')
+            ATListFileNames.append('BASE.txt')
             ATListFileNames.append('FTP.txt')
             ATListFileNames.append('HTTP.txt')
             ATListFileNames.append('MQTT.txt')
             # ATListFileNames.append('SMS.txt')
             ATListFileNames.append('TCPIP.txt')
             break
-        if fileName not in ('FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
+        if fileName not in ('INIT', 'BASE', 'FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
             print('输入的功能名称有误,请重新输入')
             continue
         ATListFileNames.append(f'{fileName}.txt')

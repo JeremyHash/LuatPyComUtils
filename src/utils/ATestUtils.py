@@ -59,12 +59,8 @@ class ATestUtils:
                             self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
                         else:
                             self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
-                    except Exception as e:
+                    except Exception:
                         print("匹配异常")
                         pass
-                    # if ATCmd[1] in tmp2:
-                    #     self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
-                    # else:
-                    #     self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
         else:
             print(f"{self.ser.port}端口打开失败")
