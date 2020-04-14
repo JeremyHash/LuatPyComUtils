@@ -451,7 +451,8 @@ int main(int argc, char **argv)
     char *hostname;
     int servport;
 
-    freopen("/dev/null", "w", stdout);
+    //注释掉这句话代表打开diag过程输出
+    //freopen("/dev/null", "w", stdout);
 
     readlen = 0;
     unsigned char rbuf[10240] = {0};

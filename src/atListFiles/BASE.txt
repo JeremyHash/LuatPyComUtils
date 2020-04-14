@@ -1,74 +1,52 @@
-#8910ATest
-AT+CGMI====.*\+CGMI: "AirM2M".*OK.*====2
-AT+CGMM====.*\+CGMM: ".*".*OK.*====2
-AT+CGMR====.*\+CGMR: ".*".*OK.*====2
-AT+CGMR=?====.*OK.*====2
-AT+CGSN====.*\d+.*OK.*====2
-AT+CGSN=?====.*OK.*====2
-AT+CCID====.*\d+.*OK.*====2
-AT+ICCID====.*\+ICCID: \d+.*OK.*====2
-AT+CIMI====.*\d.*OK.*====2
-ATI====.*AirM2M.*OK.*====2
-AT+VER====.*AirM2M.*OK.*====2
-AT^HVER====.*\^HVER: .*OK.*====2
-AT*I====.*Manufacturer: .*OK.*====2
-AT+WISN="1234567890"====.*OK.*====2
-AT+WISN?====.*1234567890.*OK.*====2
-AT+CPAS====.*\+CPAS: \d.*OK.*====2
-AT+CPAS=?====.*\+CPAS: .*OK.*====2
-AT+CFUN?====.*\+CFUN: \d.*OK.*====2
-AT+CFUN=?====.*\+CFUN: .*OK.*====2
-AT+CPIN?====.*\+CPIN: .*OK.*====2
-AT+CPIN=?====.*OK.*====2
-AT+CLCK=?====.*\+CLCK: .*OK.*====2
-AT+CPWD=?====.*\+CPWD: .*OK.*====2
-AT+SLEDS?====.*\+SLEDS: .*OK.*====2
-AT+SLEDS=?====.*\+SLEDS: .*OK.*====2
-AT+IPR?====.*\+IPR: .*OK.*====2
-AT+IPR=?====.*\+IPR: .*OK.*====2
-AT+ICF?====.*\+ICF: .*OK.*====2
-AT+ICF=?====.*\+ICF: .*OK.*====2
-ATS4?====.*10.*OK.*====2
-AT+IFC?====.*\+IFC: .*OK.*====2
-AT+IFC=?====.*\+IFC: .*OK.*====2
-AT+CMUX?====.*\+CMUX: .*OK.*====2
-AT+CMUX=?====.*\+CMUX: .*OK.*====2
-AT+CSDT?====.*\+CSDT: .*OK.*====2
-AT+CSDT=?====.*\+CSDT: .*OK.*====2
-AT*SIMDETEC=?====OK====2
-AT*SIMDETEC=1====OK====2
-AT*SIMDETEC=2====OK====2
-AT^CARDMODE?====.*\^CARDMODE: .*OK.*====2
-AT^CARDMODE=?====.*\^CARDMODE: \(0-1\).*OK.*====2
-AT*EUICC?====.*\*EUICC: \d.*OK.*====2
-AT+CSCLK?====.*\+CSCLK: \d.*OK.*====2
-AT+CSCLK=?====.*\+CSCLK: \(0-2\).*OK.*====2
-AT+WAKETIM?====.*\+WAKETIM: \d.*OK.*====2
-AT+CFGRI?====.*\+CFGRI: \d.*OK.*====2
-AT+MIFIMAC=R====OK====2
-AT+CADC?====.*\+CADC:\d,\d+.*OK.*====2
-AT+CBC====.*\+CBC: \d, \d+, \d+.*OK.*====2
-AT+CBC=?====.*\+CBC: \(0-2\),\(0-100\),\(voltage\).*OK.*====2
-AT+CNETLIGHT?====.*\+CNETLIGHT: \d.*OK.*====2
-AT+CADC?====.*\+CADC:\d,\d+.*OK.*====2
-
-#AT+CGMI====OK====1
-#AT+CGMM====OK====1
-#AT+CGMR====OK====1
-#AT+CGSN====OK====1
-#AT+CCID====OK====1
-#AT+CIMI====OK====1
-#ATI====OK====1
-#AT+VER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
-#AT^HVER====OK====1
+#BaseATest
+AT+CGMI====AT\+CGMI\s{4}\+CGMI: "(?:.|\n)*"\s{4}OK\s{2}====1
+AT+CGMM====AT\+CGMM\s{4}\+CGMM: "(?:.|\n)*"\s{4}OK\s{2}====1
+AT+CGMR====AT\+CGMR\s{4}\+CGMR: "(?:.|\n)*"\s{4}OK\s{2}====1
+AT+CGMR=?====AT\+CGMR=\?\s{4}OK\s{2}====1
+AT+CGSN====AT\+CGSN\s{4}\d+\s{4}OK\s{2}====1
+AT+CGSN=?====AT\+CGSN=\?\s{4}OK\s{2}====1
+AT+CCID====AT\+CCID\s{4}\w+\s{4}OK\s{2}====1
+AT+ICCID====AT\+ICCID\s{4}\+ICCID: \w+\s{4}OK\s{2}====1
+AT+CIMI====AT\+CIMI\s{4}\d+\s{4}OK\s{2}====2
+ATI====ATI\s{4}AirM2M_\w*\s{4}OK\s{2}====1
+AT+VER====AT\+VER\s{4}AirM2M(?:.|\n)+\s{4}OK\s{2}====1
+AT^HVER====AT\^HVER\s{4}\^HVER: (?:.|\n)+\s{4}OK\s{2}====1
+AT*I====AT\*I\s{4}Manufacturer: (?:.|\n)*\s{4}OK\s{2}====1
+AT+WISN="1234567890"====AT\+WISN="1234567890"\s{4}OK\s{2}====1
+AT+WISN?====AT\+WISN\?\s{4}1234567890\s{4}OK\s{2}====1
+AT+CPAS====AT\+CPAS\s{4}\+CPAS: \d\s{4}OK\s{2}====1
+AT+CPAS=?====AT\+CPAS=\?\s{4}\+CPAS: \([\d,]+\)\s{4}OK\s{2}====1
+AT+CFUN?====AT\+CFUN\?\s{4}\+CFUN: \d\s{4}OK\s{2}====1
+AT+CFUN=?====AT\+CFUN=\?\s{4}\+CFUN: \([\d,]+\),\([\d\-]+\)\s{4}OK\s{2}====1
+AT+CPIN?====AT\+CPIN\?\s{4}\+CPIN: READY\s{4}OK\s{2}====1
+AT+CPIN=?====AT\+CPIN=\?\s{4}OK\s{2}====1
+AT+CLCK=?====AT\+CLCK=\?\s{4}\+CLCK: (?:.|\n)*\s{4}OK\s{2}====1
+AT+CPWD=?====AT\+CPWD=\?\s{4}\+CPWD: (?:.|\n)*\s{4}OK\s{2}====1
+AT+SLEDS?====AT\+SLEDS\?\s{4}\+SLEDS: (?:.|\n)*\s{4}OK\s{2}====1
+AT+SLEDS=?====AT\+SLEDS=\?\s{4}\+SLEDS: (?:.|\n)*\s{4}OK\s{2}====1
+AT+IPR?====AT\+IPR\?\s{4}\+IPR: \d+\s{4}OK\s{2}====1
+AT+IPR=?====AT\+IPR=\?\s{4}\+IPR: (?:.|\n)+\s{4}OK\s{2}====1
+AT+ICF?====AT\+ICF\?\s{4}\+ICF: \d,\d\s{4}OK\s{2}====1
+AT+ICF=?====AT\+ICF=\?\s{4}\+ICF: \(\d\-\d\),\(\d\-\d\)\s{4}OK\s{2}====1
+ATS4?====ATS4\?\s{4}10\s{4}OK\s{2}====1
+AT+IFC?====AT\+IFC\?\s{4}\+IFC: \d,\d\s{4}OK\s{2}====1
+AT+IFC=?====AT\+IFC=\?\s{4}\+IFC: \(\d\-\d\),\(\d\-\d\)\s{4}OK\s{2}====1
+AT+CMUX?====AT\+CMUX\?\s{4}\+CMUX:\d,\d,\d,\d+,\d+,\d,\d+,\d+,\d\s{4}OK\s{2}====1
+AT+CMUX=?====AT\+CMUX=\?\s{4}\+CMUX:\(0\),\(0\),\(1\-7\),\(1\-255\),\(1\-255\),\(0\-100\),\(2\-255\),\(1\-255\),\(1\-7\)\s{4}OK\s{2}====1
+AT+CSDT?====AT\+CSDT\?\s{4}\+CSDT: \d\s{4}OK\s{2}====1
+AT+CSDT=?====AT\+CSDT=\?\s{4}\+CSDT: \(0\-1\)\s{4}OK\s{2}====1
+AT*SIMDETEC=?====AT\*SIMDETEC=\?\s{4}\*SIMDETEC: \(1,2\)\s{4}OK\s{2}====1
+AT*SIMDETEC=1====AT\*SIMDETEC=1\s{4}\*SIMDETEC: SIM\s{4}OK\s{2}====1
+AT^CARDMODE?====AT\^CARDMODE\?\s{4}\^CARDMODE: 2,1\s{4}OK\s{2}====1
+AT^CARDMODE=?====AT\^CARDMODE=\?\s{4}\^CARDMODE: \(0\-1\)\s{4}OK\s{2}====1
+AT*EUICC?====AT\*EUICC\?\s{4}\*EUICC: \d\s{4}OK\s{2}====1
+AT+CSCLK?====AT\+CSCLK\?\s{4}\+CSCLK: \d\s{4}OK\s{2}====1
+AT+CSCLK=?====AT\+CSCLK=\?\s{4}\+CSCLK: \(0-2\)\s{4}OK\s{2}====1
+AT+WAKETIM?====AT\+WAKETIM\?\s{4}\+WAKETIM: \d\s{4}OK\s{2}====1
+AT+CFGRI?====AT\+CFGRI\?\s{4}\+CFGRI: \d\s{4}OK\s{2}====1
+#AT+MIFIMAC=R====\s{4}OK\s{2}====1
+AT+CADC?====AT\+CADC\?\s{4}\+CADC:\d,\d+\s{4}OK\s{2}====1
+AT+CBC====AT\+CBC\s{4}\+CBC: \d \d+ \d+\s{4}OK\s{2}====1
+AT+CBC=?====AT\+CBC=\?\s{4}\+CBC: \(0\-2\),\(1\-100\),\(voltage\)\s{4}OK\s{2}====1
+AT+CNETLIGHT?====AT\+CNETLIGHT\?\s{4}\+CNETLIGHT: \d\s{4}OK\s{2}====1
+AT+CADC?====AT\+CADC\?\s{4}\+CADC:\d,\d+\s{4}OK\s{2}====1

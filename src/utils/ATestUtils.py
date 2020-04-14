@@ -55,7 +55,8 @@ class ATestUtils:
                     tmp2 = res.decode(encoding="UTF8")
                     self.log.logger.debug(f"收←◆  {tmp2}")
                     try:
-                        if re.match(ATCmd[1], tmp2.replace('\r\n', '')):
+                        # if re.match(ATCmd[1], tmp2.replace('\r\n', '')):
+                        if re.match(ATCmd[1], tmp2):
                             self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
                         else:
                             self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
