@@ -54,6 +54,8 @@ class ATestUtils:
                     res = self.ser.read(210000)
                     tmp2 = res.decode(encoding="UTF8")
                     self.log.logger.debug(f"收←◆  {tmp2}")
+                    # 查看接收到的原始数据
+                    print(res)
                     try:
                         # if re.match(ATCmd[1], tmp2.replace('\r\n', '')):
                         if re.match(ATCmd[1], tmp2):
