@@ -6,9 +6,6 @@
 # Modify: fangxiaozhi <huananhu@huawei.com>
 programName=${0##*/}
 # These are the parameters. Change as needed.
-#DEVICE=/dev/ttyGSM2
-#DEVICE=/dev/ttyGSM2
-#./../../bin/dev_name ppp>port.txt
 DEVICE=""
 TELEPHONE=*99#                             # The telephone number for the connection, by default, it will be *99#
 ACCOUNT=""                              # The account name for logon, by default, it  will be null
@@ -252,8 +249,8 @@ connect 'chat -s -v -f /etc/ppp/huawei-chat'
 disconnect 'chat -s -v -f /etc/ppp/huawei-chat-disconnect'
 	" > /etc/ppp/peers/huawei-dial
 
-/bin/cp ./../cfg/ppp/ip-up /etc/ppp/ip-up
-/bin/cp ./../cfg/ppp/ip-down /etc/ppp/ip-down
+/bin/cp ./ip-up /etc/ppp/ip-up
+/bin/cp ./ip-down /etc/ppp/ip-down
 
 if [ USEPEERDNS = 'usepeerdns' ];then
 cp /etc/ppp/resolv.conf /etc/resolv.conf
