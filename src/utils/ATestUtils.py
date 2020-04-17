@@ -55,15 +55,15 @@ class ATestUtils:
                     tmp2 = res.decode(encoding="UTF8")
                     self.log.logger.debug(f"收←◆  {tmp2}")
                     # 查看接收到的原始数据
-                    print(res)
-                    try:
-                        # if re.match(ATCmd[1], tmp2.replace('\r\n', '')):
-                        if re.match(ATCmd[1], tmp2):
-                            self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
-                        else:
-                            self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
-                    except Exception:
-                        print("匹配异常")
-                        pass
+                    # print(res)
+                    # try:
+                    #     # if re.match(ATCmd[1], tmp2.replace('\r\n', '')):
+                    #     if re.match(ATCmd[1], tmp2):
+                    #         self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
+                    #     else:
+                    #         self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
+                    # except Exception:
+                    #     print("匹配异常")
+                    #     pass
         else:
             print(f"{self.ser.port}端口打开失败")
