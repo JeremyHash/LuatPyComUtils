@@ -1,7 +1,6 @@
 import serial
 from utils import Logger
 import sys
-import re
 
 
 class ATestUtils:
