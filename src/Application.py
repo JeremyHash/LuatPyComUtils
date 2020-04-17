@@ -21,13 +21,7 @@ else:
     ports = os.popen('python -m serial.tools.list_ports').read()
     print(ports)
 try:
-    while True:
-        port = input('请输入测试设备端口号：')
-        # port = 'COM74'
-        if port not in ports:
-            print('输入的端口不存在，请重新输入')
-        else:
-            break
+    port = input('请输入测试设备端口号：')
     while True:
         fileName = input('请输入要测试的功能（INIT,BASE,FILE,FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
         if fileName == 'END':
