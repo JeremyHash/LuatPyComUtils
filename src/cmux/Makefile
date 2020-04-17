@@ -4,6 +4,12 @@ CFLAGS=-Wall
 
 all: diag cmux dev_name copy
 	chmod +x ../bin/*
+	sed -i "s/\r//g" ../src/*
+	sed -i "s/\r//g" ../cfg/net/*
+	sed -i "s/\r//g" ../cfg/ppp/*
+	chmod +x ../src/*
+	chmod +x ../cfg/net/*
+	chmod +x ../cfg/ppp/*
 
 diag: DiagSaver.c tool.c tool.h
 	gcc DiagSaver.c tool.c -o diag
