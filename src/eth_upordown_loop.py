@@ -10,5 +10,5 @@ while True:
     os.popen('ifconfig ' + eth_name + ' up')
     print(eth_name + '网卡开启了')
     time.sleep(5)
-    print('第' + i + '次循环结束')
+    print('第' + str(i) + '次循环结束')
     i = i + 1
