@@ -1,5 +1,6 @@
 import os
 import platform
+import traceback
 
 import serial
 from utils import Logger
@@ -113,4 +114,6 @@ except KeyboardInterrupt as ke:
     print("exit...")
     sys.exit()
 except Exception as e:
-    print(e.__cause__)
+    print(e)
+    print("---------------")
+    print(traceback.format_exc())
