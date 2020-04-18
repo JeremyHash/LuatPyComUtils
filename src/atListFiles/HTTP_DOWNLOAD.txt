@@ -3,7 +3,7 @@ ATE1====ATE1\s{4}OK\s{2}====1
 AT+UPGRADE="AUTO",0====AT\+UPGRADE="AUTO",0\s{4}OK\s{2}====1
 AT+CSCON=0====AT\+CSCON=0\s{4}\+CSCON: \d,\d\s{4}OK\s{2}====1
 AT^TRACECTRL=0,1,3====AT\^TRACECTRL=0,1,3\s{4}OK\s{2}====1
-AT*EXASSERT=1====AT\*EXASSERT=1\s{4}OK\s{2}====1
+AT*EXASSERT=1;&W====AT\*EXASSERT=1;&W\s{4}OK\s{2}====1
 AT+SAPBR=0,1====.*====2
 AT+CIPSHUT====AT\+CIPSHUT\s{4}SHUT OK\s{2}====5
 AT+HTTPTERM====.*====5

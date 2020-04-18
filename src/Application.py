@@ -64,6 +64,7 @@ class Application:
     def run(self):
         app = ATestUtils.ATestUtils(self.port, self.baud_rate)
         app.ATest(self.ATListFileNames, self.loopTimes)
+        print(f'一共发生错误${app.error_count}次')
 
 
 print("JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")

@@ -6,6 +6,7 @@ import sys
 
 
 class ATestUtils:
+    error_count = 0
     ATList = []
     log = Logger.Logger('./log/log.txt', level='debug')
 
@@ -63,6 +64,7 @@ class ATestUtils:
                             self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
                         else:
                             self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
+                            self.error_count = self.error_count + 1
                     except Exception:
                         print("匹配异常")
                         pass

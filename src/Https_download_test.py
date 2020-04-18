@@ -77,16 +77,16 @@ class Https_download_test:
             cmd = b'AT+HTTPPARA=BREAK,%d\r\n' % i
             self.log.logger.debug(f"发→◇  {cmd.decode()}")
             self.ser.write(cmd)
-            self.log.logger.debug(f"收←◆  {self.ser.read(2000).decode()}")
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
             cmd = b'AT+HTTPPARA=BREAKEND,%d\r\n' % j
             self.log.logger.debug(f"发→◇  {cmd.decode()}")
             self.ser.write(cmd)
-            self.log.logger.debug(f"收←◆  {self.ser.read(2000).decode()}")
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
             self.ser.timeout = 5
             cmd = b'AT+HTTPACTION=0\r\n'
             self.log.logger.debug(f"发→◇  {cmd.decode()}")
             self.ser.write(cmd)
-            temp = self.ser.read(2000).decode()
+            temp = self.ser.read(200).decode()
             self.log.logger.debug(f"收←◆  {temp}")
             if "416" in temp:
                 break
