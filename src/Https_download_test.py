@@ -19,7 +19,7 @@ port = input('请指定设备端口号:')
 
 class Https_download_test:
     log = Logger.Logger('./log/http_download_log.txt', level='debug')
-    tmp_ATListFileNames = ['HTTP_DOWNLOAD.TXT']
+    tmp_ATListFileNames = ['HTTP_DOWNLOAD.txt']
     ATList = []
 
     def serialFactory(self, port, baud_rate):
