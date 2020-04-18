@@ -5,3 +5,4 @@ __pycache__/
 .idea
 
 log.txt*
+/src/log/http_download_log.txt

@@ -19,7 +19,7 @@ clean:
 run: cmux
 	../bin/cmux
 copy:
-	cp ./cmux ../bin/
-	cp ./diag ../bin/
-	cp ./dev_name ../bin/
+	mv ./cmux ../bin/
+	mv ./diag ../bin/
+	mv ./dev_name ../bin/
 

@@ -1,19 +1,24 @@
+import os
+import platform
+
 import serial
 from utils import Logger
 import sys
 
-port = None
-if len(sys.argv) == 1:
-    print('请指定设备端口号')
-    sys.exit()
-if len(sys.argv) == 2:
-    port = sys.argv[1]
-    print(f"正在使用的端口号为：{port}")
+system_cate = platform.system()
+print(f'当前操作系统为：{system_cate}')
+if system_cate == 'Linux':
+    ports = os.popen('python3 -m serial.tools.list_ports').read()
+    print(ports)
+else:
+    ports = os.popen('python -m serial.tools.list_ports').read()
+    print(ports)
+port = input('请指定设备端口号:')
 
 
 class Https_download_test:
-    log = Logger.Logger('./log/log.txt', level='debug')
-    tmp_ATListFileNames = ['INIT.txt', 'TMP.TXT']
+    log = Logger.Logger('./log/http_download_log.txt', level='debug')
+    tmp_ATListFileNames = ['HTTP_DOWNLOAD.TXT']
     ATList = []
 
     def serialFactory(self, port, baud_rate):
@@ -60,45 +65,50 @@ class Https_download_test:
                 res = self.ser.read(1000)
                 tmp2 = res.decode(encoding="UTF8")
                 self.log.logger.debug(f"收←◆  {tmp2}")
-            i = 0
-            j = 9999
-
-            while True:
-                self.ser.timeout = 1
-                cmd = b'AT+HTTPPARA=BREAK,%d\r\n' % i
-                self.log.logger.debug(f"发→◇  {cmd.decode()}")
-                self.ser.write(cmd)
-                self.log.logger.debug(f"收←◆  {self.ser.read(2000).decode()}")
-                cmd = b'AT+HTTPPARA=BREAKEND,%d\r\n' % j
-                self.log.logger.debug(f"发→◇  {cmd.decode()}")
-                self.ser.write(cmd)
-                self.log.logger.debug(f"收←◆  {self.ser.read(2000).decode()}")
-                self.ser.timeout = 5
-                cmd = b'AT+HTTPACTION=0\r\n'
-                self.log.logger.debug(f"发→◇  {cmd.decode()}")
-                self.ser.write(cmd)
-                temp = self.ser.read(2000).decode()
-                self.log.logger.debug(f"收←◆  {temp}")
-                if "416" in temp:
-                    break
-                cmd = b'AT+HTTPREAD\r\n'
-                self.log.logger.debug(f"发→◇  {cmd.decode()}")
-                self.ser.write(cmd)
-                self.log.logger.debug(f"收←◆  ")
-                self.log.logger.debug(self.ser.read(20000))
-                print()
-                i += 10000
-                j += 10000
-            # self.ser.close()
         else:
             print(f"{self.ser.port}端口打开失败")
+
+    def setbreak(self):
+        i = 0
+        j = 9999
+        while True:
+            self.ser.timeout = 1
+            cmd = b'AT+HTTPPARA=BREAK,%d\r\n' % i
+            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {self.ser.read(2000).decode()}")
+            cmd = b'AT+HTTPPARA=BREAKEND,%d\r\n' % j
+            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {self.ser.read(2000).decode()}")
+            self.ser.timeout = 5
+            cmd = b'AT+HTTPACTION=0\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.ser.write(cmd)
+            temp = self.ser.read(2000).decode()
+            self.log.logger.debug(f"收←◆  {temp}")
+            if "416" in temp:
+                break
+            cmd = b'AT+HTTPREAD\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  ")
+            self.log.logger.debug(self.ser.read(20000))
+            print()
+            i += 10000
+            j += 10000
+        # self.ser.close()
 
 
 try:
     test = Https_download_test(port, 115200)
     test.loadATList()
+    test.ATest()
+    count = 1
     while True:
-        test.ATest()
+        test.setbreak()
+        test.log.logger.debug(f'第{count}次http下载测试完成。。。')
+        count = count + 1
 except KeyboardInterrupt as ke:
     print("exit...")
     sys.exit()
