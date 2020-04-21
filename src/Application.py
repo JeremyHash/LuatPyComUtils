@@ -86,6 +86,12 @@ try:
     if system_cate == 'Linux' and enable_trace == 'y':
         multiprocessing.Process(target=start_trace).start()
     Application(port, baud_rate, ATListFileNames, loopTimes).run()
+except UnicodeDecodeError as ude:
+    print('解码异常')
+    print(ude)
+    print("---------------")
+    print(traceback.format_exc())
+    pass
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")
