@@ -1,4 +1,5 @@
 import re
+import traceback
 
 import serial
 from utils import Logger
@@ -40,6 +41,7 @@ class ATestUtils:
             print()
 
     def ATest(self, ATListFileNames, loopTimes):
+        global tmp2
         self.tmp_ATListFileNames = ATListFileNames
         if self.ser.is_open:
             self.loadATList()
@@ -54,7 +56,13 @@ class ATestUtils:
                     self.ser.write(tmp1)
                     self.log.logger.debug(f"发→◇  {ATCmd[0]}")
                     res = self.ser.read(320000)
-                    tmp2 = res.decode(encoding="UTF8")
+                    try:
+                        tmp2 = res.decode(encoding="UTF8")
+                    except UnicodeDecodeError as ude:
+                        print('解码异常')
+                        print(ude)
+                        print("---------------")
+                        print(traceback.format_exc())
                     self.log.logger.debug(f"收←◆  {tmp2}")
                     # 查看接收到的原始数据
                     # print(res)

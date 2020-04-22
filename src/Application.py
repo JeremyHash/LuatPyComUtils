@@ -7,9 +7,7 @@ import multiprocessing
 import platform
 import signal
 
-# ATListFileNames = ['INIT.txt', 'TCPIP.txt', 'HTTP.txt', 'MQTT.txt', 'FTP.txt']
-# ATListFileNames = ['INIT.txt', 'FTP.txt']
-# ATListFileNames = ['TMP.txt']
+# 定义ATListFiles
 ATListFileNames = []
 loopTimes = int(input('请输入循环次数：'))
 system_cate = platform.system()
@@ -86,12 +84,6 @@ try:
     if system_cate == 'Linux' and enable_trace == 'y':
         multiprocessing.Process(target=start_trace).start()
     Application(port, baud_rate, ATListFileNames, loopTimes).run()
-except UnicodeDecodeError as ude:
-    print('解码异常')
-    print(ude)
-    print("---------------")
-    print(traceback.format_exc())
-    pass
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")
