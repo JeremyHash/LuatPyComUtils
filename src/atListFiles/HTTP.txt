@@ -1,3 +1,9 @@
+#HTTP基本命令
+AT+HTTPINIT=?====AT\+HTTPINIT=\?\s{4}OK\s{2}====1
+AT+HTTPSSL?====AT\+HTTPSSL\?\s{4}\+HTTPSSL: \d\s{4}OK\s{2}====1
+AT+HTTPPARA?====AT\+HTTPPARA\?\s{4}\+HTTPPARA:(?:.|\n)*\s{4}OK\s{2}====1
+AT+HTTPPARA=?====AT\+HTTPPARA=\?\s{4}\+HTTPPARA: "HTTPParamTag","HTTPParamValue"\s{4}OK\s{2}====1
+
 #HTTP GET流程
 AT+SAPBR=3,1,"Contype","GPRS"====AT\+SAPBR=3,1,"Contype","GPRS"\s{4}OK\s{2}====1
 AT+SAPBR=3,1,"APN",""====AT\+SAPBR=3,1,"APN",""\s{4}OK\s{2}====1
@@ -11,7 +17,7 @@ AT+HTTPREAD=0,319488====AT\+HTTPREAD=0,319488\s{4}\+HTTPREAD: \d+\s{2}(?:.|\n)*\
 #AT+HTTPTERM====AT\+HTTPTERM\s{4}OK\s{2}====5
 #AT+SAPBR=0,1====AT\+SAPBR=0,1\s{4}OK\s{2}====1
 
-#HTTP POST流程
+#HTTP POST流程(1)
 #AT+SAPBR=3,1,"CONTYPE","GPRS"====\s{4}OK\s{2}====1
 #AT+SAPBR=3,1,"APN",""====\s{4}OK\s{2}====1
 #AT+SAPBR=1,1====\s{4}OK\s{2}====2
@@ -24,6 +30,15 @@ AT+HTTPACTION=1====AT\+HTTPACTION=1\s{4}OK\s{4}\+HTTPACTION: 1,200,\d{3}\s{2}===
 AT+HTTPREAD====AT\+HTTPREAD\s{4}\+HTTPREAD: \d{3}\s{2}(?:.|\n)*\s{2}OK\s{2}====2
 #AT+HTTPTERM====\s{4}OK\s{2}====5
 #AT+SAPBR=0,1====\s{4}OK\s{2}====1
+
+#HTTP POST流程(2)
+AT+HTTPSSL=1====AT\+HTTPSSL=1\s{4}OK\s{2}====1
+AT+SSLCFG="hostname",153,"fanyi.baidu.com"====AT\+SSLCFG="hostname",153,"fanyi.baidu.com"\s{4}OK\s{2}====1
+AT+HTTPPARA="URL","https://fanyi.baidu.com"====AT\+HTTPPARA="URL","https://fanyi.baidu.com"\s{4}OK\s{2}====1
+AT+HTTPDATA=6,100000====AT\+HTTPDATA=6,100000\s{4}DOWNLOAD\s{2}====1
+中国====\s{2}OK\s{2}====1
+AT+HTTPACTION=1====AT\+HTTPACTION=1\s{4}OK\s{4}\+HTTPACTION: 1,200,\d{6}\s{2}====60
+AT+HTTPREAD====AT\+HTTPREAD\s{4}\+HTTPREAD: \d{6}\s{2}(?:.|\n)*\s{2}OK\s{2}====60
 
 #AT+SAPBR=3,1,"Contype","GPRS"====\s{4}OK\s{2}====1
 #AT+SAPBR=3,1,"APN",""====\s{4}OK\s{2}====1
