@@ -49,6 +49,7 @@ class ATestUtils:
                 print("ATList为空")
                 sys.exit(0)
             # while True:
+            print('开始执行命令,log见./log/log.txt')
             for i in range(loopTimes):
                 for ATCmd in self.ATList:
                     self.ser.timeout = int(ATCmd[2])

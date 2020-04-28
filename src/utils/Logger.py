@@ -21,5 +21,5 @@ class Logger(object):
         sh.setFormatter(format_str)
         th = handlers.TimedRotatingFileHandler(filename=filename, when=when, encoding='utf-8')
         th.setFormatter(format_str)
-        self.logger.addHandler(sh)
+        # self.logger.addHandler(sh)
         self.logger.addHandler(th)

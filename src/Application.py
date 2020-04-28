@@ -27,24 +27,33 @@ class Application:
 ATListFileNames = []
 # 初始化波特率设置
 baud_rate = 115200
-loopTimes = int(input('请输入循环次数：'))
-# 查询系统平台
-system_cate = platform.system()
-print(f'当前操作系统为：{system_cate}')
-# 在Linux下使用python命令要指明python3
-if system_cate == 'Linux':
-    ports = os.popen('python3 -m serial.tools.list_ports').read()
-    print(ports)
+if len(sys.argv) == 1:
+    loopTimes = int(input('请输入循环次数：'))
+elif len(sys.argv) == 3:
+    loopTimes = int(sys.argv[2])
 else:
-    ports = os.popen('python -m serial.tools.list_ports').read()
-    print(ports)
+    print('参数有误')
+    sys.exit(0)
+# 查询系统平台
+# system_cate = platform.system()
+# print(f'当前操作系统为：{system_cate}')
+# 在Linux下使用python命令要指明python3
+# if system_cate == 'Linux':
+#     ports = os.popen('python3 -m serial.tools.list_ports').read()
+#     print(ports)
+# else:
+#     ports = os.popen('python -m serial.tools.list_ports').read()
+#     print(ports)
 try:
-    port = input('请输入测试设备端口号：')
+    if len(sys.argv) == 1:
+        port = input('请输入测试设备端口号：')
+    elif len(sys.argv) == 3:
+        port = sys.argv[1]
+    else:
+        print('参数有误')
+        sys.exit(0)
     while True:
-        fileName = input('请输入要测试的功能（INIT,BASE,FILE,FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
-        if fileName == 'END':
-            break
-        if fileName == 'ALL':
+        if len(sys.argv) == 3:
             ATListFileNames.append('INIT.txt')
             ATListFileNames.append('BASE.txt')
             ATListFileNames.append('FILE.txt')
@@ -54,10 +63,27 @@ try:
             # ATListFileNames.append('SMS.txt')
             ATListFileNames.append('TCPIP.txt')
             break
-        if fileName not in ('INIT', 'BASE', 'FILE', 'FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
-            print('输入的功能名称有误,请重新输入')
-            continue
-        ATListFileNames.append(f'{fileName}.txt')
+        elif len(sys.argv) == 1:
+            fileName = input('请输入要测试的功能（INIT,BASE,FILE,FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
+            if fileName == 'END':
+                break
+            if fileName == 'ALL':
+                ATListFileNames.append('INIT.txt')
+                ATListFileNames.append('BASE.txt')
+                ATListFileNames.append('FILE.txt')
+                ATListFileNames.append('FTP.txt')
+                ATListFileNames.append('HTTP.txt')
+                ATListFileNames.append('MQTT.txt')
+                # ATListFileNames.append('SMS.txt')
+                ATListFileNames.append('TCPIP.txt')
+                break
+            if fileName not in ('INIT', 'BASE', 'FILE', 'FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
+                print('输入的功能名称有误,请重新输入')
+                continue
+            ATListFileNames.append(f'{fileName}.txt')
+        else:
+            print('参数有误')
+            sys.exit(0)
 
     # 当前如果是Linux的话，询问用户是否开启trace抓取功能
     # enable_trace = 'n'
@@ -66,14 +92,7 @@ try:
     #     if enable_trace == 'y':
     #         diag_port = input('请输入diag诊断口端口：')
 
-    print(
-        "JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
-    print(
-        "JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
-    print(
-        "JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST---JEREMYPYATEST")
-
-    diag_pid = 0
+    # diag_pid = 0
 
     # def start_trace():
     #     global diag_pid
@@ -84,27 +103,28 @@ try:
     print(f'Application process {os.getpid()}')
     # if system_cate == 'Linux' and enable_trace == 'y':
     #     multiprocessing.Process(target=start_trace).start()
-    try:
-        Application(port, baud_rate, ATListFileNames, loopTimes).run()
-    except serial.serialutil.SerialException as se:
-        print(se)
-        print("---------------")
-        print(traceback.format_exc())
-        # if system_cate == 'Linux' and enable_trace == 'y':
-        #     os.kill(diag_pid, signal.SIGKILL)
-        if 'No such file or directory' in traceback.format_exc():
-            print('输入的端口不存在')
-        if 'PermissionError' in traceback.format_exc():
-            print('端口被占用,请检查是否有其他程序正在占用设备端口')
-    except Exception as e:
-        # if system_cate == 'Linux' and enable_trace == 'y':
-        #     os.kill(diag_pid, signal.SIGKILL)
-        print(e)
-        print("---------------")
-        print(traceback.format_exc())
+
+    Application(port, baud_rate, ATListFileNames, loopTimes).run()
+
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")
     # if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
     #     os.kill(diag_pid, signal.SIGKILL)
     sys.exit()
+except serial.serialutil.SerialException as se:
+    print(se)
+    print("---------------")
+    print(traceback.format_exc())
+    # if system_cate == 'Linux' and enable_trace == 'y':
+    #     os.kill(diag_pid, signal.SIGKILL)
+    if 'No such file or directory' in traceback.format_exc():
+        print('输入的端口不存在')
+    if 'PermissionError' in traceback.format_exc():
+        print('端口被占用,请检查是否有其他程序正在占用设备端口')
+except Exception as e:
+    # if system_cate == 'Linux' and enable_trace == 'y':
+    #     os.kill(diag_pid, signal.SIGKILL)
+    print(e)
+    print("---------------")
+    print(traceback.format_exc())
