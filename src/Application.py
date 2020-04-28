@@ -117,6 +117,7 @@ try:
     #     multiprocessing.Process(target=start_trace).start()
 
     Application(port, baud_rate, ATListFileNames, loopTimes).run()
+    print(f'{loopTimes}次测试已完成')
 
 except KeyboardInterrupt as ke:
     print()

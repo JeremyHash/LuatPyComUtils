@@ -51,6 +51,7 @@ class ATestUtils:
             # while True:
             print('开始执行命令,log见./log/log.txt')
             for i in range(loopTimes):
+                print(f'第{i + 1}次循环开始')
                 for ATCmd in self.ATList:
                     self.ser.timeout = int(ATCmd[2])
                     tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
@@ -77,5 +78,6 @@ class ATestUtils:
                     except Exception:
                         print("匹配异常")
                         pass
+                print(f'第{i + 1}次循环完成')
         else:
             print(f"{self.ser.port}端口打开失败")

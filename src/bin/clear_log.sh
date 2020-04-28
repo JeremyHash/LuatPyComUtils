@@ -1,2 +1,4 @@
-rm -f ../log/log*
-rm -f ../log/http_download_log*
+#!/usr/bin/zsh
+
+rm -rf ../log/log*;
+rm -rf ../log/http_download*
