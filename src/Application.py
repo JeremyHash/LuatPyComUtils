@@ -23,6 +23,12 @@ class Application:
         print(f'共发生错误{app.error_count}次')
 
 
+if len(sys.argv) == 2 and sys.argv[1] == '-h':
+    print('''   useage: 
+        Linux: nohup python3 Application {port} {loopTimes}&!
+        Windows: python Application {port} {loopTimes}''')
+    sys.exit(0)
+
 # 定义ATListFiles
 ATListFileNames = []
 # 初始化波特率设置
@@ -32,7 +38,9 @@ if len(sys.argv) == 1:
 elif len(sys.argv) == 3:
     loopTimes = int(sys.argv[2])
 else:
-    print('参数有误')
+    print('-------------------------------------')
+    print('参数有误,使用方法请添加帮助参数:-h')
+    print('-------------------------------------')
     sys.exit(0)
 # 查询系统平台
 # system_cate = platform.system()
@@ -50,7 +58,9 @@ try:
     elif len(sys.argv) == 3:
         port = sys.argv[1]
     else:
-        print('参数有误')
+        print('-------------------------------------')
+        print('参数有误,使用方法请添加帮助参数:-h')
+        print('-------------------------------------')
         sys.exit(0)
     while True:
         if len(sys.argv) == 3:
@@ -82,7 +92,9 @@ try:
                 continue
             ATListFileNames.append(f'{fileName}.txt')
         else:
-            print('参数有误')
+            print('-------------------------------------')
+            print('参数有误,使用方法请添加帮助参数:-h')
+            print('-------------------------------------')
             sys.exit(0)
 
     # 当前如果是Linux的话，询问用户是否开启trace抓取功能
