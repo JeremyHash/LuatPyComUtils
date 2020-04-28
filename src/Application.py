@@ -33,6 +33,11 @@ if len(sys.argv) == 2 and sys.argv[1] == '-h':
 ATListFileNames = []
 # 初始化波特率设置
 baud_rate = 115200
+
+# trace控制选项，n为关闭，y为打开
+enable_trace = 'n'
+# 诊断端口
+diag_pid = 0
 if len(sys.argv) == 1:
     loopTimes = int(input('请输入循环次数：'))
 elif len(sys.argv) == 3:
@@ -43,15 +48,15 @@ else:
     print('-------------------------------------')
     sys.exit(0)
 # 查询系统平台
-# system_cate = platform.system()
-# print(f'当前操作系统为：{system_cate}')
+system_cate = platform.system()
+print(f'当前操作系统为：{system_cate}')
 # 在Linux下使用python命令要指明python3
-# if system_cate == 'Linux':
-#     ports = os.popen('python3 -m serial.tools.list_ports').read()
-#     print(ports)
-# else:
-#     ports = os.popen('python -m serial.tools.list_ports').read()
-#     print(ports)
+if system_cate == 'Linux':
+    ports = os.popen('python3 -m serial.tools.list_ports').read()
+    print(ports)
+else:
+    ports = os.popen('python -m serial.tools.list_ports').read()
+    print(ports)
 try:
     if len(sys.argv) == 1:
         port = input('请输入测试设备端口号：')
@@ -98,23 +103,23 @@ try:
             sys.exit(0)
 
     # 当前如果是Linux的话，询问用户是否开启trace抓取功能
-    # enable_trace = 'n'
-    # if system_cate == 'Linux':
-    #     enable_trace = input('当前操作系统为Linux，是否抓取trace？（y/n）')
-    #     if enable_trace == 'y':
-    #         diag_port = input('请输入diag诊断口端口：')
 
-    # diag_pid = 0
+    if system_cate == 'Linux':
+        enable_trace = input('当前操作系统为Linux，是否抓取trace？（y/n）')
+        if enable_trace == 'y':
+            diag_port = input('请输入diag诊断口端口：')
 
-    # def start_trace():
-    #     global diag_pid
-    #     diag_pid = os.getpid()
-    #     print(f'Run diag process {diag_pid}')
-    #     os.popen(f"./bin/diag trace/log - - {diag_port}")
+
+    def start_trace():
+        global diag_pid
+        diag_pid = os.getpid()
+        print(f'Run diag process {diag_pid}')
+        os.popen(f"./bin/diag trace/log - - {diag_port}")
+
 
     print(f'Application process {os.getpid()}')
-    # if system_cate == 'Linux' and enable_trace == 'y':
-    #     multiprocessing.Process(target=start_trace).start()
+    if system_cate == 'Linux' and enable_trace == 'y':
+        multiprocessing.Process(target=start_trace).start()
 
     Application(port, baud_rate, ATListFileNames, loopTimes).run()
     print(f'{loopTimes}次测试已完成')
@@ -122,22 +127,22 @@ try:
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")
-    # if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
-    #     os.kill(diag_pid, signal.SIGKILL)
+    if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
+        os.kill(diag_pid, signal.SIGKILL)
     sys.exit()
 except serial.serialutil.SerialException as se:
     print(se)
     print("---------------")
     print(traceback.format_exc())
-    # if system_cate == 'Linux' and enable_trace == 'y':
-    #     os.kill(diag_pid, signal.SIGKILL)
+    if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
+        os.kill(diag_pid, signal.SIGKILL)
     if 'No such file or directory' in traceback.format_exc():
         print('输入的端口不存在')
     if 'PermissionError' in traceback.format_exc():
         print('端口被占用,请检查是否有其他程序正在占用设备端口')
 except Exception as e:
-    # if system_cate == 'Linux' and enable_trace == 'y':
-    #     os.kill(diag_pid, signal.SIGKILL)
+    if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
+        os.kill(diag_pid, signal.SIGKILL)
     print(e)
     print("---------------")
     print(traceback.format_exc())
