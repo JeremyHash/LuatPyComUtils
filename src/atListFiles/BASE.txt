@@ -14,7 +14,7 @@ AT^HVER====AT\^HVER\s{4}\^HVER: (?:.|\n)+\s{4}OK\s{2}====1
 AT*I====AT\*I\s{4}Manufacturer: (?:.|\n)*\s{4}OK\s{2}====1
 AT+WISN="1234567890"====AT\+WISN="1234567890"\s{4}OK\s{2}====1
 AT+WISN?====AT\+WISN\?\s{4}1234567890\s{4}OK\s{2}====1
-#AT+CSCS?====AT\+CSCS\?\s{4}\+CSCS: \w+\s{4}OK\s{2}====1
+AT+CSCS?====AT\+CSCS\?\s{4}\+CSCS: "\w+"\s{4}OK\s{2}====1
 AT+CCLK?====AT\+CCLK\?\s{4}\+CCLK: (?:.|\n)*\s{4}OK\s{2}====1
 AT+CCLK=?====AT\+CCLK=\?\s{4}OK\s{2}====1
 AT+SETUSB?====AT\+SETUSB\?\s{4}mode: \d\s{2}Vid: \w{6}\s{2}Pid: \w{6}\s{4}OK\s{2}====1
@@ -64,10 +64,20 @@ AT+CGCONTRDP=5====.*====1
 AT+COPS?====AT\+COPS\?\s{4}\+COPS: \d,\d,"\d+",\d\s{4}OK\s{2}====1
 AT+CTZU?====AT\+CTZU\?\s{4}\+CTZU: \d\s{4}OK\s{2}====1
 AT+CTZR?====AT\+CTZR\?\s{4}\+CTZR: \d\s{4}OK\s{2}====1
+AT*BAND?====AT\*BAND\?\s{4}\*BAND:\d,\d+,\d,\d+,\d+\s{4}OK\s{2}====2
 AT*BANDIND?====AT\*BANDIND\?\s{4}\*BANDIND: \d, \d+, \d\s{4}OK\s{2}====1
+AT^CACAP?====AT^CACAP?\s{4}\+CACAP:\d\s{4}OK\s{2}====2
 AT^SYSINFO====AT\^SYSINFO\s{4}\^SYSINFO: \d,\d,\d,\d+,\d,\d\s{4}OK\s{2}====1
 AT+CGATT?====AT\+CGATT\?\s{4}\+CGATT: \d\s{4}OK\s{2}====1
 AT+CGDCONT?====AT\+CGDCONT\?\s{4}\+CGDCONT: (?:.|\n)*\s{4}OK\s{2}====1
-#AT+CTZU?====\s{4}OK\s{2}====1
+AT+SAPBR=3,1,"Contype","GPRS"====AT\+SAPBR=3,1,"Contype","GPRS"\s{4}OK\s{2}====1
+AT+SAPBR=3,1,"APN",""====AT\+SAPBR=3,1,"APN",""\s{4}OK\s{2}====1
+AT+SAPBR=1,1====AT\+SAPBR=1,1\s{4}OK\s{2}====3
+AT+SAPBR=2,1====AT\+SAPBR=2,1\s{4}\+SAPBR: \d,\d,"[\.\d]+"\s{4}OK\s{2}====1
+AT+CIPGSMLOC=1,1====AT\+CIPGSMLOC=1,1\s{4}\+CIPGSMLOC: \d,[\d\.]+,[\d\.]+,[\d/]+,[\d:]+\s{4}OK\s{2}====1
+AT+CIPGSMLOC=2,1====AT\+CIPGSMLOC=2,1\s{4}\+CIPGSMLOC: \d,[\d/]+,[\d:]+\s{4}OK\s{2}====1
+AT+SAPBR=0,1====AT\+SAPBR=0,1\s{4}OK\s{2}====1
+AT+CGPADDR====AT\+CGPADDR\s{4}\+CGPADDR: (?:.|\n)*\s{4}OK\s{2}====2
+AT+CGACT?====AT\+CGACT\?\+CGACT: \d, \d\s{4}OK\s{2}====1
 #AT+CTZU?====\s{4}OK\s{2}====1
 #AT+CTZU?====\s{4}OK\s{2}====1

@@ -23,41 +23,45 @@ class Application:
         print(f'共发生错误{app.error_count}次')
 
 
-if len(sys.argv) == 2 and sys.argv[1] == '-h':
-    print('''   useage: 
-        Linux: nohup python3 Application {port} {loopTimes}&!
-        Windows: python Application {port} {loopTimes}''')
-    sys.exit(0)
+system_cate = ''
+enable_trace = ''
+diag_pid = ''
 
-# 定义ATListFiles
-ATListFileNames = []
-# 初始化波特率设置
-baud_rate = 115200
-
-# trace控制选项，n为关闭，y为打开
-enable_trace = 'n'
-# 诊断端口
-diag_pid = 0
-if len(sys.argv) == 1:
-    loopTimes = int(input('请输入循环次数：'))
-elif len(sys.argv) == 3:
-    loopTimes = int(sys.argv[2])
-else:
-    print('-------------------------------------')
-    print('参数有误,使用方法请添加帮助参数:-h')
-    print('-------------------------------------')
-    sys.exit(0)
-# 查询系统平台
-system_cate = platform.system()
-print(f'当前操作系统为：{system_cate}')
-# 在Linux下使用python命令要指明python3
-if system_cate == 'Linux':
-    ports = os.popen('python3 -m serial.tools.list_ports').read()
-    print(ports)
-else:
-    ports = os.popen('python -m serial.tools.list_ports').read()
-    print(ports)
 try:
+    if len(sys.argv) == 2 and sys.argv[1] == '-h':
+        print('''   useage: 
+            Linux: nohup python3 Application {port} {loopTimes}&!
+            Windows: python Application {port} {loopTimes}''')
+        sys.exit(0)
+
+    # 定义ATListFiles
+    ATListFileNames = []
+    # 初始化波特率设置
+    baud_rate = 115200
+
+    # trace控制选项，n为关闭，y为打开
+    enable_trace = 'n'
+    # 诊断端口
+    diag_pid = 0
+    if len(sys.argv) == 1:
+        loopTimes = int(input('请输入循环次数：'))
+    elif len(sys.argv) == 3:
+        loopTimes = int(sys.argv[2])
+    else:
+        print('-------------------------------------')
+        print('参数有误,使用方法请添加帮助参数:-h')
+        print('-------------------------------------')
+        sys.exit(0)
+    # 查询系统平台
+    system_cate = platform.system()
+    print(f'当前操作系统为：{system_cate}')
+    # 在Linux下使用python命令要指明python3
+    if system_cate == 'Linux':
+        ports = os.popen('python3 -m serial.tools.list_ports').read()
+        print(ports)
+    else:
+        ports = os.popen('python -m serial.tools.list_ports').read()
+        print(ports)
     if len(sys.argv) == 1:
         port = input('请输入测试设备端口号：')
     elif len(sys.argv) == 3:
@@ -103,7 +107,6 @@ try:
             sys.exit(0)
 
     # 当前如果是Linux的话，询问用户是否开启trace抓取功能
-
     if system_cate == 'Linux':
         enable_trace = input('当前操作系统为Linux，是否抓取trace？（y/n）')
         if enable_trace == 'y':

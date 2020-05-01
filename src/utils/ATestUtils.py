@@ -2,25 +2,26 @@ import re
 import traceback
 
 import serial
-from utils import Logger
+from utils import Logger, utils
 import sys
 
 
 class ATestUtils:
+    # 统计匹配出错次数
     error_count = 0
+    # ATList列表
     ATList = []
     log = Logger.Logger('./log/log.txt', level='debug')
 
+    # 串口对象生成Factory
     def serialFactory(self, port, baud_rate):
         return serial.Serial(port=port, baudrate=baud_rate)
 
-    def print_hex(self, bytes_data):
-        l = [hex(int(i)) for i in bytes_data]
-        print(" ".join(l))
-
+    # 构造方法生成串口操作对象
     def __init__(self, port, baud_rate):
         self.ser = self.serialFactory(port, baud_rate)
 
+    # 加载ATlist方法
     def loadATList(self):
         for ATListFile in self.tmp_ATListFileNames:
             with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
@@ -40,6 +41,7 @@ class ATestUtils:
             print(f"【成功加载---{ATListFile}---ATCmd{str(tmp_count)}条】")
             print()
 
+    # ATest方法，循环发送ATCmd，读取结果，校验格式
     def ATest(self, ATListFileNames, loopTimes):
         global tmp2
         self.tmp_ATListFileNames = ATListFileNames
@@ -66,8 +68,9 @@ class ATestUtils:
                         print("---------------")
                         print(traceback.format_exc())
                     self.log.logger.debug(f"收←◆  {tmp2}")
-                    # 查看接收到的原始数据
-                    # print(res)
+                    # 打印接收到的数据的十六进制
+                    hexdata = '收←◆  hex_data:' + utils.get_hex(res)
+                    self.log.logger.debug(hexdata)
                     try:
                         # if re.match(ATCmd[1], tmp2.replace('\r\n', '')):
                         if re.match(ATCmd[1], tmp2):
