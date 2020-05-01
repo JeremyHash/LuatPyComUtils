@@ -52,17 +52,17 @@ try:
         print('参数有误,使用方法请添加帮助参数:-h')
         print('-------------------------------------')
         sys.exit(0)
-    # 查询系统平台
-    system_cate = platform.system()
-    print(f'当前操作系统为：{system_cate}')
-    # 在Linux下使用python命令要指明python3
-    if system_cate == 'Linux':
-        ports = os.popen('python3 -m serial.tools.list_ports').read()
-        print(ports)
-    else:
-        ports = os.popen('python -m serial.tools.list_ports').read()
-        print(ports)
     if len(sys.argv) == 1:
+        # 查询系统平台
+        system_cate = platform.system()
+        print(f'当前操作系统为：{system_cate}')
+        # 显示当前所有端口（在Linux下使用python命令要指明python3）
+        if system_cate == 'Linux':
+            ports = os.popen('python3 -m serial.tools.list_ports').read()
+            print(ports)
+        else:
+            ports = os.popen('python -m serial.tools.list_ports').read()
+            print(ports)
         port = input('请输入测试设备端口号：')
     elif len(sys.argv) == 3:
         port = sys.argv[1]

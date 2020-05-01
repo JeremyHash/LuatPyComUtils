@@ -9,6 +9,19 @@ AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\
 AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
 AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
 AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
+AT+MQTTMSGSET=1====AT\+MQTTMSGSET=1\s{4}OK\s{2}====2
+AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
 AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====2
 AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
 
@@ -39,6 +52,7 @@ AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
 
 
 #不带证书的MQTTSSL连接
+AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
 AT+MCONFIG=Jeremy1,mqtt_kaige_wx_user,eqzEXc5a====AT\+MCONFIG=Jeremy1,mqtt_kaige_wx_user,eqzEXc5a\s{4}OK\s{2}====1
 AT+SSLMIPSTART=kaigemqtt.openluat.com,8886====AT\+SSLMIPSTART=kaigemqtt\.openluat\.com,8886\s{4}OK\s{4}CONNECT OK\s{2}====10
 AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====10

@@ -67,9 +67,10 @@ class ATestUtils:
                         print(ude)
                         print("---------------")
                         print(traceback.format_exc())
+                    # self.log.logger.debug(f"收←◆  {res}")
                     self.log.logger.debug(f"收←◆  {tmp2}")
                     # 打印接收到的数据的十六进制
-                    hexdata = '收←◆  hex_data:' + utils.get_hex(res)
+                    hexdata = '收←◆  hex_data: ' + utils.get_hex(res)
                     self.log.logger.debug(hexdata)
                     try:
                         # if re.match(ATCmd[1], tmp2.replace('\r\n', '')):
@@ -78,8 +79,10 @@ class ATestUtils:
                         else:
                             self.log.logger.warning("命令【" + ATCmd[0] + "】匹配失败")
                             self.error_count = self.error_count + 1
-                    except Exception:
+                    except Exception as e:
+                        print(e)
                         print("匹配异常")
+                        print(traceback.format_exc())
                         pass
                 print(f'第{i + 1}次循环完成')
         else:

@@ -16,9 +16,11 @@ def hexStr_to_str(hex_str):
     str_bin = binascii.unhexlify(hex)
     return str_bin.decode('utf-8')
 
-print(hexStr_to_str('41542b43474154543f'))
-print(get_hex(b'AT'))
-print(str_to_hexStr('AT+CGATT?'))
-#
-# for i in b'AT':
-#     print(hex(i))
+
+if __name__ == '__main__':
+    print(hexStr_to_str('41542b43474154543f'))
+    print(get_hex(b'AT'))
+    print(str_to_hexStr('AT+CGATT?'))
+
+    for i in b'AT':
+        print(hex(i))
