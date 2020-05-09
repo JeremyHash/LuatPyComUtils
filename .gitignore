@@ -8,3 +8,4 @@ log.txt*
 /src/log/http_download_log.txt
 
 nohup.out
+/src/log/aliyun_test_log.txt

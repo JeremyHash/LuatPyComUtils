@@ -1,0 +1,4 @@
+#一型一密获取MQTT登录信息
+AT+HTTPINIT====AT\+HTTPINIT\s{4}OK\s{2}====1
+AT+HTTPPARA="URL","https://iot-auth.cn-shanghai.aliyuncs.com/auth/devicename"====OK====1
+AT+HTTPPARA="USER_DEFINED","Content-Type: application/x-www-form-urlencoded"====OK====1
