@@ -131,6 +131,10 @@ class aliyun_test:
         self.log.logger.debug(f"发→◇  {cmd.decode()}")
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        # cmd = b'AT+CDNSCFG="114.114.114.114","114.114.114.114",1\r\n'
+        # self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        # self.ser.write(cmd)
+        # self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
         self.ser.timeout = 5
         cmd = ('AT+SSLMIPSTART="' + product_key + '.iot-as-mqtt.cn-shanghai.aliyuncs.com",1883\r\n').encode()
         self.log.logger.debug(f"发→◇  {cmd.decode()}")

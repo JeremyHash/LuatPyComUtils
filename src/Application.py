@@ -63,6 +63,9 @@ try:
         else:
             ports = os.popen('python -m serial.tools.list_ports').read()
             print(ports)
+        if "" == ports:
+            print("没有检测到端口，请连接模块")
+            sys.exit(0)
         port = input('请输入测试设备端口号：')
     elif len(sys.argv) == 3:
         port = sys.argv[1]
