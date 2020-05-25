@@ -1,4 +1,6 @@
 #非透传TCP应用
+AT+CIPMUX=0====.*====1
+AT+CIPSSL=0====.*====1
 AT+CIPMODE=0====AT\+CIPMODE=0\s{4}OK\s{2}====1
 AT+CIPSTART=TCP,"115.29.164.59",40432====AT\+CIPSTART=TCP,"115.29.164.59",40432\s{4}OK\s{4}CONNECT OK\s{2}====3
 AT+CIPSEND=100====AT\+CIPSEND=100\s{4}>====1
@@ -50,3 +52,59 @@ AT+CIPSEND=100====AT\+CIPSEND=100\s{4}>====1
 AT+CIPSTATUS====AT\+CIPSTATUS\s{4}OK\s{4}STATE: CONNECT OK\s{2}====1
 AT+CIPSHUT====AT\+CIPSHUT\s{4}SHUT OK\s{2}====5
 AT+CIPSTATUS====AT\+CIPSTATUS\s{4}OK\s{4}STATE: IP INITIAL\s{2}====1
+
+#TCPSSL多链接测试
+AT+FSCREATE=server.crt====AT\+FSCREATE=server\.crt\s{4}OK\s{2}====1
+AT+FSWRITE=server.crt,0,1285,20====AT\+FSWRITE=server\.crt,0,1285,20\s{4}>====1
+-----BEGIN CERTIFICATE-----\nMIIDhzCCAvCgAwIBAgIJAJVqp5Z9Aim1MA0GCSqGSIb3DQEBBQUAMIGKMQswCQYD\nVQQGEwJDTjERMA8GA1UECBMIU2hhbmdIYWkxETAPBgNVBAcTCFNoYW5nSGFpMQ8w\nDQYDVQQKEwZhaXJtMm0xDTALBgNVBAsTBHNvZnQxDzANBgNVBAMTBnNlbGZDQTEk\nMCIGCSqGSIb3DQEJARYVemh1dGlhbmh1YUBhaXJtMm0uY29tMB4XDTE4MDExMjA2\nMzM1N1oXDTI4MDExMDA2MzM1N1owgYoxCzAJBgNVBAYTAkNOMREwDwYDVQQIEwhT\naGFuZ0hhaTERMA8GA1UEBxMIU2hhbmdIYWkxDzANBgNVBAoTBmFpcm0ybTENMAsG\nA1UECxMEc29mdDEPMA0GA1UEAxMGc2VsZkNBMSQwIgYJKoZIhvcNAQkBFhV6aHV0\naWFuaHVhQGFpcm0ybS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALqX\n/4SCaPX1K9/0r3BiK3kfgW48OntIo4qbpiIlvozwhCv+qCKcvntJ9jn6PznDEzHi\nuIBJh3adt7D32l2ncKwO85krmhFAeYqUzWRFujPuMAAEwK010IMdVcREfaAiudzI\nfPh/jpPel3Eu2bunDGYDRWiFNMainfxhOyoy3I27AgMBAAGjgfIwge8wHQYDVR0O\nBBYEFMf8PqOq5B/Y1Sqz0ksgJuFKI0HTMIG/BgNVHSMEgbcwgbSAFMf8PqOq5B/Y\n1Sqz0ksgJuFKI0HToYGQpIGNMIGKMQswCQYDVQQGEwJDTjERMA8GA1UECBMIU2hh\nbmdIYWkxETAPBgNVBAcTCFNoYW5nSGFpMQ8wDQYDVQQKEwZhaXJtMm0xDTALBgNV\nBAsTBHNvZnQxDzANBgNVBAMTBnNlbGZDQTEkMCIGCSqGSIb3DQEJARYVemh1dGlh\nbmh1YUBhaXJtMm0uY29tggkAlWqnln0CKbUwDAYDVR0TBAUwAwEB/zANBgkqhkiG\n9w0BAQUFAAOBgQCur2oMUFvtWrrE5ncwasuTpGA32zMojvh8aTE6MnBQYiafm4zc\n85sAUyd0Gdf7yh+pNgv7PuXNy7MDcr4vr01SEJhIqlDJK0Pe42CxzvEJ2hbwLFLp\nu/Sy5rdmX/Bpj6luHqkCsngEeS0PPsvlKFJUZBSRVI/DgPpyiTuaOEIrQA==\n-----END CERTIFICATE-----\n====\s{2}OK\s{2}====1
+AT+FSCREATE=client.crt====AT\+FSCREATE=client\.crt\s{4}OK\s{2}====1
+AT+FSWRITE=client.crt,0,1118,20====AT\+FSWRITE=client\.crt,0,1118,20\s{4}>====1
+-----BEGIN CERTIFICATE-----\r\nMIIC/zCCAmigAwIBAgIBAjANBgkqhkiG9w0BAQUFADCBijELMAkGA1UEBhMCQ04x\r\nETAPBgNVBAgTCFNoYW5nSGFpMREwDwYDVQQHEwhTaGFuZ0hhaTEPMA0GA1UEChMG\r\nYWlybTJtMQ0wCwYDVQQLEwRzb2Z0MQ8wDQYDVQQDEwZzZWxmQ0ExJDAiBgkqhkiG\r\n9w0BCQEWFXpodXRpYW5odWFAYWlybTJtLmNvbTAeFw0xODAxMTIwNjUwNDBaFw0y\r\nODAxMTAwNjUwNDBaMIGCMQswCQYDVQQGEwJDTjERMA8GA1UECBMIU2hhbmdIYWkx\r\nDzANBgNVBAoTBmFpcm0ybTENMAsGA1UECxMEc29mdDEaMBgGA1UEAxQRemh1dGlh\r\nbmh1YV9jbGllbnQxJDAiBgkqhkiG9w0BCQEWFXpodXRpYW5odWFAYWlybTJtLmNv\r\nbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA3Tum2kgr02gHzQlwrMYxAA2e\r\nqZsTE6oaWIwKrrpeHPTPGvGe15bVLRjVJFi7mYXWIpqhznBK6kIgLSdUGJYpDzdg\r\ns8PU4/c8usk3Rmv11kwRps31brcaqQ/eMTE9P8pZizwY02vkSWDgk9A62yS2Pav8\r\n1E/DWS/dsJvE79n6+t8CAwEAAaN7MHkwCQYDVR0TBAIwADAsBglghkgBhvhCAQ0E\r\nHxYdT3BlblNTTCBHZW5lcmF0ZWQgQ2VydGlmaWNhdGUwHQYDVR0OBBYEFA0nZpzk\r\nxApUtQfPyIa7bD6bsky7MB8GA1UdIwQYMBaAFMf8PqOq5B/Y1Sqz0ksgJuFKI0HT\r\nMA0GCSqGSIb3DQEBBQUAA4GBAENH2PvCcZzljSqZHAW91+WCmwHOlS2PQp86Ak5B\r\n9CoH6N6jdIsaXVPQwPELzmWhFf2XvRV1Fiq5BGjoPLW8OlMsrIFciETqUvbqvN+w\r\n1GHi73zyCaCV+M8dMcdR+3Odue5S0hrtHdhliodSqYCT1mA8go8cEAM8uc9h6jpA\r\ni1Ka\r\n-----END CERTIFICATE-----\r\n====\s{2}OK\s{2}====1
+AT+FSCREATE=client.key====AT\+FSCREATE=client\.key\s{4}OK\s{2}====1
+AT+FSWRITE=client.key,0,887,20====AT\+FSWRITE=client\.key,0,887,20\s{4}>====1
+-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDdO6baSCvTaAfNCXCsxjEADZ6pmxMTqhpYjAquul4c9M8a8Z7X\nltUtGNUkWLuZhdYimqHOcErqQiAtJ1QYlikPN2Czw9Tj9zy6yTdGa/XWTBGmzfVu\ntxqpD94xMT0/ylmLPBjTa+RJYOCT0DrbJLY9q/zUT8NZL92wm8Tv2fr63wIDAQAB\nAoGAHoh+FcBCNDI2aWj1IRNVbfFzRWs+rccbTb8+NjFIjeyHrOtOBekuUMQNnq+U\nbLLZA/ude1VqMXyg3jqAU8hdsBcyGaTLXgX5XoEvFwisR4tivW5p8tG8q/ZqOCs1\nWoXG2yyPBt+mLa4mujNmWGnS+sNgi51n+L8rWOkxW2we4gECQQD3YO+fjkqPDkKP\nB6tZTNYD3JrR35/6Yw1LaIjYO+EYvbQPEy+ZQRanZU/w/rEHDgqLobs+qDoa8cvq\nXavGNf3fAkEA5PFzDonv5BvjrYgo0hehj8b7XdUvdQpRcQR1KfN7E/NiBK9GhGge\n3/ZCe0grlTKOXWzCWReNCNybg75AcOCjAQJAJ8EoQRf422yLPbkZzEwQyKYXK0so\nxnBMnqW5+CYHUpaJ7TJEH/jZzyT05+HGST/0aeQf1z3puJLLFmrfRAdBOQJAQX5A\n59vV4G+KBk55PwC7myHVLtaZqOW2vpoD2mhowSBS3fw2NBKFIpSUGChhL2EzEM7Y\nGhx+oBZb9qgqTyA0AQJBAIwdm6xlaD4gjA/BciK3knIRUaGkINrNDnhAh4ObUnuf\nOHriSGx89nYxZYwWuvO1Ed4oSMkRaARdS8Vw2/XUS90=\n-----END RSA PRIVATE KEY-----\n====\s{2}OK\s{2}====1
+AT+FSREAD=server.crt,0,10240,0====.*====1
+AT+FSREAD=client.crt,0,1118,2====.*====1
+AT+FSREAD=client.key,0,887,0====.*====1
+AT+CIPSSL=1====AT\+CIPSSL=1\s{4}OK\s{2}====1
+AT+CIPMUX=1====AT\+CIPMUX=1\s{4}OK\s{2}====1
+AT+SSLCFG="seclevel",1,1====AT\+SSLCFG="seclevel",1,1\s{4}OK\s{2}====1
+AT+SSLCFG="cacert",1,"server.crt"====AT\+SSLCFG="cacert",1,"server\.crt"\s{4}OK\s{2}====1
+AT+SSLCFG="seclevel",2,2====AT\+SSLCFG="seclevel",2,2\s{4}OK\s{2}====1
+AT+SSLCFG="cacert",2,"server.crt"====AT\+SSLCFG="cacert",2,"server\.crt"\s{4}OK\s{2}====1
+AT+SSLCFG="clientcert",2,"client.crt"====AT\+SSLCFG="clientcert",2,"client\.crt"\s{4}OK\s{2}====1
+AT+SSLCFG="clientkey",2,"client.key"====AT\+SSLCFG="clientkey",2,"client\.key"\s{4}OK\s{2}====1
+AT+CSTT====AT\+CSTT\s{4}OK\s{2}====1
+AT+CIICR====AT\+CIICR\s{4}OK\s{2}====1
+AT+CIFSR====AT\+CIFSR\s{4}\d{2}\.\d{3}\.\d{3}\.\d{3}\s{2}====1
+AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
+AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
+AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
+AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
+AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
+AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
+AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
+AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
+AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
+AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
+AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
+GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPSHUT====AT\+CIPSHUT\s{4}SHUT OK\s{2}====5

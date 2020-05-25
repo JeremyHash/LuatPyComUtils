@@ -17,11 +17,11 @@ AT+FTPQUIT====AT\+FTPQUIT\s{4}OK\s{4}\+FTPLIST: 1,86\s{2}====2
 #FTP获取文件内容测试
 AT+FTPGETNAME="1.txt"====AT\+FTPGETNAME="1.txt"\s{4}OK\s{2}====1
 AT+FTPGET=1====AT\+FTPGET=1\s{4}OK\s{4}\+FTPGET: 1,1\s{2}====5
-AT+FTPGET=2,1460====AT\+FTPGET=2,1460\s{4}\+FTPGET: 2,1000\s{2}\d{1000}\s{2}OK\s{2}====5
+AT+FTPGET=2,1460====AT\+FTPGET=2,1460\s{4}\+FTPGET: 2,107\s{2}\d{107}\s{2}OK\s{2}====5
 AT+FTPQUIT====AT\+FTPQUIT\s{4}OK\s{4}\+FTPGET: 1,86\s{2}====2
 
 #FTP读取文件大小测试
-AT+FTPSIZE====AT\+FTPSIZE\s{4}OK\s{4}\+FTPSIZE: 1,0,1000\s{2}====2
+AT+FTPSIZE====AT\+FTPSIZE\s{4}OK\s{4}\+FTPSIZE: 1,0,107\s{2}====2
 
 #FTP创建删除目录测试
 AT+FTPGETPATH="/JeremyTest/"====AT\+FTPGETPATH="/JeremyTest/"\s{4}OK\s{2}====1
@@ -33,8 +33,14 @@ AT+FTPSERV="36.7.87.99"====AT\+FTPSERV="36.7.87.99"\s{4}OK\s{2}====1
 AT+FTPGET=1====AT\+FTPGET=1\s{4}OK\s{4}\+FTPGET: 1,63\s{2}====50
 AT+FTPGET=2,1460====AT\+FTPGET=2,1460\s{4}\+CME ERROR: 3\s{4}====2
 
-#错误FTP密码测试
+#错误FTP用户名测试
 AT+FTPSERV="36.7.87.100"====AT\+FTPSERV="36.7.87.100"\s{4}OK\s{2}====1
+AT+FTPUN=Useraaa====AT\+FTPUN=Useraaa\s{4}OK\s{2}====1
+AT+FTPGET=1====AT\+FTPGET=1\s{4}OK\s{4}\+FTPGET: 1,72\s{2}====15
+AT+FTPGET=2,1460====AT\+FTPGET=2,1460\s{4}\+CME ERROR: 3\s{4}====2
+
+#错误FTP密码测试
+AT+FTPUN=User====AT\+FTPUN=User\s{4}OK\s{2}====1
 AT+FTPPW=123456-w====AT\+FTPPW=123456-w\s{4}OK\s{2}====1
 AT+FTPGET=1====AT\+FTPGET=1\s{4}OK\s{4}\+FTPGET: 1,72\s{2}====15
 AT+FTPGET=2,1460====AT\+FTPGET=2,1460\s{4}\+CME ERROR: 3\s{4}====2
@@ -47,6 +53,18 @@ AT+FTPPUT=1====AT\+FTPPUT=1\s{4}OK\s{4}\+FTPPUT: 1,1,1360\s{2}====2
 AT+FTPPUT=2,5====AT\+FTPPUT=2,5\s{4}\+FTPPUT: 2,5\s{2}====2
 123====\s{2}OK\s{4}\+FTPPUT: 1,1,1360\s{2}====2
 AT+FTPQUIT====AT\+FTPQUIT\s{4}OK\s{4}\+FTPPUT: 1,86\s{2}====2
+
+#FTP匿名登陆测试
+AT+FTPUN="anonymous"====AT\+FTPUN="anonymous"\s{4}OK\s{2}====1
+AT+FTPPW=123456====AT\+FTPPW=123456\s{4}OK\s{2}====1
+AT+FTPSERV=ftp.hi-flying.com====AT\+FTPSERV=ftp.hi-flying.com\s{4}OK\s{2}====1
+AT+FTPPORT=9001====AT\+FTPPORT=9001\s{4}OK\s{2}====1
+AT+FTPGETPATH=/HF2411/test_ftp_download/====AT\+FTPGETPATH=/HF2411/test_ftp_download/\s{4}OK\s{2}====1
+AT+FTPGETNAME=td.txt====AT\+FTPGETNAME=td.txt\s{4}OK\s{2}====1
+AT+FTPGET=1====AT\+FTPGET=1\s{4}OK\s{4}\+FTPGET: 1,1\s{2}====10
+AT+FTPGET=2,1460====AT\+FTPGET=2,1460\s{4}\+FTPGET: 2,1460\s{2}\d{1460}\s{2}OK\s{2}====2
+AT+FTPQUIT====AT\+FTPQUIT\s{4}OK\s{4}\+FTPGET: 1,86\s{2}====2
+AT+FTPPORT=21====AT\+FTPPORT=21\s{4}OK\s{2}====1
 
 #FTP基本命令测试
 AT+FTPPORT?====AT\+FTPPORT\?\s{4}\+FTPPORT: 21\s{4}OK\s{2}====1

@@ -11,7 +11,7 @@ class ATestUtils:
     error_count = 0
     # ATList列表
     ATList = []
-    log = Logger.Logger('./log/log.txt', level='debug')
+    log = Logger.Logger('./log/log.log', level='debug')
 
     # 串口对象生成Factory
     def serialFactory(self, port, baud_rate):
@@ -51,12 +51,14 @@ class ATestUtils:
                 print("ATList为空")
                 sys.exit(0)
             # while True:
-            print('开始执行命令,log见./log/log.txt')
+            print('开始执行命令,log见./log/log.log')
             for i in range(loopTimes):
                 print(f'第{i + 1}次循环开始')
                 for ATCmd in self.ATList:
                     self.ser.timeout = int(ATCmd[2])
                     tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
+                    tmp1 = tmp1.replace(b"\\n", b"\n")
+                    tmp1 = tmp1.replace(b"\\r", b"\r")
                     self.ser.write(tmp1)
                     self.log.logger.debug(f"发→◇  {ATCmd[0]}")
                     res = self.ser.read(320000)
@@ -67,13 +69,11 @@ class ATestUtils:
                         print(ude)
                         print("---------------")
                         print(traceback.format_exc())
-                    # self.log.logger.debug(f"收←◆  {res}")
                     self.log.logger.debug(f"收←◆  {tmp2}")
                     # 打印接收到的数据的十六进制
                     hexdata = '收←◆  hex_data: ' + utils.get_hex(res)
                     self.log.logger.debug(hexdata)
                     try:
-                        # if re.match(ATCmd[1], tmp2.replace('\r\n', '')):
                         if re.match(ATCmd[1], tmp2):
                             self.log.logger.debug("命令【" + ATCmd[0] + "】匹配成功")
                         else:
@@ -81,9 +81,8 @@ class ATestUtils:
                             self.error_count = self.error_count + 1
                     except Exception as e:
                         print(e)
-                        print("匹配异常")
+                        self.log.logger.warning("命令【" + ATCmd[0] + "】匹配异常")
                         print(traceback.format_exc())
-                        pass
                 print(f'第{i + 1}次循环完成')
         else:
             print(f"{self.ser.port}端口打开失败")

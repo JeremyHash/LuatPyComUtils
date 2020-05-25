@@ -24,7 +24,7 @@ class aliyun_test:
         return serial.Serial(port=port, baudrate=baud_rate)
 
     def __init__(self, port, baud_rate):
-        self.log = Logger.Logger('./log/aliyun_test_log.txt', level='debug')
+        self.log = Logger.Logger('./log/aliyun_test.log', level='debug')
         self.ATList = []
         self.post_info = ''
         self.port = port
