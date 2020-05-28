@@ -114,7 +114,6 @@ def tcp_ssl_test(port):
     print(s.read(10000))
 
     while True:
-        s.timeout = 3
         cmd_tmp = b'AT+CIPSTART=1,"TCP","36.7.87.100",4433\r\n'
         s.write(cmd_tmp)
         print("发→◇", cmd_tmp)
@@ -143,7 +142,17 @@ def tcp_ssl_test(port):
         s.write(cmd_tmp)
         print("发→◇", cmd_tmp)
         print("收←◆", s.read(10000))
+        s.timeout = 3
+        cmd_tmp = b'AT+CIPCLOSE=1\r\n'
+        s.write(cmd_tmp)
+        print("发→◇", cmd_tmp)
+        print("收←◆", s.read(10000))
+        cmd_tmp = b'AT+CIPCLOSE=2\r\n'
+        s.write(cmd_tmp)
+        print("发→◇", cmd_tmp)
+        print("收←◆", s.read(10000))
 
 
 if __name__ == '__main__':
-    tcp_ssl_test("COM5")
+    port = input("请输入测试端口：")
+    tcp_ssl_test(port)

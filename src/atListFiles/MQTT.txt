@@ -40,16 +40,15 @@ AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====10
 AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
 AT+MSUB=MQTT-TEST8,2====AT\+MSUB=MQTT-TEST8,2\s{4}OK\s{4}SUBACK====2
 AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====\s{4}OK\s{2}PUBREC.*PUBCOMP.*\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
 AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====3
 AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====3
 

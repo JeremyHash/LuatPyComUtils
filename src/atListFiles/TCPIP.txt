@@ -76,7 +76,7 @@ AT+SSLCFG="clientcert",2,"client.crt"====AT\+SSLCFG="clientcert",2,"client\.crt"
 AT+SSLCFG="clientkey",2,"client.key"====AT\+SSLCFG="clientkey",2,"client\.key"\s{4}OK\s{2}====1
 AT+CSTT====AT\+CSTT\s{4}OK\s{2}====1
 AT+CIICR====AT\+CIICR\s{4}OK\s{2}====1
-AT+CIFSR====AT\+CIFSR\s{4}\d{2}\.\d{3}\.\d{3}\.\d{3}\s{2}====1
+AT+CIFSR====AT\+CIFSR\s{4}\d+\.\d+\.\d+\.\d+\s{2}====1
 AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
 AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
 AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1

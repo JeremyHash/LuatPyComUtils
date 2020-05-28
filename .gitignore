@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 .idea
 
-log.txt*
+log.log*
 /src/log/http_download_log.txt
 
 nohup.out
