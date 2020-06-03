@@ -83,28 +83,38 @@ AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
 AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPCLOSE=1====.*====2
+AT+CIPCLOSE=2====.*====2
 AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
 AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
 AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
 AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPCLOSE=1====.*====2
+AT+CIPCLOSE=2====.*====2
 AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
 AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
 AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
 AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPCLOSE=1====.*====2
+AT+CIPCLOSE=2====.*====2
 AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
 AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
 AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
 AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPCLOSE=1====.*====2
+AT+CIPCLOSE=2====.*====2
 AT+CIPSTART=1,"TCP","36.7.87.100",4433====AT\+CIPSTART=1,"TCP","36\.7\.87\.100",4433\s{4}OK\s{4}1, CONNECT OK\s{2}====3
 AT+CIPSTART=2,"TCP","36.7.87.100",4434====AT\+CIPSTART=2,"TCP","36\.7\.87\.100",4434\s{4}OK\s{4}2, CONNECT OK\s{2}====3
 AT+CIPSEND=1,61====AT\+CIPSEND=1,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}1, SEND OK\s{4}\+RECEIVE,1,328:\s{2}HTTP/1.1 200 OK====8
 AT+CIPSEND=2,61====AT\+CIPSEND=2,61\s{4}>====1
 GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n====GET / HTTP/1\.1\r\nHost: 36\.7\.87\.100\r\nConnection: keep-alive\s{6}2, SEND OK\s{4}\+RECEIVE,2,324:\s{2}HTTP/1.1 200 OK====8
+AT+CIPCLOSE=1====.*====2
+AT+CIPCLOSE=2====.*====2
 AT+CIPSHUT====AT\+CIPSHUT\s{4}SHUT OK\s{2}====5
