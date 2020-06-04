@@ -40,18 +40,6 @@ AT+HTTPDATA=6,100000====AT\+HTTPDATA=6,100000\s{4}DOWNLOAD\s{2}====1
 AT+HTTPACTION=1====AT\+HTTPACTION=1\s{4}OK\s{4}\+HTTPACTION: 1,200,\d{6}\s{2}====60
 AT+HTTPREAD====AT\+HTTPREAD\s{4}\+HTTPREAD: \d{6}\s{2}(?:.|\n)*\s{2}OK\s{2}====60
 
-#AT+SAPBR=3,1,"Contype","GPRS"====\s{4}OK\s{2}====1
-#AT+SAPBR=3,1,"APN",""====\s{4}OK\s{2}====1
-#AT+SAPBR=1,1====\s{4}OK\s{2}====2
-#AT+SAPBR=2,1====.*\+SAPBR:\s{4}OK\s{2}====1
-#AT+HTTPINIT====\s{4}OK\s{2}====1
-#AT+HTTPPARA="CID",1====\s{4}OK\s{2}====1
-#AT+HTTPPARA="URL","https://test-wit-update.roistar.net/manage_file.cgi?action=download_file&devid=U0301020000039KB1&fid=1UmPaRY1Zwx6VdNH7BsypIbKGNN_6c5ea80c-65ba-4757-9bd4-781ac4de91b5.bin"====OK====1
-#AT+HTTPACTION=0====,0====5
-#AT+HTTPREAD====OK====2
-#AT+HTTPTERM====\s{4}OK\s{2}====5
-#AT+SAPBR=0,1====\s{4}OK\s{2}====1
-
 #HTTP HEAD请求
 #AT+SAPBR=3,1,"Contype","GPRS"====\s{4}OK\s{2}====1
 #AT+SAPBR=3,1,"APN",""====\s{4}OK\s{2}====1
