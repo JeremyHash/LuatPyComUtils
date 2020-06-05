@@ -1,79 +1,79 @@
 #普通MQTT流程
-AT+CIPSHUT====AT\+CIPSHUT\s{4}SHUT OK\s{2}====5
-AT+CIPMUX=0====AT\+CIPMUX=0\s{4}OK\s{2}====1
-AT+MCONFIG="TEST_winny","user","password"====AT\+MCONFIG="TEST_winny","user","password"\s{4}OK\s{2}====2
-AT+MIPSTART="lbsmqtt.airm2m.com",1884====AT\+MIPSTART="lbsmqtt.airm2m.com",1884\s{4}OK\s{4}CONNECT OK\s{2}====5
-AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====5
-AT+MSUB="/hello/test",0====AT\+MSUB="/hello/test",0\s{4}OK\s{4}SUBACK\s{2}====5
-AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
-AT+MQTTMSGSET=1====AT\+MQTTMSGSET=1\s{4}OK\s{2}====2
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
-AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
-AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
-AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
-AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
-AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
-AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
-AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
-AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====2
-AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
+#AT+CIPSHUT====AT\+CIPSHUT\s{4}SHUT OK\s{2}====5
+#AT+CIPMUX=0====AT\+CIPMUX=0\s{4}OK\s{2}====1
+#AT+MCONFIG="TEST_winny","user","password"====AT\+MCONFIG="TEST_winny","user","password"\s{4}OK\s{2}====2
+#AT+MIPSTART="lbsmqtt.airm2m.com",1884====AT\+MIPSTART="lbsmqtt.airm2m.com",1884\s{4}OK\s{4}CONNECT OK\s{2}====5
+#AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====5
+#AT+MSUB="/hello/test",0====AT\+MSUB="/hello/test",0\s{4}OK\s{4}SUBACK\s{2}====5
+#AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: "/hello/test",19 byte,\*\*\*PPPPP1234A___\+\+\+\s{2}====3
+#AT+MQTTMSGSET=1====AT\+MQTTMSGSET=1\s{4}OK\s{2}====2
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+#AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+#AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+#AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+#AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+#AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+#AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{4}\+MSUB: \d\s{2}====3
+#AT+MQTTMSGGET====AT\+MQTTMSGGET\s{4}\+MSUB:/hello/test,19 byte,\*\*\*PPPPP1234A___\+\+\+\s{4}OK\s{2}====3
+#AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====2
+#AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
 
 
 #带证书的MQTTSSL连接
-AT+FSCREATE=SVR.crt====AT\+FSCREATE=SVR\.crt\s{4}OK====2
-AT+FSWRITE=SVR.crt,0,3732,20====AT\+FSWRITE=SVR.crt,0,3675,20\s{4}>====2
------BEGIN CERTIFICATE-----\r\nMIIFlDCCBHygAwIBAgIQASBbdM39gsE3Q1grYR6rDTANBgkqhkiG9w0BAQsFADBu\r\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\r\nd3cuZGlnaWNlcnQuY29tMS0wKwYDVQQDEyRFbmNyeXB0aW9uIEV2ZXJ5d2hlcmUg\r\nRFYgVExTIENBIC0gRzEwHhcNMTkwODE3MDAwMDAwWhcNMjAwODE2MTIwMDAwWjAh\r\nMR8wHQYDVQQDExZrYWlnZW1xdHQub3Blbmx1YXQuY29tMIIBIjANBgkqhkiG9w0B\r\nAQEFAAOCAQ8AMIIBCgKCAQEAiTWi2NTSth9EVlJo0uOrFGS+ff6vMbDIQ37jdrOj\r\naOQJmDmgaZcbOcXFBXx335rE849jS24p52tlBYmZYZ/GrLJoHf7MKkwcYJ+G0ptr\r\nbklBt8Ut95R/+ZdSTXi/L8uaCKIzds+W7u2KGmZSBNzwVUF8R2Cy7ZCqs1T1oN+5\r\ntXkJiaqe90PzqgXxVYj8mLFVJHez5tjv1CyIV378JUVsoddXdaDcEJz6Xfdrtfya\r\n1fZcc7whmfRYx+V0hzr2qjxUByBGTyYEup2yeUXH5ndaJteHjFtjkHnheuAswOMa\r\nBIboHIGZM0r6AwQLUATMoaN0mDsYaDVe4XNw1RlZLrzwyQIDAQABo4ICeTCCAnUw\r\nHwYDVR0jBBgwFoAUVXRPsnJP9WC6UNHX5lFcmgGHGtcwHQYDVR0OBBYEFEeyZo/X\r\n63QbO/1XrCgS5hXeK5xtMCEGA1UdEQQaMBiCFmthaWdlbXF0dC5vcGVubHVhdC5j\r\nb20wDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcD\r\nAjBMBgNVHSAERTBDMDcGCWCGSAGG/WwBAjAqMCgGCCsGAQUFBwIBFhxodHRwczov\r\nL3d3dy5kaWdpY2VydC5jb20vQ1BTMAgGBmeBDAECATCBgAYIKwYBBQUHAQEEdDBy\r\nMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdpY2VydC5jb20wSgYIKwYBBQUH\r\nMAKGPmh0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0LmNvbS9FbmNyeXB0aW9uRXZlcnl3\r\naGVyZURWVExTQ0EtRzEuY3J0MAkGA1UdEwQCMAAwggEDBgorBgEEAdZ5AgQCBIH0\r\nBIHxAO8AdQC72d+8H4pxtZOUI5eqkntHOFeVCqtS6BqQlmQ2jh7RhQAAAWyd4Hp2\r\nAAAEAwBGMEQCIDXhVpeDMG7e4ibovRsuyDqS0N8YaFgqryBdkNBC/3omAiBtJjqY\r\nbN0mlI736wraB1elsk1y6J7ZqLrOgo7JajOuhAB2AF6nc/nfVsDntTZIfdBJ4DJ6\r\nkZoMhKESEoQYdZaBcUVYAAABbJ3gecYAAAQDAEcwRQIgOVziD+VGvHiijsHedncq\r\nr1MClcZ8AmMZAtbvZbf5OfICIQCnQtMKfdmpN8KL18AKzvicRaHDnxRNMFmVNhx7\r\nN0IzwTANBgkqhkiG9w0BAQsFAAOCAQEAFCmF2UIni/5u9oq1KOr+rnUyVATjlPvS\r\n2vN5zOEQhejRjHrZNZYYnquW1o2SgnP5dcvIoncF2H+0EsHnbnpUPuKmyTEOhKUx\r\nMxcpCEWKpJ6PJfK2eng6BuNfnW5F4q8T4MpB0jUWlrOpjL97PRiNNc3UpwMF6+Hz\r\ntjsf7T/+of595PjgdnfkOz6HSL5J95cw3eHVXxmeW5mcDZyvDX/r66qbY9RFf3hQ\r\nO+KbKS2tKKdj9HaOOf+DzWiZlfOkCJP47J44AfJ1m4rYVs7dbcrWB7v+P50a2NAG\r\n00FoXkSETW6R5wVzX1lqr5HJKh2aBK0f48kC4vsJv6DyozvOn1KeOg==\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMIIEqjCCA5KgAwIBAgIQAnmsRYvBskWr+YBTzSybsTANBgkqhkiG9w0BAQsFADBh\r\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\r\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD\r\nQTAeFw0xNzExMjcxMjQ2MTBaFw0yNzExMjcxMjQ2MTBaMG4xCzAJBgNVBAYTAlVT\r\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\r\nb20xLTArBgNVBAMTJEVuY3J5cHRpb24gRXZlcnl3aGVyZSBEViBUTFMgQ0EgLSBH\r\nMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALPeP6wkab41dyQh6mKc\r\noHqt3jRIxW5MDvf9QyiOR7VfFwK656es0UFiIb74N9pRntzF1UgYzDGu3ppZVMdo\r\nlbxhm6dWS9OK/lFehKNT0OYI9aqk6F+U7cA6jxSC+iDBPXwdF4rs3KRyp3aQn6pj\r\npp1yr7IB6Y4zv72Ee/PlZ/6rK6InC6WpK0nPVOYR7n9iDuPe1E4IxUMBH/T33+3h\r\nyuH3dvfgiWUOUkjdpMbyxX+XNle5uEIiyBsi4IvbcTCh8ruifCIi5mDXkZrnMT8n\r\nwfYCV6v6kDdXkbgGRLKsR4pucbJtbKqIkUGxuZI2t7pfewKRc5nWecvDBZf3+p1M\r\npA8CAwEAAaOCAU8wggFLMB0GA1UdDgQWBBRVdE+yck/1YLpQ0dfmUVyaAYca1zAf\r\nBgNVHSMEGDAWgBQD3lA1VtFMu2bwo+IbG8OXsj3RVTAOBgNVHQ8BAf8EBAMCAYYw\r\nHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMBIGA1UdEwEB/wQIMAYBAf8C\r\nAQAwNAYIKwYBBQUHAQEEKDAmMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdp\r\nY2VydC5jb20wQgYDVR0fBDswOTA3oDWgM4YxaHR0cDovL2NybDMuZGlnaWNlcnQu\r\nY29tL0RpZ2lDZXJ0R2xvYmFsUm9vdENBLmNybDBMBgNVHSAERTBDMDcGCWCGSAGG\r\n/WwBAjAqMCgGCCsGAQUFBwIBFhxodHRwczovL3d3dy5kaWdpY2VydC5jb20vQ1BT\r\nMAgGBmeBDAECATANBgkqhkiG9w0BAQsFAAOCAQEAK3Gp6/aGq7aBZsxf/oQ+TD/B\r\nSwW3AU4ETK+GQf2kFzYZkby5SFrHdPomunx2HBzViUchGoofGgg7gHW0W3MlQAXW\r\nM0r5LUvStcr82QDWYNPaUy4taCQmyaJ+VB+6wxHstSigOlSNF2a6vg4rgexixeiV\r\n4YSB03Yqp2t3TeZHM9ESfkus74nQyW7pRGezj+TC44xCagCQQOzzNmzEAP2SnCrJ\r\nsNE2DpRVMnL8J6xBRdjmOsC3N6cQuKuRXbzByVBjCqAA8t1L0I+9wXJerLPyErjy\r\nrMKWaBFLmfK/AHNF4ZihwPGOc7w6UHczBZXH5RFzJNnww+WnKuTPI0HfnVH8lg==\r\n-----END CERTIFICATE-----====\s{2}OK\s{2}====3
-AT+FSREAD=SVR.crt,0,3675,1====.*====3
-AT+SSLCFG="cacert",88,"SVR.crt"====AT\+SSLCFG="cacert",88,"SVR.crt"\s{4}OK\s{2}====1
-AT+MCONFIG=JeremyMQTTSSL1,mqtt_kaige_wx_user,eqzEXc5a====AT\+MCONFIG=JeremyMQTTSSL1,mqtt_kaige_wx_user,eqzEXc5a\s{4}OK\s{2}====1
-AT+SSLMIPSTART=kaigemqtt.openluat.com,8886====AT\+SSLMIPSTART=kaigemqtt\.openluat\.com,8886\s{4}OK\s{4}CONNECT OK\s{2}====10
-AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====10
-AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
-AT+MSUB=MQTT-TEST8,2====AT\+MSUB=MQTT-TEST8,2\s{4}OK\s{4}SUBACK====2
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
-AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====3
-AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====3
+#AT+FSCREATE=SVR.crt====AT\+FSCREATE=SVR\.crt\s{4}OK====2
+#AT+FSWRITE=SVR.crt,0,3732,20====AT\+FSWRITE=SVR.crt,0,3675,20\s{4}>====2
+#-----BEGIN CERTIFICATE-----\r\nMIIFlDCCBHygAwIBAgIQASBbdM39gsE3Q1grYR6rDTANBgkqhkiG9w0BAQsFADBu\r\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\r\nd3cuZGlnaWNlcnQuY29tMS0wKwYDVQQDEyRFbmNyeXB0aW9uIEV2ZXJ5d2hlcmUg\r\nRFYgVExTIENBIC0gRzEwHhcNMTkwODE3MDAwMDAwWhcNMjAwODE2MTIwMDAwWjAh\r\nMR8wHQYDVQQDExZrYWlnZW1xdHQub3Blbmx1YXQuY29tMIIBIjANBgkqhkiG9w0B\r\nAQEFAAOCAQ8AMIIBCgKCAQEAiTWi2NTSth9EVlJo0uOrFGS+ff6vMbDIQ37jdrOj\r\naOQJmDmgaZcbOcXFBXx335rE849jS24p52tlBYmZYZ/GrLJoHf7MKkwcYJ+G0ptr\r\nbklBt8Ut95R/+ZdSTXi/L8uaCKIzds+W7u2KGmZSBNzwVUF8R2Cy7ZCqs1T1oN+5\r\ntXkJiaqe90PzqgXxVYj8mLFVJHez5tjv1CyIV378JUVsoddXdaDcEJz6Xfdrtfya\r\n1fZcc7whmfRYx+V0hzr2qjxUByBGTyYEup2yeUXH5ndaJteHjFtjkHnheuAswOMa\r\nBIboHIGZM0r6AwQLUATMoaN0mDsYaDVe4XNw1RlZLrzwyQIDAQABo4ICeTCCAnUw\r\nHwYDVR0jBBgwFoAUVXRPsnJP9WC6UNHX5lFcmgGHGtcwHQYDVR0OBBYEFEeyZo/X\r\n63QbO/1XrCgS5hXeK5xtMCEGA1UdEQQaMBiCFmthaWdlbXF0dC5vcGVubHVhdC5j\r\nb20wDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcD\r\nAjBMBgNVHSAERTBDMDcGCWCGSAGG/WwBAjAqMCgGCCsGAQUFBwIBFhxodHRwczov\r\nL3d3dy5kaWdpY2VydC5jb20vQ1BTMAgGBmeBDAECATCBgAYIKwYBBQUHAQEEdDBy\r\nMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdpY2VydC5jb20wSgYIKwYBBQUH\r\nMAKGPmh0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0LmNvbS9FbmNyeXB0aW9uRXZlcnl3\r\naGVyZURWVExTQ0EtRzEuY3J0MAkGA1UdEwQCMAAwggEDBgorBgEEAdZ5AgQCBIH0\r\nBIHxAO8AdQC72d+8H4pxtZOUI5eqkntHOFeVCqtS6BqQlmQ2jh7RhQAAAWyd4Hp2\r\nAAAEAwBGMEQCIDXhVpeDMG7e4ibovRsuyDqS0N8YaFgqryBdkNBC/3omAiBtJjqY\r\nbN0mlI736wraB1elsk1y6J7ZqLrOgo7JajOuhAB2AF6nc/nfVsDntTZIfdBJ4DJ6\r\nkZoMhKESEoQYdZaBcUVYAAABbJ3gecYAAAQDAEcwRQIgOVziD+VGvHiijsHedncq\r\nr1MClcZ8AmMZAtbvZbf5OfICIQCnQtMKfdmpN8KL18AKzvicRaHDnxRNMFmVNhx7\r\nN0IzwTANBgkqhkiG9w0BAQsFAAOCAQEAFCmF2UIni/5u9oq1KOr+rnUyVATjlPvS\r\n2vN5zOEQhejRjHrZNZYYnquW1o2SgnP5dcvIoncF2H+0EsHnbnpUPuKmyTEOhKUx\r\nMxcpCEWKpJ6PJfK2eng6BuNfnW5F4q8T4MpB0jUWlrOpjL97PRiNNc3UpwMF6+Hz\r\ntjsf7T/+of595PjgdnfkOz6HSL5J95cw3eHVXxmeW5mcDZyvDX/r66qbY9RFf3hQ\r\nO+KbKS2tKKdj9HaOOf+DzWiZlfOkCJP47J44AfJ1m4rYVs7dbcrWB7v+P50a2NAG\r\n00FoXkSETW6R5wVzX1lqr5HJKh2aBK0f48kC4vsJv6DyozvOn1KeOg==\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMIIEqjCCA5KgAwIBAgIQAnmsRYvBskWr+YBTzSybsTANBgkqhkiG9w0BAQsFADBh\r\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\r\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD\r\nQTAeFw0xNzExMjcxMjQ2MTBaFw0yNzExMjcxMjQ2MTBaMG4xCzAJBgNVBAYTAlVT\r\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\r\nb20xLTArBgNVBAMTJEVuY3J5cHRpb24gRXZlcnl3aGVyZSBEViBUTFMgQ0EgLSBH\r\nMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALPeP6wkab41dyQh6mKc\r\noHqt3jRIxW5MDvf9QyiOR7VfFwK656es0UFiIb74N9pRntzF1UgYzDGu3ppZVMdo\r\nlbxhm6dWS9OK/lFehKNT0OYI9aqk6F+U7cA6jxSC+iDBPXwdF4rs3KRyp3aQn6pj\r\npp1yr7IB6Y4zv72Ee/PlZ/6rK6InC6WpK0nPVOYR7n9iDuPe1E4IxUMBH/T33+3h\r\nyuH3dvfgiWUOUkjdpMbyxX+XNle5uEIiyBsi4IvbcTCh8ruifCIi5mDXkZrnMT8n\r\nwfYCV6v6kDdXkbgGRLKsR4pucbJtbKqIkUGxuZI2t7pfewKRc5nWecvDBZf3+p1M\r\npA8CAwEAAaOCAU8wggFLMB0GA1UdDgQWBBRVdE+yck/1YLpQ0dfmUVyaAYca1zAf\r\nBgNVHSMEGDAWgBQD3lA1VtFMu2bwo+IbG8OXsj3RVTAOBgNVHQ8BAf8EBAMCAYYw\r\nHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMBIGA1UdEwEB/wQIMAYBAf8C\r\nAQAwNAYIKwYBBQUHAQEEKDAmMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdp\r\nY2VydC5jb20wQgYDVR0fBDswOTA3oDWgM4YxaHR0cDovL2NybDMuZGlnaWNlcnQu\r\nY29tL0RpZ2lDZXJ0R2xvYmFsUm9vdENBLmNybDBMBgNVHSAERTBDMDcGCWCGSAGG\r\n/WwBAjAqMCgGCCsGAQUFBwIBFhxodHRwczovL3d3dy5kaWdpY2VydC5jb20vQ1BT\r\nMAgGBmeBDAECATANBgkqhkiG9w0BAQsFAAOCAQEAK3Gp6/aGq7aBZsxf/oQ+TD/B\r\nSwW3AU4ETK+GQf2kFzYZkby5SFrHdPomunx2HBzViUchGoofGgg7gHW0W3MlQAXW\r\nM0r5LUvStcr82QDWYNPaUy4taCQmyaJ+VB+6wxHstSigOlSNF2a6vg4rgexixeiV\r\n4YSB03Yqp2t3TeZHM9ESfkus74nQyW7pRGezj+TC44xCagCQQOzzNmzEAP2SnCrJ\r\nsNE2DpRVMnL8J6xBRdjmOsC3N6cQuKuRXbzByVBjCqAA8t1L0I+9wXJerLPyErjy\r\nrMKWaBFLmfK/AHNF4ZihwPGOc7w6UHczBZXH5RFzJNnww+WnKuTPI0HfnVH8lg==\r\n-----END CERTIFICATE-----====\s{2}OK\s{2}====3
+#AT+FSREAD=SVR.crt,0,3675,1====.*====3
+#AT+SSLCFG="cacert",88,"SVR.crt"====AT\+SSLCFG="cacert",88,"SVR.crt"\s{4}OK\s{2}====1
+#AT+MCONFIG=JeremyMQTTSSL1,mqtt_kaige_wx_user,eqzEXc5a====AT\+MCONFIG=JeremyMQTTSSL1,mqtt_kaige_wx_user,eqzEXc5a\s{4}OK\s{2}====1
+#AT+SSLMIPSTART=kaigemqtt.openluat.com,8886====AT\+SSLMIPSTART=kaigemqtt\.openluat\.com,8886\s{4}OK\s{4}CONNECT OK\s{2}====10
+#AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====10
+#AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
+#AT+MSUB=MQTT-TEST8,2====AT\+MSUB=MQTT-TEST8,2\s{4}OK\s{4}SUBACK====2
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"====AT\+MPUB=MQTT-TEST8,2,0,"hello,server!!!!--SSL with  certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT-TEST8",39 byte,hello,server!!!!--SSL with  certificate====5
+#AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====3
+#AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====3
 
 
 #不带证书的MQTTSSL连接
-AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
-AT+MCONFIG=Jeremy2,mqtt_kaige_wx_user,eqzEXc5a====AT\+MCONFIG=Jeremy2,mqtt_kaige_wx_user,eqzEXc5a\s{4}OK\s{2}====1
-AT+SSLMIPSTART=kaigemqtt.openluat.com,8886====AT\+SSLMIPSTART=kaigemqtt\.openluat\.com,8886\s{4}OK\s{4}CONNECT OK\s{2}====10
-AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====10
-AT+MSUB=MQTT-TEST,2====AT\+MSUB=MQTT\-TEST,2\s{4}OK\s{4}SUBACK\s{2}====3
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
-AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====2
-AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
+#AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
+#AT+MCONFIG=Jeremy2,mqtt_kaige_wx_user,eqzEXc5a====AT\+MCONFIG=Jeremy2,mqtt_kaige_wx_user,eqzEXc5a\s{4}OK\s{2}====1
+#AT+SSLMIPSTART=kaigemqtt.openluat.com,8886====AT\+SSLMIPSTART=kaigemqtt\.openluat\.com,8886\s{4}OK\s{4}CONNECT OK\s{2}====10
+#AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====10
+#AT+MSUB=MQTT-TEST,2====AT\+MSUB=MQTT\-TEST,2\s{4}OK\s{4}SUBACK\s{2}====3
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
+#AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====2
+#AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
 
-#MQTT边界值和合法性
+#MQTT边界值和合法性 九
 AT+MCONFIG="TESTa/999[\22ABC\22]","user","password"====AT\+MCONFIG="TESTa\/999\[\\22ABC\\22\]","user","password"\s{4}OK\s{2}====1
 AT+MCONFIG="TEST_winny","user123a/2","password"====AT\+MCONFIG="TEST_winny","user123a\/2","password"\s{4}OK\s{2}====1
 AT+MCONFIG="TEST_winny","user1232","passworda/999"====AT\+MCONFIG="TEST_winny","user1232","passworda\/999"\s{4}OK\s{2}====1
@@ -82,7 +82,13 @@ AT+MCONFIG="SSS","",""====AT\+MCONFIG="SSS","",""\s{4}OK\s{2}====1
 AT+MCONFIG="TEST_winny","user","password"====AT\+MCONFIG="TEST_winny","user","password"\s{4}OK\s{2}====2
 AT+MIPSTART="lbsmqtt.airm2m.com",1884====AT\+MIPSTART="lbsmqtt.airm2m.com",1884\s{4}OK\s{4}CONNECT OK\s{2}====5
 AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====5
-AT+MSUB=w/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/thisgw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888,0====AT\+MSUB=w\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/thisgw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888,0\s{4}OK\s{4}SUBACK\s{2}====5
-AT+MSUB=gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/thisgw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888,0====AT\+MSUB=gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/thisgw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888,0\s{4}\+CME ERROR: 765\s{4}====5
-AT+MSUB=/TESTAIR/MQTT_%1,0====AT\+MSUB=\/TESTAIR\/MQTT_%1,0\s{4}OK\s{2}====5
+AT+MSUB=w/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/thisgw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888,0====AT\+MSUB=w\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/thisgw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888,0\s{4}OK\s{4}SUBACK\s{2}====2
+AT+MSUB=gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/thisgw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888,0====AT\+MSUB=gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/thisgw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888,0\s{4}\+CME ERROR: 765\s{4}====2
+AT+MSUB=/TESTAIR/MQTT_%1,0====AT\+MSUB=\/TESTAIR\/MQTT_%1,0\s{4}OK\s{4}SUBACK\s{2}====2
+AT+MSUB=test,0====AT\+MSUB=test,0\s{4}OK\s{4}SUBACK\s{4}\+MSUB: "test",8 byte,helloabc\s{2}====2
+AT+MSUB=test,1====AT\+MSUB=test,1\s{4}OK\s{4}SUBACK\s{2}====2
+AT+MSUB=test,2====AT\+MSUB=test,2\s{4}OK\s{4}SUBACK\s{2}====2
+AT+MSUB=test,8====AT\+MSUB=test,8\s{4}\+CME ERROR: 765\s{4}====2
+AT+MSUB="/hello\22test22",0====AT\+MSUB="\/hello\\22test22",0\s{4}OK\s{4}SUBACK\s{2}====2
+AT+MPUB="/hello\22test22",0,0,"~!@#$%^&*())_+=-`[\22abc\22]'';'/.,<>?:{}|"====AT\+MPUB="\/hello\\22test22",0,0,"~!@#\$%\^&\*\(\)\)_\+=-`\[\\22abc\\22\]'';'\/\.,<>\?:{}\|"\s{4}OK\s{4}\+MSUB: "\/hello"test22",38 byte,~!@#\$%\^&\*\(\)\)_\+=-`\["abc"\]'';'\/\.,<>\?:{}\|\s{2}====2
 AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
