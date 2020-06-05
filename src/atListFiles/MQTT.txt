@@ -72,3 +72,17 @@ AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQ
 AT+MPUB=MQTT-TEST,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
 AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====2
 AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
+
+#MQTT边界值和合法性
+AT+MCONFIG="TESTa/999[\22ABC\22]","user","password"====AT\+MCONFIG="TESTa\/999\[\\22ABC\\22\]","user","password"\s{4}OK\s{2}====1
+AT+MCONFIG="TEST_winny","user123a/2","password"====AT\+MCONFIG="TEST_winny","user123a\/2","password"\s{4}OK\s{2}====1
+AT+MCONFIG="TEST_winny","user1232","passworda/999"====AT\+MCONFIG="TEST_winny","user1232","passworda\/999"\s{4}OK\s{2}====1
+AT+MCONFIG="SSS","",""====AT\+MCONFIG="SSS","",""\s{4}OK\s{2}====1
+
+AT+MCONFIG="TEST_winny","user","password"====AT\+MCONFIG="TEST_winny","user","password"\s{4}OK\s{2}====2
+AT+MIPSTART="lbsmqtt.airm2m.com",1884====AT\+MIPSTART="lbsmqtt.airm2m.com",1884\s{4}OK\s{4}CONNECT OK\s{2}====5
+AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====5
+AT+MSUB=w/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/thisgw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888,0====AT\+MSUB=w\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/thisgw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888,0\s{4}OK\s{4}SUBACK\s{2}====5
+AT+MSUB=gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/thisgw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888,0====AT\+MSUB=gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/thisgw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888,0\s{4}\+CME ERROR: 765\s{4}====5
+AT+MSUB=/TESTAIR/MQTT_%1,0====AT\+MSUB=\/TESTAIR\/MQTT_%1,0\s{4}OK\s{2}====5
+AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
