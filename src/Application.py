@@ -100,7 +100,7 @@ try:
                 # ATListFileNames.append('SMS.txt')
                 ATListFileNames.append('PB.txt')
                 ATListFileNames.append('AUDIO.txt')
-                ATListFileNames.append('TMP.txt')
+                # ATListFileNames.append('TMP.txt')
                 break
             if fileName not in (
                     'INIT', 'BASE', 'FILE', 'TCPIP', 'FTP', 'HTTP', 'MQTT', 'SMS', 'PB', 'AUDIO', 'TMP', 'ALL'):
