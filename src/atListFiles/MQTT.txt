@@ -91,4 +91,5 @@ AT+MSUB=test,2====AT\+MSUB=test,2\s{4}OK\s{4}SUBACK\s{2}====2
 AT+MSUB=test,8====AT\+MSUB=test,8\s{4}\+CME ERROR: 765\s{4}====2
 AT+MSUB="/hello\22test22",0====AT\+MSUB="\/hello\\22test22",0\s{4}OK\s{4}SUBACK\s{2}====2
 AT+MPUB="/hello\22test22",0,0,"~!@#$%^&*())_+=-`[\22abc\22]'';'/.,<>?:{}|"====AT\+MPUB="\/hello\\22test22",0,0,"~!@#\$%\^&\*\(\)\)_\+=-`\[\\22abc\\22\]'';'\/\.,<>\?:{}\|"\s{4}OK\s{4}\+MSUB: "\/hello"test22",38 byte,~!@#\$%\^&\*\(\)\)_\+=-`\["abc"\]'';'\/\.,<>\?:{}\|\s{2}====2
+AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====2
 AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
