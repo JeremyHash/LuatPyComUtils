@@ -86,5 +86,3 @@ AT+MSUB=w/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.c
 AT+MSUB=gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/thisgw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888/gw/test/HELLO/this/that.yunzhou.com/888,0====AT\+MSUB=gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/thisgw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888\/gw\/test\/HELLO\/this\/that.yunzhou.com\/888,0\s{4}\+CME ERROR: 765\s{4}====5
 AT+MSUB=/TESTAIR/MQTT_%1,0====AT\+MSUB=\/TESTAIR\/MQTT_%1,0\s{4}OK\s{2}====5
 AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
-
-ATI
