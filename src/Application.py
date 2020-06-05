@@ -86,20 +86,24 @@ try:
             ATListFileNames.append('TCPIP.txt')
             break
         elif len(sys.argv) == 1:
-            fileName = input('请输入要测试的功能（INIT,BASE,FILE,FTP,HTTP,MQTT,SMS,TCPIP），输入END结束，全选请输入ALL：')
+            fileName = input('请输入要测试的功能（INIT,BASE,FILE,TCPIP,FTP,HTTP,MQTT,SMS,PB,AUDIO,TMP），输入END结束，全选请输入ALL：')
             if fileName == 'END':
                 break
             if fileName == 'ALL':
                 ATListFileNames.append('INIT.txt')
                 ATListFileNames.append('BASE.txt')
                 ATListFileNames.append('FILE.txt')
+                ATListFileNames.append('TCPIP.txt')
                 ATListFileNames.append('FTP.txt')
                 ATListFileNames.append('HTTP.txt')
                 ATListFileNames.append('MQTT.txt')
                 # ATListFileNames.append('SMS.txt')
-                ATListFileNames.append('TCPIP.txt')
+                ATListFileNames.append('PB.txt')
+                ATListFileNames.append('AUDIO.txt')
+                ATListFileNames.append('TMP.txt')
                 break
-            if fileName not in ('INIT', 'BASE', 'FILE', 'FTP', 'HTTP', 'MQTT', 'SMS', 'TCPIP', 'TMP', 'ALL'):
+            if fileName not in (
+                    'INIT', 'BASE', 'FILE', 'TCPIP', 'FTP', 'HTTP', 'MQTT', 'SMS', 'PB', 'AUDIO', 'TMP', 'ALL'):
                 print('输入的功能名称有误,请重新输入')
                 continue
             ATListFileNames.append(f'{fileName}.txt')

@@ -56,14 +56,14 @@ class ATestUtils:
                 print(f'第{i + 1}次循环开始')
                 for ATCmd in self.ATList:
                     self.ser.timeout = int(ATCmd[2])
-                    tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
+                    tmp1 = (ATCmd[0] + "\r\n").encode("GB2312")
                     tmp1 = tmp1.replace(b"\\n", b"\n")
                     tmp1 = tmp1.replace(b"\\r", b"\r")
                     self.ser.write(tmp1)
                     self.log.logger.debug(f"发→◇  {ATCmd[0]}")
                     res = self.ser.read(320000)
                     try:
-                        tmp2 = res.decode(encoding="UTF8")
+                        tmp2 = res.decode(encoding="GB2312")
                     except UnicodeDecodeError as ude:
                         print('解码异常')
                         print(ude)

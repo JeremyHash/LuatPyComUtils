@@ -49,6 +49,7 @@ AT+CSCLK?====AT\+CSCLK\?\s{4}\+CSCLK: \d\s{4}OK\s{2}====1
 AT+CSCLK=?====AT\+CSCLK=\?\s{4}\+CSCLK: \(0-2\)\s{4}OK\s{2}====1
 AT+WAKETIM?====AT\+WAKETIM\?\s{4}\+WAKETIM: \d\s{4}OK\s{2}====1
 AT+CFGRI?====AT\+CFGRI\?\s{4}\+CFGRI: \d\s{4}OK\s{2}====1
+AT+MIFIMAC=W,112233445566====AT\+MIFIMAC=W,112233445566\s{4}OK\s{2}====1
 AT+MIFIMAC=R====AT\+MIFIMAC=R\s{4}\+MIFIMAC: \w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}\s{4}OK\s{2}====1
 AT+CADC?====AT\+CADC\?\s{4}\+CADC:\d,\d+\s{4}OK\s{2}====1
 AT+CBC====AT\+CBC\s{4}\+CBC: \d,\d+,\d+\s{4}OK\s{2}====1
@@ -59,6 +60,7 @@ AT+CESQ====AT\+CESQ\s{4}\+CESQ: \d+,\d+,\d+,\d+,\d+,\d+\s{4}OK\s{2}====1
 AT*CSQ?====AT\*CSQ\?\s{4}\*CSQ:\d\s{4}OK\s{2}====1
 AT+CREG=2;+CEREG=2;+CGREG=2====AT\+CREG=2;\+CEREG=2;\+CGREG=2\s{4}OK\s{2}====1
 AT+CREG?;+CEREG?;+CGREG?====AT\+CREG\?;\+CEREG\?;\+CGREG\?\s{4}\+CREG: (?:.|\n)*\s{4}OK\s{2}====1
+AT+CREG=0;+CEREG=0;+CGREG=0====AT\+CREG=0;\+CEREG=0;\+CGREG=0\s{4}OK\s{2}====1
 AT^SYSCONFIG?====AT\^SYSCONFIG\?\s{4}\^SYSCONFIG:\d+,\d+,\d+,\d+\s{4}OK\s{2}====1
 AT+CGCONTRDP=5====.*====1
 AT+COPS?====AT\+COPS\?\s{4}\+COPS: \d,\d,"\d+",\d\s{4}OK\s{2}====1
@@ -77,7 +79,7 @@ AT+CIPGSMLOC=2,1====AT\+CIPGSMLOC=2,1\s{4}\+CIPGSMLOC: \d,[\d/]+,[\d:]+\s{4}OK\s
 AT+CGATT?====AT\+CGATT\?\s{4}\+CGATT: \d\s{4}OK\s{2}====1
 AT+CGDCONT?====AT\+CGDCONT\?\s{4}\+CGDCONT: (?:.|\n)*\s{4}OK\s{2}====1
 AT+CGPADDR====AT\+CGPADDR\s{4}\+CGPADDR: (?:.|\n)*\s{4}OK\s{2}====2
-AT+CGACT?====AT\+CGACT\?\s{4}\+CGACT: \d,\d\s{4}OK\s{2}====1
+AT+CGACT?====AT\+CGACT\?\s{4}\+CGACT: \d, \d\s{4}OK\s{2}====1
 AT+CNTPCID=1====AT\+CNTPCID=1\s{4}OK\s{2}====1
-AT+CNTP====AT+CNTP\s{4}OK\s{2}====1
+AT+CNTP====AT\+CNTP\s{4}OK\s{4}\+CNTP: 1\s{2}====1
 AT+SAPBR=0,1====AT\+SAPBR=0,1\s{4}OK\s{2}====1

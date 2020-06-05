@@ -1,13 +1,4 @@
 AT+SETVOLTE=1====AT\+SETVOLTE=1\s{4}OK\s{2}====1
-AT+SETVOLTE?====AT\+SETVOLTE\?\s{4}OK\s{2}====1
-AT+SETVOLTE=?====AT\+SETVOLTE=\?\s{4}\+SETVOLTE:0,1\s{4}OK\s{2}====1
-ATI====OK====3
-ATI====OK====3
-ATI====OK====3
-ATI====OK====3
-ATI====OK====3
-ATI====OK====3
-ATI====OK====3
-ATI====OK====3
-ATI====OK====3
-ATI====OK====3
+AT+SETVOLTE?====AT\+SETVOLTE\?\s{4}\+SETVOLTE: 1\s{4}OK\s{2}====1
+AT+SETVOLTE=?====AT\+SETVOLTE=\?\s{4}\+SETVOLTE: 0,1\s{4}OK\s{2}====1
+AT+CTTS=2,"测试123"====AT\+CTTS=2,"测试123"\s{4}OK\s{4}\+CTTS:0\s{2}====5
