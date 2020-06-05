@@ -68,16 +68,16 @@ AT*BAND?====AT\*BAND\?\s{4}\*BAND:\d+,\d+,\d+,\d+,\d+,\d,\d,\d\s{4}OK\s{2}====2
 AT*BANDIND?====AT\*BANDIND\?\s{4}\*BANDIND: \d, \d+, \d\s{4}OK\s{2}====1
 AT^CACAP?====AT\^CACAP\?\s{4}\+CACAP:\d\s{4}OK\s{2}====2
 AT^SYSINFO====AT\^SYSINFO\s{4}\^SYSINFO: \d,\d,\d,\d+,\d,\d\s{4}OK\s{2}====1
-AT+CGATT?====AT\+CGATT\?\s{4}\+CGATT: \d\s{4}OK\s{2}====1
-AT+CGDCONT?====AT\+CGDCONT\?\s{4}\+CGDCONT: (?:.|\n)*\s{4}OK\s{2}====1
 AT+SAPBR=3,1,"Contype","GPRS"====AT\+SAPBR=3,1,"Contype","GPRS"\s{4}OK\s{2}====1
 AT+SAPBR=3,1,"APN",""====AT\+SAPBR=3,1,"APN",""\s{4}OK\s{2}====1
 AT+SAPBR=1,1====AT\+SAPBR=1,1\s{4}OK\s{2}====3
 AT+SAPBR=2,1====AT\+SAPBR=2,1\s{4}\+SAPBR: \d,\d,"[\.\d]+"\s{4}OK\s{2}====1
 AT+CIPGSMLOC=1,1====AT\+CIPGSMLOC=1,1\s{4}\+CIPGSMLOC: \d,[\d\.]+,[\d\.]+,[\d/]+,[\d:]+\s{4}OK\s{2}====6
 AT+CIPGSMLOC=2,1====AT\+CIPGSMLOC=2,1\s{4}\+CIPGSMLOC: \d,[\d/]+,[\d:]+\s{4}OK\s{2}====6
-AT+SAPBR=0,1====AT\+SAPBR=0,1\s{4}OK\s{2}====1
+AT+CGATT?====AT\+CGATT\?\s{4}\+CGATT: \d\s{4}OK\s{2}====1
+AT+CGDCONT?====AT\+CGDCONT\?\s{4}\+CGDCONT: (?:.|\n)*\s{4}OK\s{2}====1
 AT+CGPADDR====AT\+CGPADDR\s{4}\+CGPADDR: (?:.|\n)*\s{4}OK\s{2}====2
 AT+CGACT?====AT\+CGACT\?\s{4}\+CGACT: \d,\d\s{4}OK\s{2}====1
-#AT+CTZU?====\s{4}OK\s{2}====1
-#AT+CTZU?====\s{4}OK\s{2}====1
+AT+CNTPCID=1====AT\+CNTPCID=1\s{4}OK\s{2}====1
+AT+CNTP====AT+CNTP\s{4}OK\s{2}====1
+AT+SAPBR=0,1====AT\+SAPBR=0,1\s{4}OK\s{2}====1

@@ -1,0 +1,13 @@
+AT+SETVOLTE=1====AT\+SETVOLTE=1\s{4}OK\s{2}====1
+AT+SETVOLTE?====AT\+SETVOLTE\?\s{4}OK\s{2}====1
+AT+SETVOLTE=?====AT\+SETVOLTE=\?\s{4}\+SETVOLTE:0,1\s{4}OK\s{2}====1
+ATI====OK====3
+ATI====OK====3
+ATI====OK====3
+ATI====OK====3
+ATI====OK====3
+ATI====OK====3
+ATI====OK====3
+ATI====OK====3
+ATI====OK====3
+ATI====OK====3
