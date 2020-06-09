@@ -60,44 +60,47 @@ class Https_download_test:
                 sys.exit(0)
             for ATCmd in self.ATList:
                 self.ser.timeout = int(ATCmd[2])
-                tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
+                tmp1 = (ATCmd[0] + "\r\n").encode("GB2312")
                 self.ser.write(tmp1)
                 self.log.logger.debug(f"发→◇  {ATCmd[0]}")
                 res = self.ser.read(1000)
-                tmp2 = res.decode(encoding="UTF8")
+                tmp2 = res.decode(encoding="GB2312")
                 self.log.logger.debug(f"收←◆  {tmp2}")
         else:
             print(f"{self.ser.port}端口打开失败")
 
     def setbreak(self):
-        i = 0
-        j = 9999
+        start = 0
+        end = 59999
+        i = start
+        j = end
         while True:
             self.ser.timeout = 1
             cmd = b'AT+HTTPPARA=BREAK,%d\r\n' % i
-            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
-            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
             cmd = b'AT+HTTPPARA=BREAKEND,%d\r\n' % j
-            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
-            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
-            self.ser.timeout = 5
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+            self.ser.timeout = 4
             cmd = b'AT+HTTPACTION=0\r\n'
-            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
-            temp = self.ser.read(200).decode()
+            temp = self.ser.read(200).decode(encoding='GB2312')
             self.log.logger.debug(f"收←◆  {temp}")
-            if "416" in temp:
+            if str(end) not in temp:
                 break
+            self.ser.timeout = 30
             cmd = b'AT+HTTPREAD\r\n'
-            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
             self.log.logger.debug(f"收←◆  ")
-            self.log.logger.debug(self.ser.read(20000))
+            self.log.logger.debug(self.ser.read(200000))
             print()
-            i += 10000
-            j += 10000
+            i += end + 1
+            j += end + 1
         # self.ser.close()
 
 
