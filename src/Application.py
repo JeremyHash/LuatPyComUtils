@@ -57,7 +57,7 @@ try:
         system_cate = platform.system()
         print(f'当前操作系统为：{system_cate}')
         # 显示当前所有端口（在Linux下使用python命令要指明python3）
-        if system_cate == 'Linux':
+        if system_cate == 'Linux' or 'Darwin':
             ports = os.popen('python3 -m serial.tools.list_ports').read()
             print(ports)
         else:
