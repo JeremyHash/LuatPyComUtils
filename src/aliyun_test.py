@@ -7,6 +7,7 @@ from utils import Logger
 import sys
 import hmac
 
+# 获取当前系统平台
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')
 if system_cate == 'Linux':

@@ -120,6 +120,7 @@ try:
             diag_port = input('请输入diag诊断口端口：')
 
 
+    # 开启trace方法
     def start_trace():
         global diag_pid
         diag_pid = os.getpid()
@@ -127,19 +128,25 @@ try:
         os.popen(f"./bin/diag trace/log - - {diag_port}")
 
 
+    # 如果用户是Linux系统且选择了开启trace，则新建一个进程开启trace
     print(f'Application process {os.getpid()}')
     if system_cate == 'Linux' and enable_trace == 'y':
         multiprocessing.Process(target=start_trace).start()
 
+    # 初始化Application并执行run方法
     Application(port, baud_rate, ATListFileNames, loopTimes).run()
+    # 执行完成打印
     print(f'{loopTimes}次测试已完成')
 
+# 用户键盘退出事件处理
 except KeyboardInterrupt as ke:
     print()
     print("Exit...")
+    # 同时杀死trace进程
     if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
         os.kill(diag_pid, signal.SIGKILL)
     sys.exit()
+# 串口异常处理
 except serial.serialutil.SerialException as se:
     print(se)
     print("---------------")
@@ -150,6 +157,7 @@ except serial.serialutil.SerialException as se:
         print('输入的端口不存在')
     if 'PermissionError' in traceback.format_exc():
         print('端口被占用,请检查是否有其他程序正在占用设备端口')
+# 异常处理
 except Exception as e:
     if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
         os.kill(diag_pid, signal.SIGKILL)

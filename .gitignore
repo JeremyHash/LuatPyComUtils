@@ -4,9 +4,6 @@ __pycache__/
 *$py.class
 .idea
 
-log.log*
-/src/log/http_download_log.txt
-
 nohup.out
 /src/log/aliyun_test*
 /src/log/tcp_ssl_test.log
