@@ -23,9 +23,14 @@ class Application:
         print(f'共发生错误{app.error_count}次')
 
 
-system_cate = ''
-enable_trace = ''
-diag_pid = ''
+# 定义ATListFiles
+ATListFileNames = []
+# 初始化波特率设置
+baud_rate = 115200
+# trace控制选项，n为关闭，y为打开
+enable_trace = 'n'
+# 诊断端口
+diag_pid = 0
 
 try:
     if len(sys.argv) == 2 and sys.argv[1] == '-h':
@@ -34,15 +39,6 @@ try:
             Windows: python Application {port} {loopTimes}''')
         sys.exit(0)
 
-    # 定义ATListFiles
-    ATListFileNames = []
-    # 初始化波特率设置
-    baud_rate = 115200
-
-    # trace控制选项，n为关闭，y为打开
-    enable_trace = 'n'
-    # 诊断端口
-    diag_pid = 0
     if len(sys.argv) == 1:
         loopTimes = int(input('请输入循环次数：'))
         # 查询系统平台
