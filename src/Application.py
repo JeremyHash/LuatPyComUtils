@@ -45,14 +45,6 @@ try:
     diag_pid = 0
     if len(sys.argv) == 1:
         loopTimes = int(input('请输入循环次数：'))
-    elif len(sys.argv) == 3:
-        loopTimes = int(sys.argv[2])
-    else:
-        print('-------------------------------------')
-        print('参数有误,使用方法请添加帮助参数:-h')
-        print('-------------------------------------')
-        sys.exit(0)
-    if len(sys.argv) == 1:
         # 查询系统平台
         system_cate = platform.system()
         print(f'当前操作系统为：{system_cate}')
@@ -72,6 +64,7 @@ try:
         port = input('请输入测试设备端口号：')
     elif len(sys.argv) == 3:
         port = sys.argv[1]
+        loopTimes = int(sys.argv[2])
     else:
         print('-------------------------------------')
         print('参数有误,使用方法请添加帮助参数:-h')
@@ -82,11 +75,14 @@ try:
             ATListFileNames.append('INIT.txt')
             ATListFileNames.append('BASE.txt')
             ATListFileNames.append('FILE.txt')
+            ATListFileNames.append('TCPIP.txt')
             ATListFileNames.append('FTP.txt')
             ATListFileNames.append('HTTP.txt')
             ATListFileNames.append('MQTT.txt')
             # ATListFileNames.append('SMS.txt')
-            ATListFileNames.append('TCPIP.txt')
+            ATListFileNames.append('PB.txt')
+            ATListFileNames.append('AUDIO.txt')
+            # ATListFileNames.append('TMP.txt')
             break
         elif len(sys.argv) == 1:
             fileName = input('请输入要测试的功能（INIT,BASE,FILE,TCPIP,FTP,HTTP,MQTT,SMS,PB,AUDIO,TMP），输入END结束，全选请输入ALL：')
