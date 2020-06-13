@@ -23,9 +23,14 @@ class Application:
         print(f'共发生错误{app.error_count}次')
 
 
-system_cate = ''
-enable_trace = ''
-diag_pid = ''
+# 定义ATListFiles
+ATListFileNames = []
+# 初始化波特率设置
+baud_rate = 115200
+# trace控制选项，n为关闭，y为打开
+enable_trace = 'n'
+# 诊断端口
+diag_pid = 0
 
 try:
     if len(sys.argv) == 2 and sys.argv[1] == '-h':
@@ -34,25 +39,8 @@ try:
             Windows: python Application {port} {loopTimes}''')
         sys.exit(0)
 
-    # 定义ATListFiles
-    ATListFileNames = []
-    # 初始化波特率设置
-    baud_rate = 115200
-
-    # trace控制选项，n为关闭，y为打开
-    enable_trace = 'n'
-    # 诊断端口
-    diag_pid = 0
     if len(sys.argv) == 1:
         loopTimes = int(input('请输入循环次数：'))
-    elif len(sys.argv) == 3:
-        loopTimes = int(sys.argv[2])
-    else:
-        print('-------------------------------------')
-        print('参数有误,使用方法请添加帮助参数:-h')
-        print('-------------------------------------')
-        sys.exit(0)
-    if len(sys.argv) == 1:
         # 查询系统平台
         system_cate = platform.system()
         print(f'当前操作系统为：{system_cate}')
@@ -72,6 +60,7 @@ try:
         port = input('请输入测试设备端口号：')
     elif len(sys.argv) == 3:
         port = sys.argv[1]
+        loopTimes = int(sys.argv[2])
     else:
         print('-------------------------------------')
         print('参数有误,使用方法请添加帮助参数:-h')
