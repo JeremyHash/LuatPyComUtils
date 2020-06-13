@@ -5,5 +5,4 @@ __pycache__/
 .idea
 
 nohup.out
-/src/log/aliyun_test*
-/src/log/tcp_ssl_test.log
+/src/log/log*

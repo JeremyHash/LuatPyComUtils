@@ -21,22 +21,34 @@ elif system_cate == 'Darwin':
 else:
     ports = os.popen('python -m serial.tools.list_ports').read()
     print(ports)
+
+# 请求输入测试端口
 port = input('请指定设备测试端口号:')
 
 
+# 阿里云测试类
 class aliyun_test:
 
+    # 获取串口操作对象方法
     def serialFactory(self, port, baud_rate):
         return serial.Serial(port=port, baudrate=baud_rate)
 
+    # 构造方法
     def __init__(self, port, baud_rate):
-        self.log = Logger.Logger('./log/aliyun_test.log', level='debug')
+        # 获取log对象
+        self.log = Logger.Logger('./log/aliyun_test.txt', level='debug')
+        # 定义ATList
         self.ATList = []
+        # 定义在httppost中发送的内容
         self.post_info = ''
+        # 定义测试端口
         self.port = port
+        # 定义波特率
         self.baud_rate = baud_rate
+        # 获取串口操作对象
         self.ser = self.serialFactory(port, baud_rate)
 
+    # 加载ATListFile文件方法
     def load_atList(self, ATListFile):
         with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
             print()
@@ -55,6 +67,7 @@ class aliyun_test:
         print(f"【成功加载---{ATListFile}---ATCmd{str(tmp_count)}条】")
         print()
 
+    # 阿里云测试初始化方法
     def aliyun_init(self):
         if self.ser.is_open:
             if len(self.ATList) == 0:
@@ -62,15 +75,16 @@ class aliyun_test:
                 sys.exit(0)
             for ATCmd in self.ATList:
                 self.ser.timeout = int(ATCmd[2])
-                tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
+                tmp1 = (ATCmd[0] + "\r\n").encode("GB2312")
                 self.ser.write(tmp1)
                 self.log.logger.debug(f"发→◇  {ATCmd[0]}")
                 res = self.ser.read(1000)
-                tmp2 = res.decode(encoding="UTF8")
+                tmp2 = res.decode(encoding="GB2312")
                 self.log.logger.debug(f"收←◆  {tmp2}")
         else:
             print(f"{self.ser.port}端口打开失败")
 
+    # 获取mqtt登录信息方法
     def get_mqtt_login_info(self):
         self.ser.timeout = 2
         cmd = f'AT+HTTPDATA={len(self.post_info)},20000\r\n'.encode('utf8')
@@ -103,6 +117,7 @@ class aliyun_test:
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
 
+    # 获取设备密钥方法
     def get_device_secret(self):
         self.ser.timeout = 2
         cmd = f'AT+HTTPDATA={len(self.post_info)},20000\r\n'.encode('utf8')
@@ -131,6 +146,7 @@ class aliyun_test:
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
 
+    # 连接阿里云MQTT测试方法
     def connect_mqtt_test(self):
         self.ser.timeout = 1
         cmd = f'AT+MCONFIG="{device_name}","{self.iotId}","{self.iotToken}"\r\n'.encode('utf8')
@@ -175,10 +191,12 @@ if __name__ == '__main__':
         test = aliyun_test(port, 115200)
         test_type = input('''阿里云测试项：1.一机一密 2.一型一密 
 您要进行的测试是:''')
+        # 一机一密测试
         if test_type == '1':
             test.load_atList('INIT.txt')
             test.load_atList('ALIYUN一机一密.txt')
             test.aliyun_init()
+            # 读取一机一密配置文件
             with open('./cfg/one_device_one_secret.txt') as f:
                 lines = f.readlines()
             product_key = lines[0].replace('\n', '')
@@ -187,13 +205,17 @@ if __name__ == '__main__':
             test.log.logger.debug(f'ProductKey:{product_key}')
             test.log.logger.debug(f'DeviceName:{device_name}')
             test.log.logger.debug(f'DeviceSecret:{device_secret}')
+            # 拼接加密前明文
             message = b'clientId' + device_name.encode('utf8') + b'deviceName' + device_name.encode(
                 'utf8') + b'productKey' + product_key.encode('utf8')
             key = device_secret.encode('utf8')
+            # 使用HMACMD5算法用设备密钥加密明文
             sign = hmac.new(key, message, digestmod='MD5')
+            # 拼接http_post发送信息
             test.post_info = f'productKey={product_key}&sign={sign.hexdigest()}&clientId={device_name}&deviceName={device_name}'
             test.get_mqtt_login_info()
             test.connect_mqtt_test()
+        # 一型一密测试
         elif test_type == '2':
             test.load_atList('INIT.txt')
             test.load_atList('ALIYUN一型一密_getDeviceSecret.txt')
@@ -206,16 +228,25 @@ if __name__ == '__main__':
             test.log.logger.debug(f'ProductKey:{product_key}')
             test.log.logger.debug(f'DeviceName:{device_name}')
             test.log.logger.debug(f'ProductSecret:{product_secret}')
+            # 拼接明文
             message = f'deviceName{device_name}productKey{product_key}random123456'.encode()
             key = product_secret.encode('utf8')
+            # 使用HMACMD5算法用设备密钥加密明文
             sign = hmac.new(key, message, digestmod='MD5')
+            # 拼接http_post发送信息
             test.post_info = f'productKey={product_key}&deviceName={device_name}&random=123456&sign={sign.hexdigest()}&signMethod=HmacMD5'
+            # 获取设备密钥
             test.get_device_secret()
+            # 拼接明文
             message = f'clientId{device_name}deviceName{device_name}productKey{product_key}'.encode()
             key = test.device_secret.encode('utf8')
+            # 使用HMACMD5算法用设备密钥加密明文
             sign = hmac.new(key, message, digestmod='MD5')
+            # 拼接http_post发送信息
             test.post_info = f'productKey={product_key}&sign={sign.hexdigest()}&clientId={device_name}&deviceName={device_name}'
+            # 清空ATList列表
             test.ATList = []
+            # 加载获取MQTT登录信息的ATCmd
             test.load_atList('ALIYUN一型一密_getMQTTLoginInfo.txt')
             test.aliyun_init()
             test.get_mqtt_login_info()
