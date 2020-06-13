@@ -50,7 +50,7 @@ try:
         # 请求输入循环次数
         loopTimes = int(input('请输入循环次数：'))
 
-        # 显示当前所有端口（在Linux下使用python命令要指明python3）
+        # 显示当前所有端口（在Linux下使用python要指明python3）
         if system_cate == 'Linux':
             ports = os.popen('python3 -m serial.tools.list_ports').read()
             print(ports)
