@@ -3,18 +3,7 @@ import binascii
 from utils import Logger
 
 
-def str_to_hexStr(string):
-    str_bin = string.encode('utf-8')
-    return binascii.hexlify(str_bin)
-
-
-def hexStr_to_bytes(hex_str):
-    hex = hex_str.encode('utf-8')
-    str_bin = binascii.unhexlify(hex)
-    return str_bin
-
-
-log = Logger.Logger('./log/tcp_ssl_test.log', level='debug').logger
+log = Logger.Logger('./log/tcp_ssl_test.txt', level='debug').logger
 
 
 def tcp_ssl_test(port):
