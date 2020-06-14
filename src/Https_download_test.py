@@ -6,34 +6,45 @@ import serial
 from utils import Logger
 import sys
 
+# 查询系统平台
 system_cate = platform.system()
 print(f'当前操作系统为：{system_cate}')
+
+# 显示当前所有端口（在Linux下使用python要指明python3）
 if system_cate == 'Linux':
+    ports = os.popen('python3 -m serial.tools.list_ports').read()
+    print(ports)
+# macOS系统平台为Darwin
+elif system_cate == 'Darwin':
     ports = os.popen('python3 -m serial.tools.list_ports').read()
     print(ports)
 else:
     ports = os.popen('python -m serial.tools.list_ports').read()
     print(ports)
+# 如果没有查询到端口，则提示用户需要连接模块
+if "" == ports:
+    print("没有检测到端口，请连接模块")
+    sys.exit(0)
 port = input('请指定设备端口号:')
 
 
+# http断点下载测试
 class Https_download_test:
     log = Logger.Logger('./log/http_download_log.txt', level='debug')
     tmp_ATListFileNames = ['HTTP_DOWNLOAD.txt']
     ATList = []
 
+    # 生成串口操作对象
     def serialFactory(self, port, baud_rate):
         return serial.Serial(port=port, baudrate=baud_rate)
 
-    def print_hex(bytes_data):
-        l = [hex(int(i)) for i in bytes_data]
-        print(" ".join(l))
-
+    # 构造方法
     def __init__(self, port, baud_rate):
         self.port = port
         self.baud_rate = baud_rate
         self.ser = self.serialFactory(port, baud_rate)
 
+    # 加载ATList
     def loadATList(self):
         for ATListFile in self.tmp_ATListFileNames:
             with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
@@ -53,6 +64,7 @@ class Https_download_test:
             print(f"【成功加载---{ATListFile}---ATCmd{str(tmp_count)}条】")
             print()
 
+    # ATest方法
     def ATest(self):
         if self.ser.is_open:
             if len(self.ATList) == 0:
@@ -69,6 +81,7 @@ class Https_download_test:
         else:
             print(f"{self.ser.port}端口打开失败")
 
+    # 循环设置断点
     def setbreak(self):
         start = 0
         end = 59999
