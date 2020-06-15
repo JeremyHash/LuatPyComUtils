@@ -195,6 +195,7 @@ if __name__ == '__main__':
         if test_type == '1':
             test.load_atList('INIT.txt')
             test.load_atList('ALIYUN一机一密.txt')
+            print('开始执行命令,log见./log/aliyun_test.txt')
             test.aliyun_init()
             # 读取一机一密配置文件
             with open('./cfg/one_device_one_secret.txt') as f:

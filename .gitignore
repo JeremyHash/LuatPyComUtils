@@ -6,3 +6,5 @@ __pycache__/
 
 nohup.out
 /src/log/log*
+/src/log/aliyun_test*
+/src/log/http_download_log*

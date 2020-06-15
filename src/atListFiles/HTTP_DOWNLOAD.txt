@@ -17,6 +17,5 @@ AT+SAPBR=2,1====OK====1
 AT+HTTPINIT====OK====1
 #AT+HTTPSSL=1====OK====1
 AT+HTTPPARA="CID",1====OK====1
-AT+HTTPPARA="URL","http://118.25.149.191:10086/download/1G.txt"====OK====1
-#AT+HTTPPARA="URL","http://www.openluat.com/Product/images/720dmod/1.png"====OK====1
-#AT+HTTPPARA="URL","http://17.cdr2-pcgame.720582.com:8090/yxdown.com_NeedForSpeed9_chs.rar"====OK====1
+#AT+HTTPPARA="URL","http://118.25.149.191:10086/download/1G.txt"====OK====1
+AT+HTTPPARA="URL","http://www.openluat.com/Product/images/720dmod/1.png"====OK====1

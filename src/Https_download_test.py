@@ -97,21 +97,20 @@ class Https_download_test:
             self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
             self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-            self.ser.timeout = 4
+            self.ser.timeout = 5
             cmd = b'AT+HTTPACTION=0\r\n'
             self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
             temp = self.ser.read(200).decode(encoding='GB2312')
             self.log.logger.debug(f"收←◆  {temp}")
-            if str(end) not in temp:
-                break
-            self.ser.timeout = 30
+            self.ser.timeout = 10
             cmd = b'AT+HTTPREAD\r\n'
             self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
             self.log.logger.debug(f"收←◆  ")
             self.log.logger.debug(self.ser.read(200000))
-            print()
+            if str(end + 1) not in temp:
+                break
             i += end + 1
             j += end + 1
         # self.ser.close()
