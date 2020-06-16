@@ -1,7 +1,6 @@
 import serial
-import binascii
 from utils import Logger
-
+import traceback
 
 log = Logger.Logger('./log/tcp_ssl_test.txt', level='debug').logger
 
@@ -124,7 +123,13 @@ def tcp_ssl_test(port):
         cmd_tmp = b'GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n'
         s.write(cmd_tmp)
         log.debug("发→◇" + cmd_tmp.decode())
-        log.debug("收←◆" + s.read(10000).decode())
+        try:
+            log.debug("收←◆" + s.read(10000).decode())
+        except UnicodeDecodeError as ude:
+            print('解码异常')
+            print(ude)
+            print("---------------")
+            print(traceback.format_exc())
         s.timeout = 1
         cmd_tmp = b'AT+CIPSEND=2,61\r\n'
         s.write(cmd_tmp)
@@ -134,7 +139,13 @@ def tcp_ssl_test(port):
         cmd_tmp = b'GET / HTTP/1.1\r\nHost: 36.7.87.100\r\nConnection: keep-alive\r\n\r\n'
         s.write(cmd_tmp)
         log.debug("发→◇" + cmd_tmp.decode())
-        log.debug("收←◆" + s.read(10000).decode())
+        try:
+            log.debug("收←◆" + s.read(10000).decode())
+        except UnicodeDecodeError as ude:
+            print('解码异常')
+            print(ude)
+            print("---------------")
+            print(traceback.format_exc())
         s.timeout = 3
         cmd_tmp = b'AT+CIPCLOSE=1\r\n'
         s.write(cmd_tmp)

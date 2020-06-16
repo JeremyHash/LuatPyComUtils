@@ -87,7 +87,7 @@ class ATestUtils:
                     res = self.ser.read(320000)
                     # 由于http部分返回的某些数据无法正常解码，所以在这里抓取这个异常
                     try:
-                        tmp2 = res.decode(encoding='GB2312')
+                        tmp2 = res.decode(encoding='UTF8')
                     except UnicodeDecodeError as ude:
                         print('解码异常')
                         print(ude)
