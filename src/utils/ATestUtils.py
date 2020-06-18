@@ -76,7 +76,7 @@ class ATestUtils:
                 for ATCmd in self.ATList:
                     # 设置串口对象读取延时
                     self.ser.timeout = int(ATCmd[2])
-                    tmp1 = (ATCmd[0] + "\r\n").encode("UTF8")
+                    tmp1 = (ATCmd[0] + "\r\n").encode("GB2312")
                     # 将文件中本来是\n或\r的内容因为读取到程序中变为\\n \\r 的部分替换回去
                     tmp1 = tmp1.replace(b"\\n", b"\n")
                     tmp1 = tmp1.replace(b"\\r", b"\r")
