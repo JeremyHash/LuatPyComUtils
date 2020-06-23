@@ -116,7 +116,7 @@ AT+FTPFILEPUT=0====AT\+FTPFILEPUT=0\s{4}OK\s{2}====1
 AT+FTPGETPATH="/test"====AT\+FTPGETPATH="\/test"\s{4}OK\s{2}====1
 AT+FTPMKD====AT\+FTPMKD\s{4}OK\s{4}\+FTPMKD: 1,0\s{2}====5
 AT+FTPRMD====AT\+FTPRMD\s{4}OK\s{4}\+FTPRMD: 1,0\s{2}====5
-AT+FTPPUTPATH="/"====AT\+FTPPUTPATH="/"\s{4}OK\s{2}====1
+AT+FTPGETPATH="/"====AT\+FTPGETPATH="/"\s{4}OK\s{2}====1
 AT+FTPGETNAME="TEST0.txt"====AT\+FTPGETNAME="TEST0\.txt"\s{4}OK\s{2}====2
 AT+FTPDELE====AT\+FTPDELE\s{4}OK\s{4}\+FTPDELE: 1,0\s{2}====3
 
