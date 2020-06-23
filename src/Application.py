@@ -82,7 +82,7 @@ try:
                 ATListFileNames.append('HTTP.txt')
                 ATListFileNames.append('MQTT.txt')
                 # ATListFileNames.append('SMS.txt')
-                ATListFileNames.append('PB.txt')
+                # ATListFileNames.append('PB.txt')
                 ATListFileNames.append('AUDIO.txt')
                 # ATListFileNames.append('TMP.txt')
                 break

@@ -119,6 +119,7 @@ AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
 #MQTT命令测试
 AT+MCONFIG="test_jeremy","user","password"====AT\+MCONFIG="test_jeremy","user","password"\s{4}OK\s{2}====2
 AT+MIPSTART="lbsmqtt.airm2m.com",1884====AT\+MIPSTART="lbsmqtt.airm2m.com",1884\s{4}OK\s{4}CONNECT OK\s{2}====5
+AT+MQTTSTATU====AT\+MQTTSTATU\s{4}\+MQTTSTATU :2\s{4}OK\s{2}====1
 AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====5
 AT+MSUB="/hello/test",0====AT\+MSUB="/hello/test",0\s{4}OK\s{4}SUBACK\s{2}====5
 AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
@@ -133,4 +134,14 @@ AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\
 AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{2}====3
 AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{2}====3
 AT+MPUB="/hello/test",0,0,"***PPPPP1234A___+++"====AT\+MPUB="/hello/test",0,0,"\*\*\*PPPPP1234A___\+\+\+"\s{4}OK\s{2}====3
-AT+MQTTMSGGET?====AT\+MQTTMSGGET\?\s{4}\+MQTTMSGGET: 0,INVALID\s{2}\+MQTTMSGGET: 1,INVALID\s{2}\+MQTTMSGGET: 2,INVALID\+MQTTMSGGET: 3,INVALID\s{4}OK\s{2}
+AT+MQTTMSGGET?====AT\+MQTTMSGGET\?\s{4}\+MQTTMSGGET: 0,INVALID\s{2}\+MQTTMSGGET: 1,INVALID\s{2}\+MQTTMSGGET: 2,INVALID\s{2}\+MQTTMSGGET: 3,INVALID\s{4}OK\s{2}====1
+AT+MQTTMODE=1====AT\+MQTTMODE=1\s{4}OK\s{2}====1
+AT+MQTTMODE?====AT\+MQTTMODE\?\s{4}\+MQTTMODE:1\s{4}OK\s{2}====1
+AT+MQTTMODE=0====AT\+MQTTMODE=0\s{4}OK\s{2}====1
+AT+MQTTMODE?====AT\+MQTTMODE\?\s{4}\+MQTTMODE:0\s{4}OK\s{2}====1
+AT+MQTTMODE=?====AT\+MQTTMODE=\?\s{4}\+MQTTMODE: \(0,1\)\s{4}OK\s{2}====1
+AT+MQTTSTATU====AT\+MQTTSTATU\s{4}\+MQTTSTATU :1\s{4}OK\s{2}====1
+AT+MDISCONNECT====AT\+MDISCONNECT\s{4}OK\s{2}====2
+AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====2
+AT+MQTTSTATU====AT\+MQTTSTATU\s{4}\+MQTTSTATU :0\s{4}OK\s{2}====1
+AT+MQTTSTATU=?====AT\+MQTTSTATU=\?====1
