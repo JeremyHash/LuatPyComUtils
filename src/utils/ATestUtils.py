@@ -74,8 +74,6 @@ class ATestUtils:
                 print(f'第{i + 1}次循环开始')
                 # 循环执行ATList中的ATCmd
                 for ATCmd in self.ATList:
-                    # 设置串口对象读取延时
-                    self.ser.timeout = int(ATCmd[2])
                     tmp1 = (ATCmd[0] + "\r\n").encode("GB2312")
                     # 将文件中本来是\n或\r的内容因为读取到程序中变为\\n \\r 的部分替换回去
                     tmp1 = tmp1.replace(b"\\n", b"\n")
@@ -83,6 +81,8 @@ class ATestUtils:
                     # 串口对象向对应串口发送数据
                     self.ser.write(tmp1)
                     self.log.logger.debug(f"发→◇  {ATCmd[0]}")
+                    # 设置串口对象读取延时
+                    self.ser.timeout = float(ATCmd[2])
                     # 读取串口返回内容，读取的字节数尽量大一点，因为后面http相关的命令会返回非常大的数据
                     res = self.ser.read(320000)
                     # 由于http部分返回的某些数据无法正常解码，所以在这里抓取这个异常
