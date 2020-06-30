@@ -57,23 +57,19 @@ AT+FTPPUT=2,1360====AT\+FTPPUT=2,1360\s{4}\+FTPPUT: 2,1360\s{2}====2
 AT+FTPQUIT====AT\+FTPQUIT\s{4}OK\s{4}\+FTPPUT: 1,86\s{2}====2
 
 #FTP匿名登陆测试
-AT+FTPUN="anonymous"====AT\+FTPUN="anonymous"\s{4}OK\s{2}====1
-AT+FTPPW=123456====AT\+FTPPW=123456\s{4}OK\s{2}====1
-AT+FTPSERV=ftp.hi-flying.com====AT\+FTPSERV=ftp.hi-flying.com\s{4}OK\s{2}====1
-AT+FTPPORT=9001====AT\+FTPPORT=9001\s{4}OK\s{2}====1
-AT+FTPGETPATH=/HF2411/test_ftp_download/====AT\+FTPGETPATH=/HF2411/test_ftp_download/\s{4}OK\s{2}====1
-AT+FTPGETNAME=td.txt====AT\+FTPGETNAME=td.txt\s{4}OK\s{2}====1
-AT+FTPGET=1====AT\+FTPGET=1\s{4}OK\s{4}\+FTPGET: 1,1\s{2}====10
-AT+FTPGET=2,1460====AT\+FTPGET=2,1460\s{4}\+FTPGET: 2,1460\s{2}\d{1460}\s{2}OK\s{2}====2
-AT+FTPQUIT====AT\+FTPQUIT\s{4}OK\s{4}\+FTPGET: 1,86\s{2}====2
-AT+FTPPORT=21====AT\+FTPPORT=21\s{4}OK\s{2}====1
+#AT+FTPUN="anonymous"====AT\+FTPUN="anonymous"\s{4}OK\s{2}====1
+#AT+FTPPW=123456====AT\+FTPPW=123456\s{4}OK\s{2}====1
+#AT+FTPSERV=ftp.hi-flying.com====AT\+FTPSERV=ftp.hi-flying.com\s{4}OK\s{2}====1
+#AT+FTPPORT=9001====AT\+FTPPORT=9001\s{4}OK\s{2}====1
+#AT+FTPGETPATH=/HF2411/test_ftp_download/====AT\+FTPGETPATH=/HF2411/test_ftp_download/\s{4}OK\s{2}====1
+#AT+FTPGETNAME=td.txt====AT\+FTPGETNAME=td.txt\s{4}OK\s{2}====1
+#AT+FTPGET=1====AT\+FTPGET=1\s{4}OK\s{4}\+FTPGET: 1,1\s{2}====15
+#AT+FTPGET=2,1460====AT\+FTPGET=2,1460\s{4}\+FTPGET: 2,1460\s{2}\d{1460}\s{2}OK\s{2}====2
+#AT+FTPQUIT====AT\+FTPQUIT\s{4}OK\s{4}\+FTPGET: 1,86\s{2}====2
+#AT+FTPPORT=21====AT\+FTPPORT=21\s{4}OK\s{2}====1
 
 #FTPEXTGET测试
 AT+SAPBR=2,1====AT\+SAPBR=2,1\s{4}\+SAPBR: \d,\d,"[\.\d]+"\s{4}OK\s{2}====1
-AT+FTPCID=1====AT\+FTPCID=1\s{4}OK\s{2}====1
-AT+FTPSERV="36.7.87.100"====AT\+FTPSERV="36.7.87.100"\s{4}OK\s{2}====1
-AT+FTPUN=User====AT\+FTPUN=User\s{4}OK\s{2}====1
-AT+FTPPW=123456====AT\+FTPPW=123456\s{4}OK\s{2}====1
 AT+FTPGETNAME="TEST2.txt"====AT\+FTPGETNAME="TEST2\.txt"\s{4}OK\s{2}====1
 AT+FTPGETPATH="/11/"====AT\+FTPGETPATH="\/11\/"\s{4}OK\s{2}====1
 AT+FTPEXTGET=1====AT\+FTPEXTGET=1\s{4}OK\s{2}====10
