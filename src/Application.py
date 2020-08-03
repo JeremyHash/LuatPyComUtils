@@ -157,6 +157,8 @@ except serial.serialutil.SerialException as se:
         print('输入的端口不存在')
     if 'PermissionError' in traceback.format_exc():
         print('端口被占用,请检查是否有其他程序正在占用设备端口')
+    if 'read failed: device reports readiness' in traceback.format_exc():
+        print('读取异常')
 # 异常处理
 except Exception as e:
     if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
