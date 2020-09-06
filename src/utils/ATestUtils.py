@@ -31,9 +31,9 @@ class ATestUtils:
         for ATListFile in ATListFileNames:
             # 读取对应的ATList文件
             with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
-                print()
-                print(f"【正在加载的ATListFileName：】{ATListFile}")
-                print()
+                self.log.logger.debug("----------")
+                self.log.logger.debug(f"【正在加载的ATListFileName：】{ATListFile}")
+                self.log.logger.debug("----------")
                 # 读出文件中的所有行储存在列表中
                 lines = file.readlines()
                 # 用来记录加载的ATCmd数量
@@ -46,15 +46,15 @@ class ATestUtils:
                             # 去除结尾换行\n，然后用四个等于号作为分割方式切分这一行内容
                             cmd_contents = line.replace("\n", "").split("====")
                             # 打印获取到的ATCmd
-                            print(f"ATCmd:{cmd_contents[0]}")
+                            self.log.logger.debug(f"ATCmd:{cmd_contents[0]}")
                             # 将分割结果存入ATList列表
                             self.ATList.append(cmd_contents)
                             ATCmdCount += 1
                             sum_AT_count += 1
-            print()
-            print(f"【成功加载---{ATListFile}---ATCmd{ATCmdCount}条】")
-            print()
-        print(f'成功加载ATCmd共{sum_AT_count}条')
+            self.log.logger.debug("----------")
+            self.log.logger.debug(f"【成功加载---{ATListFile}---ATCmd{ATCmdCount}条】")
+            self.log.logger.debug("----------")
+        self.log.logger.debug(f'成功加载ATCmd共{sum_AT_count}条')
 
     # ATest方法，循环发送ATCmd，读取结果，校验格式
     def ATest(self, ATListFileNames, loopTimes):
@@ -65,13 +65,13 @@ class ATestUtils:
             self.loadATList(ATListFileNames)
             # 如果加载之后ATList为空，说明没有添加任何测试项目，退出程序
             if len(self.ATList) == 0:
-                print("ATList为空")
+                self.log.logger.debug("ATList为空")
                 sys.exit(0)
             # while True:
-            print('开始执行命令,log见./log/log.txt')
+            self.log.logger.debug('开始执行命令,log见./log/log.txt')
             # 循环控制台输入的指定次数
             for i in range(loopTimes):
-                print(f'第{i + 1}次循环开始')
+                self.log.logger.debug(f'第{i + 1}次循环开始')
                 # 循环执行ATList中的ATCmd
                 for ATCmd in self.ATList:
                     tmp1 = (ATCmd[0] + "\r\n").encode("GB2312")
@@ -89,10 +89,10 @@ class ATestUtils:
                     try:
                         tmp2 = res.decode(encoding='UTF8')
                     except UnicodeDecodeError as ude:
-                        print('解码异常')
-                        print(ude)
-                        print("---------------")
-                        print(traceback.format_exc())
+                        self.log.logger.debug('解码异常')
+                        self.log.logger.debug(ude)
+                        self.log.logger.debug("---------------")
+                        self.log.logger.debug(traceback.format_exc())
                     self.log.logger.debug(f"收←◆  {tmp2}")
                     # 打印接收到的数据的十六进制
                     hexdata = '收←◆  hex_data: ' + utils.get_hex(res)
@@ -106,9 +106,9 @@ class ATestUtils:
                             # 记录匹配失败的次数
                             self.error_count = self.error_count + 1
                     except Exception as e:
-                        print(e)
+                        self.log.logger.debug(e)
                         self.log.logger.warning("命令【" + ATCmd[0] + "】匹配异常")
-                        print(traceback.format_exc())
-                print(f'第{i + 1}次循环完成')
+                        self.log.logger.debug(traceback.format_exc())
+                self.log.logger.debug(f'第{i + 1}次循环完成')
         else:
-            print(f"{self.ser.port}端口打开失败")
+            self.log.logger.debug(f"{self.ser.port}端口打开失败")
