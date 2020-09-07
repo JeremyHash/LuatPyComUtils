@@ -125,7 +125,7 @@ try:
         global diag_pid
         diag_pid = os.getpid()
         print('Run diag process' + str(diag_pid))
-        os.popen(f"./bin/diag trace/log - - {diag_port}")
+        os.popen("./bin/diag trace/log - - " + diag_port)
 
 
     # 如果用户是Linux系统且选择了开启trace，则新建一个进程开启trace
