@@ -32,7 +32,7 @@ class ATestUtils:
             # 读取对应的ATList文件
             with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
                 self.log.logger.debug("----------")
-                self.log.logger.debug(f"【正在加载的ATListFileName：】{ATListFile}")
+                self.log.logger.debug("【正在加载的ATListFileName：】" + ATListFile)
                 self.log.logger.debug("----------")
                 # 读出文件中的所有行储存在列表中
                 lines = file.readlines()
@@ -46,15 +46,15 @@ class ATestUtils:
                             # 去除结尾换行\n，然后用四个等于号作为分割方式切分这一行内容
                             cmd_contents = line.replace("\n", "").split("====")
                             # 打印获取到的ATCmd
-                            self.log.logger.debug(f"ATCmd:{cmd_contents[0]}")
+                            self.log.logger.debug("ATCmd:" + cmd_contents[0] + "")
                             # 将分割结果存入ATList列表
                             self.ATList.append(cmd_contents)
                             ATCmdCount += 1
                             sum_AT_count += 1
             self.log.logger.debug("----------")
-            self.log.logger.debug(f"【成功加载---{ATListFile}---ATCmd{ATCmdCount}条】")
+            self.log.logger.debug("【成功加载---" + ATListFile + "---ATCmd" + str(ATCmdCount) + "条】")
             self.log.logger.debug("----------")
-        self.log.logger.debug(f'成功加载ATCmd共{sum_AT_count}条')
+        self.log.logger.debug('成功加载ATCmd共' + str(sum_AT_count) + '条')
 
     # ATest方法，循环发送ATCmd，读取结果，校验格式
     def ATest(self, ATListFileNames, loopTimes):
@@ -71,7 +71,7 @@ class ATestUtils:
             self.log.logger.debug('开始执行命令,log见./log/log.txt')
             # 循环控制台输入的指定次数
             for i in range(loopTimes):
-                self.log.logger.debug(f'第{i + 1}次循环开始')
+                self.log.logger.debug('第' + str(i + 1) + '次循环开始')
                 # 循环执行ATList中的ATCmd
                 for ATCmd in self.ATList:
                     tmp1 = (ATCmd[0] + "\r\n").encode("GB2312")
@@ -80,7 +80,7 @@ class ATestUtils:
                     tmp1 = tmp1.replace(b"\\r", b"\r")
                     # 串口对象向对应串口发送数据
                     self.ser.write(tmp1)
-                    self.log.logger.debug(f"发→◇  {ATCmd[0]}")
+                    self.log.logger.debug("发→◇  " + ATCmd[0])
                     # 设置串口对象读取延时
                     self.ser.timeout = float(ATCmd[2])
                     # 读取串口返回内容，读取的字节数尽量大一点，因为后面http相关的命令会返回非常大的数据
@@ -93,7 +93,7 @@ class ATestUtils:
                         self.log.logger.debug(ude)
                         self.log.logger.debug("---------------")
                         self.log.logger.debug(traceback.format_exc())
-                    self.log.logger.debug(f"收←◆  {tmp2}")
+                    self.log.logger.debug("收←◆  " + tmp2)
                     # 打印接收到的数据的十六进制
                     hexdata = '收←◆  hex_data: ' + utils.get_hex(res)
                     self.log.logger.debug(hexdata)
@@ -109,6 +109,6 @@ class ATestUtils:
                         self.log.logger.debug(e)
                         self.log.logger.warning("命令【" + ATCmd[0] + "】匹配异常")
                         self.log.logger.debug(traceback.format_exc())
-                self.log.logger.debug(f'第{i + 1}次循环完成')
+                self.log.logger.debug('第' + str(i + 1) + '次循环完成')
         else:
-            self.log.logger.debug(f"{self.ser.port}端口打开失败")
+            self.log.logger.debug(self.ser.port + "端口打开失败")

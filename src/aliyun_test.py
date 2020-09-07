@@ -9,7 +9,7 @@ import hmac
 
 # 获取当前系统平台
 system_cate = platform.system()
-print(f'当前操作系统为：{system_cate}')
+print('当前操作系统为：' + system_cate)
 # 显示当前所有端口（在Linux下使用python要指明python3）
 if system_cate == 'Linux':
     ports = os.popen('python3 -m serial.tools.list_ports').read()
@@ -52,7 +52,7 @@ class aliyun_test:
     def load_atList(self, ATListFile):
         with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
             print()
-            print(f"【正在加载的ATListFileName：】{ATListFile}")
+            print("【正在加载的ATListFileName：】"+ATListFile)
             print()
             lines = file.readlines()
             tmp_count = 0
@@ -60,11 +60,11 @@ class aliyun_test:
                 if not line.startswith("#"):
                     if not line.isspace():
                         cmd_contents = line.replace("\n", "").split("====")
-                        print(f"ATCmd:{cmd_contents[0]}")
+                        print("ATCmd:"+cmd_contents[0])
                         self.ATList.append(cmd_contents)
                         tmp_count += 1
         print()
-        print(f"【成功加载---{ATListFile}---ATCmd{str(tmp_count)}条】")
+        print("【成功加载---"+ATListFile+"---ATCmd"+str(tmp_count)+"条】")
         print()
 
     # 阿里云测试初始化方法
@@ -82,7 +82,7 @@ class aliyun_test:
                 tmp2 = res.decode(encoding="GB2312")
                 self.log.logger.debug(f"收←◆  {tmp2}")
         else:
-            print(f"{self.ser.port}端口打开失败")
+            print(self.ser.port+"端口打开失败")
 
     # 获取mqtt登录信息方法
     def get_mqtt_login_info(self):

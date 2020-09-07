@@ -22,7 +22,7 @@ class Application:
     def run(self):
         app = ATestUtils.ATestUtils(self.port, self.baud_rate)
         app.ATest(self.ATListFileNames, self.loopTimes)
-        print(f'共发生错误{app.error_count}次')
+        print('共发生错误' + str(app.error_count) + '次')
 
 
 # 定义ATListFiles，用来储存要运行的ATList文件列表
@@ -35,7 +35,7 @@ enable_trace = 'n'
 diag_pid = 0
 # 查询系统平台
 system_cate = platform.system()
-print(f'当前操作系统为：{system_cate}')
+print('当前操作系统为：' + system_cate)
 
 try:
     # 如果控制台传入的参数数量为2且第二个参数为-h,则显示运行帮助
@@ -124,19 +124,19 @@ try:
     def start_trace():
         global diag_pid
         diag_pid = os.getpid()
-        print(f'Run diag process {diag_pid}')
+        print('Run diag process' + str(diag_pid))
         os.popen(f"./bin/diag trace/log - - {diag_port}")
 
 
     # 如果用户是Linux系统且选择了开启trace，则新建一个进程开启trace
-    print(f'Application process {os.getpid()}')
+    print('Application process' + str(os.getpid()))
     if system_cate == 'Linux' and enable_trace == 'y':
         multiprocessing.Process(target=start_trace).start()
 
     # 初始化Application并执行run方法
     Application(port, baud_rate, ATListFileNames, loopTimes).run()
     # 执行完成打印
-    print(f'{loopTimes}次测试已完成')
+    print(str(loopTimes) + '次测试已完成')
 
 # 用户键盘退出事件处理
 except KeyboardInterrupt as ke:

@@ -49,7 +49,7 @@ class Https_download_test:
         for ATListFile in self.tmp_ATListFileNames:
             with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
                 print()
-                print(f"【正在加载的ATListFileName：】{ATListFile}")
+                print("【正在加载的ATListFileName：】" + ATListFile)
                 print()
                 lines = file.readlines()
                 tmp_count = 0
@@ -57,11 +57,11 @@ class Https_download_test:
                     if not line.startswith("#"):
                         if not line.isspace():
                             cmd_contents = line.replace("\n", "").split("====")
-                            print(f"ATCmd:{cmd_contents[0]}")
+                            print("ATCmd:" + cmd_contents[0])
                             self.ATList.append(cmd_contents)
                             tmp_count += 1
             print()
-            print(f"【成功加载---{ATListFile}---ATCmd{str(tmp_count)}条】")
+            print("【成功加载---" + ATListFile + "---ATCmd" + str(tmp_count) + "条】")
             print()
 
     # ATest方法
@@ -79,7 +79,7 @@ class Https_download_test:
                 tmp2 = res.decode(encoding="GB2312")
                 self.log.logger.debug(f"收←◆  {tmp2}")
         else:
-            print(f"{self.ser.port}端口打开失败")
+            print(self.ser.port + "端口打开失败")
 
     # 循环设置断点
     def setbreak(self):
@@ -123,7 +123,7 @@ try:
     count = 1
     while True:
         test.setbreak()
-        test.log.logger.debug(f'第{count}次http下载测试完成。。。')
+        test.log.logger.debug('第' + count + '次http下载测试完成。。。')
         count = count + 1
 except KeyboardInterrupt as ke:
     print("exit...")
