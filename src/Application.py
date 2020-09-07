@@ -90,7 +90,7 @@ try:
                     'INIT', 'BASE', 'FILE', 'TCPIP', 'FTP', 'HTTP', 'MQTT', 'SMS', 'PB', 'AUDIO', 'TMP', 'ALL'):
                 print('输入的功能名称有误,请重新输入')
                 continue
-            ATListFileNames.append(f'{fileName}.txt')
+            ATListFileNames.append(fileName + '.txt')
 
     # 如果控制台传入的参数数量为3，格式应为python Application.py /dev/ttyUSB0 1 将相应的参数传给相应变量,并填充ATListFileNames列表
     elif len(sys.argv) == 3:
