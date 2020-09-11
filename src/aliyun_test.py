@@ -176,14 +176,14 @@ class aliyun_test:
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         while True:
-            cmd = ('AT+MPUB="/' + product_key + '/' + device_name + '/user/Jeremy",0,0,"test0"\r\n').encode()
-            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-            self.ser.write(cmd)
-            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-            cmd = ('AT+MPUB="/' + product_key + '/' + device_name + '/user/Jeremy",1,0,"test1"\r\n').encode()
-            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-            self.ser.write(cmd)
             try:
+                cmd = ('AT+MPUB="/' + product_key + '/' + device_name + '/user/Jeremy",0,0,"test0"\r\n').encode()
+                self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+                self.ser.write(cmd)
+                self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+                cmd = ('AT+MPUB="/' + product_key + '/' + device_name + '/user/Jeremy",1,0,"test1"\r\n').encode()
+                self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+                self.ser.write(cmd)
                 self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
             except UnicodeError as e:
                 self.log.logger.error(e)
