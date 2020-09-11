@@ -50,7 +50,7 @@ class aliyun_test:
 
     # 加载ATListFile文件方法
     def load_atList(self, ATListFile):
-        with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
+        with open("./atListFiles/" + ATListFile, encoding="GB2312") as file:
             print()
             print("【正在加载的ATListFileName：】"+ATListFile)
             print()
@@ -87,22 +87,22 @@ class aliyun_test:
     # 获取mqtt登录信息方法
     def get_mqtt_login_info(self):
         self.ser.timeout = 2
-        cmd = f'AT+HTTPDATA={len(self.post_info)},20000\r\n'.encode('utf8')
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        cmd = f'AT+HTTPDATA={len(self.post_info)},20000\r\n'.encode('GB2312')
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
-        cmd = self.post_info.encode('utf8')
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        cmd = self.post_info.encode('GB2312')
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         cmd = b'AT+HTTPACTION=1\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         cmd = b'AT+HTTPREAD\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        res = self.ser.read(200).decode()
+        res = self.ser.read(200).decode(encoding='GB2312')
         self.log.logger.debug(f"收←◆  {res}")
         pattern1 = re.compile(r'"iotId":"\w+"')
         iotId = pattern1.findall(res)[0]
@@ -113,77 +113,77 @@ class aliyun_test:
         self.iotToken = iotToken.replace('"iotToken":', '').replace('"', '')
         self.log.logger.debug(f'iotToken:{self.iotToken}')
         cmd = b'AT+HTTPTERM\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
 
     # 获取设备密钥方法
     def get_device_secret(self):
         self.ser.timeout = 2
-        cmd = f'AT+HTTPDATA={len(self.post_info)},20000\r\n'.encode('utf8')
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        cmd = f'AT+HTTPDATA={len(self.post_info)},20000\r\n'.encode('GB2312')
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
-        cmd = self.post_info.encode('utf8')
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        cmd = self.post_info.encode('GB2312')
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         cmd = b'AT+HTTPACTION=1\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         cmd = b'AT+HTTPREAD\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        res = self.ser.read(200).decode()
+        res = self.ser.read(200).decode(encoding='GB2312')
         self.log.logger.debug(f"收←◆  {res}")
         pattern = re.compile(r'"deviceSecret":"\w+"')
         device_secret = pattern.findall(res)[0]
         self.device_secret = device_secret.replace('"deviceSecret":', '').replace('"', '')
         self.log.logger.debug(f'deviceSecret:{self.device_secret}')
         cmd = b'AT+HTTPTERM\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
 
     # 连接阿里云MQTT测试方法
     def connect_mqtt_test(self):
         self.ser.timeout = 1
-        cmd = f'AT+MCONFIG="{device_name}","{self.iotId}","{self.iotToken}"\r\n'.encode('utf8')
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        cmd = f'AT+MCONFIG="{device_name}","{self.iotId}","{self.iotToken}"\r\n'.encode('GB2312')
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         # cmd = b'AT+CDNSCFG="114.114.114.114","114.114.114.114",1\r\n'
-        # self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        # self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         # self.ser.write(cmd)
-        # self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        # self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         self.ser.timeout = 5
         cmd = ('AT+SSLMIPSTART="' + product_key + '.iot-as-mqtt.cn-shanghai.aliyuncs.com",1883\r\n').encode()
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         cmd = b'AT+MCONNECT=1,300\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         self.ser.timeout = 2
         cmd = ('AT+MSUB="/' + product_key + '/' + device_name + '/user/Jeremy",0\r\n').encode()
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         cmd = b'AT+MQTTMSGSET=0\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode()}")
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
         while True:
             cmd = ('AT+MPUB="/' + product_key + '/' + device_name + '/user/Jeremy",0,0,"test0"\r\n').encode()
-            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
-            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
             cmd = ('AT+MPUB="/' + product_key + '/' + device_name + '/user/Jeremy",1,0,"test1"\r\n').encode()
-            self.log.logger.debug(f"发→◇  {cmd.decode()}")
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
-            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode()}")
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
 
 
 if __name__ == '__main__':
@@ -207,9 +207,9 @@ if __name__ == '__main__':
             test.log.logger.debug(f'DeviceName:{device_name}')
             test.log.logger.debug(f'DeviceSecret:{device_secret}')
             # 拼接加密前明文
-            message = b'clientId' + device_name.encode('utf8') + b'deviceName' + device_name.encode(
-                'utf8') + b'productKey' + product_key.encode('utf8')
-            key = device_secret.encode('utf8')
+            message = b'clientId' + device_name.encode('GB2312') + b'deviceName' + device_name.encode(
+                'GB2312') + b'productKey' + product_key.encode('GB2312')
+            key = device_secret.encode('GB2312')
             # 使用HMACMD5算法用设备密钥加密明文
             sign = hmac.new(key, message, digestmod='MD5')
             # 拼接http_post发送信息
@@ -231,7 +231,7 @@ if __name__ == '__main__':
             test.log.logger.debug(f'ProductSecret:{product_secret}')
             # 拼接明文
             message = f'deviceName{device_name}productKey{product_key}random123456'.encode()
-            key = product_secret.encode('utf8')
+            key = product_secret.encode('GB2312')
             # 使用HMACMD5算法用设备密钥加密明文
             sign = hmac.new(key, message, digestmod='MD5')
             # 拼接http_post发送信息
@@ -240,7 +240,7 @@ if __name__ == '__main__':
             test.get_device_secret()
             # 拼接明文
             message = f'clientId{device_name}deviceName{device_name}productKey{product_key}'.encode()
-            key = test.device_secret.encode('utf8')
+            key = test.device_secret.encode('GB2312')
             # 使用HMACMD5算法用设备密钥加密明文
             sign = hmac.new(key, message, digestmod='MD5')
             # 拼接http_post发送信息
