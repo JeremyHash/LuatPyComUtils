@@ -186,9 +186,9 @@ class aliyun_test:
             try:
                 self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
             except UnicodeError as e:
-                print(e)
-                print("---------------解码异常---------------")
-                print(traceback.format_exc())
+                self.log.logger.error(e)
+                self.log.logger.error("---------------解码异常---------------")
+                self.log.logger.error(traceback.format_exc())
 
 
 if __name__ == '__main__':
