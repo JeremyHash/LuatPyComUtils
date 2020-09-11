@@ -183,7 +183,13 @@ class aliyun_test:
             cmd = ('AT+MPUB="/' + product_key + '/' + device_name + '/user/Jeremy",1,0,"test1"\r\n').encode()
             self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
             self.ser.write(cmd)
-            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+            try:
+                self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+            except UnicodeError as e:
+                print(e)
+                print("---------------解码异常---------------")
+                print(traceback.format_exc())
+
 
 
 if __name__ == '__main__':
