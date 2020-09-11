@@ -36,7 +36,7 @@ class aliyun_test:
     # 构造方法
     def __init__(self, port, baud_rate):
         # 获取log对象
-        self.log = Logger.Logger('./log/aliyun_test.txt', level='debug')
+        self.log = Logger.Logger('./log/aliyun_test_log.txt', level='debug')
         # 定义ATList
         self.ATList = []
         # 定义在httppost中发送的内容
@@ -195,7 +195,7 @@ if __name__ == '__main__':
         if test_type == '1':
             test.load_atList('INIT.txt')
             test.load_atList('ALIYUN一机一密.txt')
-            print('开始执行命令,log见./log/aliyun_test.txt')
+            print('开始执行命令,log见./log/aliyun_test_log.txt')
             test.aliyun_init()
             # 读取一机一密配置文件
             with open('./cfg/one_device_one_secret.txt') as f:
