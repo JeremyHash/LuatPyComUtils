@@ -52,7 +52,7 @@ class aliyun_test:
     def load_atList(self, ATListFile):
         with open("./atListFiles/" + ATListFile, encoding="utf8") as file:
             print()
-            print("【正在加载的ATListFileName：】"+ATListFile)
+            print("【正在加载的ATListFileName：】" + ATListFile)
             print()
             lines = file.readlines()
             tmp_count = 0
@@ -60,11 +60,11 @@ class aliyun_test:
                 if not line.startswith("#"):
                     if not line.isspace():
                         cmd_contents = line.replace("\n", "").split("====")
-                        print("ATCmd:"+cmd_contents[0])
+                        print("ATCmd:" + cmd_contents[0])
                         self.ATList.append(cmd_contents)
                         tmp_count += 1
         print()
-        print("【成功加载---"+ATListFile+"---ATCmd"+str(tmp_count)+"条】")
+        print("【成功加载---" + ATListFile + "---ATCmd" + str(tmp_count) + "条】")
         print()
 
     # 阿里云测试初始化方法
@@ -82,7 +82,7 @@ class aliyun_test:
                 tmp2 = res.decode(encoding="GB2312")
                 self.log.logger.debug(f"收←◆  {tmp2}")
         else:
-            print(self.ser.port+"端口打开失败")
+            print(self.ser.port + "端口打开失败")
 
     # 获取mqtt登录信息方法
     def get_mqtt_login_info(self):
@@ -166,7 +166,7 @@ class aliyun_test:
         self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        self.ser.timeout = 2
+        self.ser.timeout = 1
         cmd = ('AT+MSUB="/' + product_key + '/' + device_name + '/user/Jeremy",0\r\n').encode()
         self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
@@ -189,7 +189,6 @@ class aliyun_test:
                 print(e)
                 print("---------------解码异常---------------")
                 print(traceback.format_exc())
-
 
 
 if __name__ == '__main__':
