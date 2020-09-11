@@ -50,7 +50,7 @@ class aliyun_test:
 
     # 加载ATListFile文件方法
     def load_atList(self, ATListFile):
-        with open("./atListFiles/" + ATListFile, encoding="GB2312") as file:
+        with open("./atListFiles/" + ATListFile, encoding="utf8") as file:
             print()
             print("【正在加载的ATListFileName：】"+ATListFile)
             print()
