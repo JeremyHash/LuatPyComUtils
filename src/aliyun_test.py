@@ -74,7 +74,7 @@ class aliyun_test:
                 print("ATList为空")
                 sys.exit(0)
             for ATCmd in self.ATList:
-                self.ser.timeout = int(ATCmd[2])
+                self.ser.timeout = float(ATCmd[2])
                 tmp1 = (ATCmd[0] + "\r\n").encode("GB2312")
                 self.ser.write(tmp1)
                 self.log.logger.debug(f"发→◇  {ATCmd[0]}")
