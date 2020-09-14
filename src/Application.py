@@ -54,19 +54,20 @@ try:
         if system_cate == 'Linux':
             ports = os.popen('python3 -m serial.tools.list_ports').read()
             print(ports)
+            port = '/dev/ttyUSB' + input('请指定设备端口号(只需要输入/dev/ttyUSB后数字):')
         # macOS系统平台为Darwin
         elif system_cate == 'Darwin':
             ports = os.popen('python3 -m serial.tools.list_ports').read()
             print(ports)
+            port = input('请指定设备端口号:')
         else:
             ports = os.popen('python -m serial.tools.list_ports').read()
             print(ports)
+            port = 'COM' + input('请指定设备端口号(只需要输入COM后数字):')
         # 如果没有查询到端口，则提示用户需要连接模块
         if "" == ports:
             print("没有检测到端口，请连接模块")
             sys.exit(0)
-        # 请求输入端口号
-        port = input('请输入测试设备端口号：')
 
         # 请求输入测试功能
         while True:
