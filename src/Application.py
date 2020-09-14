@@ -22,7 +22,7 @@ class Application:
     def run(self):
         app = ATestUtils.ATestUtils(self.port, self.baud_rate)
         app.ATest(self.ATListFileNames, self.loopTimes)
-        print('共发生错误' + str(app.error_count) + '次')
+        print('共匹配失败' + str(app.error_count) + '次')
 
 
 # 定义ATListFiles，用来储存要运行的ATList文件列表
@@ -76,15 +76,15 @@ try:
                 break
             if fileName == 'ALL':
                 ATListFileNames.append('INIT.txt')
-                ATListFileNames.append('BASE.txt')
-                ATListFileNames.append('FILE.txt')
+                # ATListFileNames.append('BASE.txt')
+                # ATListFileNames.append('FILE.txt')
                 ATListFileNames.append('TCPIP.txt')
-                ATListFileNames.append('FTP.txt')
-                ATListFileNames.append('HTTP.txt')
-                ATListFileNames.append('MQTT.txt')
+                # ATListFileNames.append('FTP.txt')
+                # ATListFileNames.append('HTTP.txt')
+                # ATListFileNames.append('MQTT.txt')
                 # ATListFileNames.append('SMS.txt')
                 # ATListFileNames.append('PB.txt')
-                ATListFileNames.append('AUDIO.txt')
+                # ATListFileNames.append('AUDIO.txt')
                 # ATListFileNames.append('TMP.txt')
                 break
             if fileName not in (
