@@ -14,18 +14,20 @@ print(f'当前操作系统为：{system_cate}')
 if system_cate == 'Linux':
     ports = os.popen('python3 -m serial.tools.list_ports').read()
     print(ports)
+    port = '/dev/ttyUSB' + input('请指定设备端口号(只需要输入/dev/ttyUSB后数字):')
 # macOS系统平台为Darwin
 elif system_cate == 'Darwin':
     ports = os.popen('python3 -m serial.tools.list_ports').read()
     print(ports)
+    port = input('请指定设备端口号:')
 else:
     ports = os.popen('python -m serial.tools.list_ports').read()
     print(ports)
+    port = 'COM' + input('请指定设备端口号(只需要输入COM后数字):')
 # 如果没有查询到端口，则提示用户需要连接模块
 if "" == ports:
     print("没有检测到端口，请连接模块")
     sys.exit(0)
-port = input('请指定设备端口号:')
 
 
 # http断点下载测试
@@ -48,9 +50,7 @@ class Https_download_test:
     def loadATList(self):
         for ATListFile in self.tmp_ATListFileNames:
             with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
-                print()
-                print("【正在加载的ATListFileName：】" + ATListFile)
-                print()
+                print("\n【正在加载的ATListFileName：】" + ATListFile + "\n")
                 lines = file.readlines()
                 tmp_count = 0
                 for line in lines:
@@ -60,9 +60,7 @@ class Https_download_test:
                             print("ATCmd:" + cmd_contents[0])
                             self.ATList.append(cmd_contents)
                             tmp_count += 1
-            print()
-            print("【成功加载---" + ATListFile + "---ATCmd" + str(tmp_count) + "条】")
-            print()
+            print("\n【成功加载---" + ATListFile + "---ATCmd" + str(tmp_count) + "条】\n")
 
     # ATest方法
     def ATest(self):
@@ -84,7 +82,7 @@ class Https_download_test:
     # 循环设置断点
     def setbreak(self):
         start = 0
-        end = 59999
+        end = 99999
         i = start
         j = end
         while True:
@@ -109,7 +107,7 @@ class Https_download_test:
             self.ser.write(cmd)
             self.log.logger.debug(f"收←◆  ")
             self.log.logger.debug(self.ser.read(200000))
-            if str(end + 1) not in temp:
+            if str(end) not in temp:
                 break
             i += end + 1
             j += end + 1
@@ -123,7 +121,7 @@ try:
     count = 1
     while True:
         test.setbreak()
-        test.log.logger.debug('第' + count + '次http下载测试完成。。。')
+        test.log.logger.debug('第' + str(count) + '次http下载测试完成。。。')
         count = count + 1
 except KeyboardInterrupt as ke:
     print("exit...")
