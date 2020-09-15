@@ -17,4 +17,5 @@ AT+HTTPINIT====OK====0.5
 #AT+HTTPSSL=1====OK====0.5
 AT+HTTPPARA="CID",1====OK====0.5
 #AT+HTTPPARA="URL","http://118.25.149.191:10086/download/1G.txt"====OK====0.5
-AT+HTTPPARA="URL","http://wiki.airm2m.com:48080/download/4G"====OK====0.5
+#AT+HTTPPARA="URL","http://wiki.airm2m.com:48080/download/4G"====OK====0.5
+AT+HTTPPARA="URL","http://wiki.airm2m.com:48080/download/Air724UG.png"====OK====0.5
