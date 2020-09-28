@@ -79,7 +79,7 @@ AT+FTPRMD=?====AT\+FTPRMD=\?\s{4}OK\s{2}====0.5
 AT+FTPSTATE====AT\+FTPSTATE\s{4}\+FTPSTATE: \d\s{4}OK\s{2}====0.5
 
 #保存FTP应用上下文：AT+FTPSCONT
-AT+FTPSCONT?====AT\+FTPSCONT\?\s{4}\+FTPSCONT: 1\s{2}\+FTPSERV: "36.7.87.100"\s{2}\+FTPPORT: 21\s{2}\+FTPUN: "User"\s{2}\+FTPPW: "123456"\s{2}\+FTPCID: 1\s{2}\+FTPMODE: 1\s{2}\+FTPTYPE: "I"\s{2}\+FTPPUTOPT: "STOR"\s{2}\+FTPREST: 0\s{2}\+FTPGETNAME: "1.txt"\s{2}\+FTPGETPATH: "/Jeremy/"\s{2}\+FTPPUTNAME: "JeremyTest.txt"\s{2}\+FTPPUTPATH: "/Jeremy/"\s{2}\+FTPTIMEOUT: 0\s{4}OK\s{2}====0.5
+AT+FTPSCONT?====AT\+FTPSCONT\?\s{4}\+FTPSCONT: \d\s{2}\+FTPSERV: "36.7.87.100"\s{2}\+FTPPORT: 21\s{2}\+FTPUN: "User"\s{2}\+FTPPW: "123456"\s{2}\+FTPCID: 1\s{2}\+FTPMODE: 1\s{2}\+FTPTYPE: "I"\s{2}\+FTPPUTOPT: "STOR"\s{2}\+FTPREST: 0\s{2}\+FTPGETNAME: "1.txt"\s{2}\+FTPGETPATH: "/Jeremy/"\s{2}\+FTPPUTNAME: "JeremyTest.txt"\s{2}\+FTPPUTPATH: "/Jeremy/"\s{2}\+FTPTIMEOUT: 0\s{4}OK\s{2}====0.5
 AT+FTPSCONT====AT\+FTPSCONT\s{4}OK\s{2}====0.5
 
 #激活承载
