@@ -79,9 +79,9 @@ try:
                 # ATListFileNames.append('BASE.txt')
                 # ATListFileNames.append('FILE.txt')
                 ATListFileNames.append('TCPIP.txt')
-                # ATListFileNames.append('FTP.txt')
-                # ATListFileNames.append('HTTP.txt')
-                # ATListFileNames.append('MQTT.txt')
+                ATListFileNames.append('FTP.txt')
+                ATListFileNames.append('HTTP.txt')
+                ATListFileNames.append('MQTT.txt')
                 # ATListFileNames.append('SMS.txt')
                 # ATListFileNames.append('PB.txt')
                 # ATListFileNames.append('AUDIO.txt')
@@ -150,7 +150,7 @@ except KeyboardInterrupt as ke:
 # 串口异常处理
 except serial.serialutil.SerialException as se:
     print(se)
-    print("---------------")
+    print("------------------------------")
     print(traceback.format_exc())
     if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
         os.kill(diag_pid, signal.SIGKILL)
@@ -159,7 +159,7 @@ except serial.serialutil.SerialException as se:
     if 'PermissionError' in traceback.format_exc():
         print('端口被占用,请检查是否有其他程序正在占用设备端口')
     if 'read failed: device reports readiness' in traceback.format_exc():
-        print('读取异常')
+        print('读取异常，建议重新连接模块测试')
 # 异常处理
 except Exception as e:
     if system_cate == 'Linux' and enable_trace == 'y' and diag_pid != 0:
