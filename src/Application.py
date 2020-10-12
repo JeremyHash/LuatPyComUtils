@@ -76,15 +76,15 @@ try:
                 break
             if fileName == 'ALL':
                 ATListFileNames.append('INIT.txt')
-                # ATListFileNames.append('BASE.txt')
-                # ATListFileNames.append('FILE.txt')
+                ATListFileNames.append('BASE.txt')
+                ATListFileNames.append('FILE.txt')
                 ATListFileNames.append('TCPIP.txt')
                 ATListFileNames.append('FTP.txt')
                 ATListFileNames.append('HTTP.txt')
                 ATListFileNames.append('MQTT.txt')
                 # ATListFileNames.append('SMS.txt')
-                # ATListFileNames.append('PB.txt')
-                # ATListFileNames.append('AUDIO.txt')
+                ATListFileNames.append('PB.txt')
+                ATListFileNames.append('AUDIO.txt')
                 # ATListFileNames.append('TMP.txt')
                 break
             if fileName not in (
