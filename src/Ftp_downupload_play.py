@@ -85,7 +85,7 @@ class Ftp_play_upload:
         row = file.read()
         firsthalf = row[0:10240]
         secondhalf = row[10240:]
-        self.ser.timeout = 1
+        self.ser.timeout = 0.5
         cmd = b'AT^TRACECTRL=0,1,3\r\n'
         self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)

@@ -10,7 +10,7 @@ AT+FTPPW="123456"====OK====0.5
 AT+FTPPUTPATH="/"====OK====0.5
 AT+FTPPUTNAME="play.mp3"====OK====0.5
 AT+FTPFILEPUT=1,"C:/play.mp3"====OK====1
-AT+FTPPUT=1====OK====10
+AT+FTPPUT=1====OK====15
 AT+FTPFILEPUT=0====OK====0.5
 AT+SAPBR=0,1====OK====1
 
@@ -25,7 +25,7 @@ AT+FTPUN="User"====OK====0.5
 AT+FTPPW="123456"====OK====0.5
 AT+FTPGETPATH="/"====OK====0.5
 AT+FTPGETNAME="play.mp3"====OK====0.5
-AT+FTPGETTOFS=0,"play.mp3"====OK====20
+AT+FTPGETTOFS=0,"play.mp3"====OK====25
 #AT+FTPGETTOFS?====OK====0.5
 AT+FSLS=C:/USER/FTP/====OK====0.5
 AT+CAUDPLAY=1,"C:/USER/FTP/play.mp3"====OK====0.5
