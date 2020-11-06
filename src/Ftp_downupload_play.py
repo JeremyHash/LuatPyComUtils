@@ -1,0 +1,132 @@
+import os
+import platform
+import traceback
+
+import serial
+from utils import Logger
+import sys
+
+# 查询系统平台
+system_cate = platform.system()
+print(f'当前操作系统为：{system_cate}')
+
+# 显示当前所有端口（在Linux下使用python要指明python3）
+if system_cate == 'Linux':
+    ports = os.popen('python3 -m serial.tools.list_ports').read()
+    print(ports)
+    port = '/dev/ttyUSB' + input('请指定设备端口号(只需要输入/dev/ttyUSB后数字):')
+# macOS系统平台为Darwin
+elif system_cate == 'Darwin':
+    ports = os.popen('python3 -m serial.tools.list_ports').read()
+    print(ports)
+    port = input('请指定设备端口号:')
+else:
+    ports = os.popen('python -m serial.tools.list_ports').read()
+    print(ports)
+    port = 'COM' + input('请指定设备端口号(只需要输入COM后数字):')
+# 如果没有查询到端口，则提示用户需要连接模块
+if "" == ports:
+    print("没有检测到端口，请连接模块")
+    sys.exit(0)
+
+
+# FTP测试
+class Ftp_play_upload:
+    play_ATListFileNames = ['FTP_PLAY.txt']
+    log = Logger.Logger('./log/FTP.txt', level='debug')
+    ATList = []
+
+    # 生成串口操作对象
+    def serialFactory(self, port, baud_rate):
+        return serial.Serial(port=port, baudrate=baud_rate)
+
+    # 构造方法
+    def __init__(self, port, baud_rate):
+        self.port = port
+        self.baud_rate = baud_rate
+        self.ser = self.serialFactory(port, baud_rate)
+
+    # 加载ATList
+    def loadATList(self):
+        for ATListFile in self.play_ATListFileNames:
+            with open("./atListFiles/FTP/" + ATListFile, encoding="UTF8") as file:
+                print("\n【正在加载的ATListFileName：】" + ATListFile + "\n")
+                lines = file.readlines()
+                tmp_count = 0
+                for line in lines:
+                    if not line.startswith("#"):
+                        if not line.isspace():
+                            cmd_contents = line.replace("\n", "").split("====")
+                            print("ATCmd:" + cmd_contents[0])
+                            self.ATList.append(cmd_contents)
+                            tmp_count += 1
+            print("\n【成功加载---" + ATListFile + "---ATCmd" + str(tmp_count) + "条】\n")
+
+    # ATest方法
+    def ATest(self):
+        if self.ser.is_open:
+            if len(self.ATList) == 0:
+                print("ATList为空")
+                sys.exit(0)
+            for ATCmd in self.ATList:
+                self.ser.timeout = float(ATCmd[2])
+                tmp1 = (ATCmd[0] + "\r\n").encode("GB2312")
+                self.ser.write(tmp1)
+                self.log.logger.debug(f"发→◇  {ATCmd[0]}")
+                res = self.ser.read(1000)
+                tmp2 = res.decode(encoding="GB2312")
+                self.log.logger.debug(f"收←◆  {tmp2}")
+        else:
+            print(self.ser.port + "端口打开失败")
+
+    # 播放
+    def setbreak(self):
+        file = open("atListFiles/FTP/call.mp3", "rb")
+        row = file.read()
+        firsthalf = row[0:10240]
+        secondhalf = row[10240:]
+        self.ser.timeout = 1
+        cmd = b'AT^TRACECTRL=0,1,3\r\n'
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+        self.ser.write(cmd)
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        cmd = b'AT*EXASSERT=1;&W\r\n'
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+        self.ser.write(cmd)
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        cmd = b'AT+FSCREATE="play.mp3"\r\n'
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+        self.ser.write(cmd)
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        cmd = b'AT+FSWRITE="play.mp3",0,10240,20\r\n'
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+        self.ser.write(cmd)
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        cmd = b'%s' % bytes(firsthalf)
+        self.ser.write(cmd)
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        cmd = b'AT+FSWRITE="play.mp3",1,5899,20\r\n'
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+        self.ser.write(cmd)
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        cmd = b'%s' % secondhalf
+        self.ser.write(cmd)
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        cmd = b'AT+CAUDPLAY=1,"play.mp3"\r\n'
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+        self.ser.write(cmd)
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+
+
+try:
+    test = Ftp_play_upload(port, 115200)
+    test.setbreak()
+    test.loadATList()
+    test.ATest()
+except KeyboardInterrupt as ke:
+    print("exit...")
+    sys.exit()
+except Exception as e:
+    print(e)
+    print("---------------")
+    print(traceback.format_exc())
