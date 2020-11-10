@@ -82,37 +82,20 @@ class Ftp_play_upload:
     # 播放
     def setbreak(self):
         file = open("atListFiles/FTP/call.mp3", "rb")
-        row = file.read()
-        firsthalf = row[0:10240]
-        secondhalf = row[10240:]
+        row = file.read(10240)
         self.ser.timeout = 0.5
-        cmd = b'AT^TRACECTRL=0,1,3\r\n'
+        cmd = b'AT+FSCREATE="call.mp3"\r\n'
         self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'AT*EXASSERT=1;&W\r\n'
+        cmd = b'AT+FSWRITE="call.mp3",0,10240,20\r\n'
         self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'AT+FSCREATE="play.mp3"\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+        cmd = b'%s' % row
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'AT+FSWRITE="play.mp3",0,10240,20\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'%s' % bytes(firsthalf)
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'AT+FSWRITE="play.mp3",1,5899,20\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'%s' % secondhalf
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'AT+CAUDPLAY=1,"play.mp3"\r\n'
+        cmd = b'AT+CAUDPLAY=1,"call.mp3"\r\n'
         self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
