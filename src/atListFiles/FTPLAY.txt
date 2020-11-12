@@ -1,0 +1,31 @@
+#FTP UPLOAD
+AT+SAPBR=3,1,"CONTYPE","GPRS"====.*====0.5
+AT+SAPBR=3,1,"APN",""====.*====0.5
+AT+SAPBR=1,1====.*====0.5
+AT+SAPBR=2,1====.*====0.5
+AT+FTPCID=1====.*====0.5
+AT+FTPSERV="36.7.87.100"====.*====0.5
+AT+FTPUN="User"====.*====0.5
+AT+FTPPW="123456"====.*====0.5
+AT+FTPPUTPATH="/"====.*====0.5
+AT+FTPPUTNAME="call.mp3"====.*====0.5
+AT+FTPFILEPUT=1,"C:/USER/FTP/call.mp3"====.*====1
+AT+FTPPUT=1====.*====15
+AT+FTPFILEPUT=0====.*====0.5
+AT+SAPBR=0,1====.*====1
+
+#FTP DOWNLOAD
+AT+SAPBR=3,1,"CONTYPE","GPRS"====.*====0.5
+AT+SAPBR=3,1,"APN",""====.*====0.5
+AT+SAPBR=1,1====.*====1
+AT+SAPBR=2,1====.*====0.5
+AT+FTPCID=1====.*====0.5
+AT+FTPSERV="36.7.87.100"====.*====0.5
+AT+FTPUN="User"====.*====0.5
+AT+FTPPW="123456"====.*====0.5
+AT+FTPGETPATH="/"====.*====0.5
+AT+FTPGETNAME="call.mp3"====.*====0.5
+AT+FTPGETTOFS=0,"call.mp3"====.*====20
+#AT+FTPGETTOFS?====.*====0.5
+AT+FSLS=C:/USER/FTP/====.*====0.5
+AT+CAUDPLAY=1,"C:/USER/FTP/call.mp3"====.*====0.5

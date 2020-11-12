@@ -32,9 +32,14 @@ if "" == ports:
 
 # FTP测试
 class Ftp_play_upload:
-    play_ATListFileNames = ['FTP_PLAY.txt']
+    play_ATListFileNames = ['FTPLAY.txt']
     log = Logger.Logger('./log/FTP.txt', level='debug')
     ATList = []
+    num = 0
+    uploadfile = ''
+    downloadfile = ''
+    success = 0
+    error = 0
 
     # 生成串口操作对象
     def serialFactory(self, port, baud_rate):
@@ -49,7 +54,7 @@ class Ftp_play_upload:
     # 加载ATList
     def loadATList(self):
         for ATListFile in self.play_ATListFileNames:
-            with open("./atListFiles/FTP/" + ATListFile, encoding="UTF8") as file:
+            with open("./atListFiles/" + ATListFile, encoding="UTF8") as file:
                 print("\n【正在加载的ATListFileName：】" + ATListFile + "\n")
                 lines = file.readlines()
                 tmp_count = 0
@@ -81,7 +86,7 @@ class Ftp_play_upload:
 
     # 播放
     def setbreak(self):
-        file = open("atListFiles/FTP/call.mp3", "rb")
+        file = open("static/call.mp3", "rb")
         row = file.read(10240)
         self.ser.timeout = 0.5
         cmd = b'AT+FSCREATE="call.mp3"\r\n'
@@ -99,6 +104,44 @@ class Ftp_play_upload:
         self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
         self.ser.write(cmd)
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+
+        if self.num >= 1:
+            #获取upload文件大小
+            cmd = b'AT+FTPSIZE\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.ser.timeout = 5
+            self.uploadfile = self.ser.read(200).decode(encoding='GB2312')
+            self.uploadfile = self.uploadfile.split('\r\n')[4].split(',')[2]
+            self.ser.timeout = 0.5
+            cmd = b'AT\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+
+            # 获取download文件大小
+            cmd = b'AT+FTPGETTOFS=0,"call.mp3"\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.ser.timeout = 20
+            self.downloadfile = self.ser.read(200).decode(encoding='GB2312')
+            self.downloadfile = self.downloadfile.split('\r\n')[4].split(',')[1]
+
+            if int(len(row)) == int(self.uploadfile) == int(self.downloadfile):
+                self.success += 1
+                self.log.logger.debug('本次FTP上传下载成功')
+                self.log.logger.debug('累计成功次数%d' % self.success)
+            else:
+                self.error += 1
+                self.log.logger.debug('本次FTP上传下载失败')
+                self.log.logger.debug('累计失败次数%d' % self.error)
+
+        self.ser.timeout = 0.5
+        cmd = b'AT+SAPBR=0,1\r\n'
+        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+        self.ser.write(cmd)
+        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        self.num += 1
 
 
 try:
