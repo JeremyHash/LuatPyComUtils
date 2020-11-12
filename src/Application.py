@@ -81,12 +81,12 @@ try:
                 ATListFileNames.append('TCPIP.txt')
                 ATListFileNames.append('FTP.txt')
                 ATListFileNames.append('HTTP.txt')
-                # ATListFileNames.append('MQTT.txt')
+                ATListFileNames.append('MQTT.txt')
                 # ATListFileNames.append('SMS.txt')
                 ATListFileNames.append('PB.txt')
                 ATListFileNames.append('AUDIO.txt')
                 # ATListFileNames.append('TMP.txt')
-                ATListFileNames.append('DL.txt')
+                # ATListFileNames.append('DL.txt')
                 break
             if fileName not in (
                     'INIT', 'BASE', 'FILE', 'TCPIP', 'FTP', 'HTTP', 'MQTT', 'SMS', 'PB', 'AUDIO', 'TMP', 'ALL'):
