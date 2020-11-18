@@ -86,7 +86,6 @@ try:
                 ATListFileNames.append('PB.txt')
                 ATListFileNames.append('AUDIO.txt')
                 # ATListFileNames.append('TMP.txt')
-                # ATListFileNames.append('DL.txt')
                 break
             if fileName not in (
                     'INIT', 'BASE', 'FILE', 'TCPIP', 'FTP', 'HTTP', 'MQTT', 'SMS', 'PB', 'AUDIO', 'TMP', 'ALL'):

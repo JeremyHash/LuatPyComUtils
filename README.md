@@ -17,3 +17,6 @@
 
 #### Tips
 + ATestUtils中的res = self.ser.read(320000)里面设置的读取大小320000，一定要比你真正会返回的数据量大，不然就出现~~奇怪~~的错误
+
+#### 感谢
+<a href="https://www.jetbrains.com/?from=GoFrame"><img src="https://goframe.org/images/jetbrains.png" width="100" alt="JetBrains"/></a>
