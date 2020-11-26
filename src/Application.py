@@ -71,7 +71,7 @@ try:
 
         # 请求输入测试功能
         while True:
-            fileName = input('请输入要测试的功能（INIT,BASE,FILE,TCPIP,FTP,HTTP,MQTT,SMS,PB,AUDIO,TMP），输入END结束，全选请输入ALL：')
+            fileName = input('请输入要测试的功能（INIT,BASE,FILE,TCPIP,FTP,HTTP,MQTT,SMS,PB,AUDIO,TMP,FTPLAY,DL），输入END结束，全选请输入ALL：')
             if fileName == 'END':
                 break
             if fileName == 'ALL':
@@ -86,10 +86,11 @@ try:
                 ATListFileNames.append('PB.txt')
                 ATListFileNames.append('AUDIO.txt')
                 # ATListFileNames.append('TMP.txt')
+                ATListFileNames.append('FTPLAY.txt')
                 # ATListFileNames.append('DL.txt')
                 break
             if fileName not in (
-                    'INIT', 'BASE', 'FILE', 'TCPIP', 'FTP', 'HTTP', 'MQTT', 'SMS', 'PB', 'AUDIO', 'TMP', 'ALL'):
+                    'INIT', 'BASE', 'FILE', 'TCPIP', 'FTP', 'HTTP', 'MQTT', 'SMS', 'PB', 'AUDIO', 'TMP', 'FTPLAY', 'DL', 'ALL'):
                 print('输入的功能名称有误,请重新输入')
                 continue
             ATListFileNames.append(fileName + '.txt')
@@ -109,6 +110,8 @@ try:
         ATListFileNames.append('PB.txt')
         ATListFileNames.append('AUDIO.txt')
         # ATListFileNames.append('TMP.txt')
+        ATListFileNames.append('FTPLAY.txt')
+        # ATListFileNames.append('DL.txt')
     else:
         print('-------------------------------------')
         print('参数有误,使用方法请添加帮助参数:-h')

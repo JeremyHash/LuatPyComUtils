@@ -4,12 +4,14 @@ import traceback
 import serial
 from utils import Logger, utils
 import sys
+from Ftp_downupload_play import Ftp_play
 
 
 # ATestUtils类
 class ATestUtils:
     # 统计匹配出错次数
     error_count = 0
+    num = 0
     # ATList列表
     ATList = []
     # 获取log对象,log位置为./log/log.txt log等级为debug
@@ -71,6 +73,8 @@ class ATestUtils:
             self.log.logger.debug('开始执行命令,log见./log/log.txt')
             # 循环控制台输入的指定次数
             for i in range(loopTimes):
+                Ftp_play(self.ser, self.num)
+                self.num = self.num + 1
                 self.log.logger.debug('第' + str(i + 1) + '次循环开始')
                 # 循环执行ATList中的ATCmd
                 for ATCmd in self.ATList:
