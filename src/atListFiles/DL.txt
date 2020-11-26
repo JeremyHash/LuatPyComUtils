@@ -1,6 +1,0 @@
-AT+CCAM=0,0====AT\+CCAM=0,0\s{4}OK\s{2}====1
-AT+CCAM=4,1====AT\+CCAM=4,1\s{4}OK\s{2}====1
-AT+CCAM=2====AT\+CCAM=2\s{4}OK\s{2}====1
-AT+CCAM=1====AT\+CCAM=1\s{4}OK\s{2}====1
-AT+CCAM=4,0====AT\+CCAM=4,0\s{4}OK\s{2}====1
-AT+CCAM=3====AT\+CCAM=3\s{4}OK\s{2}====1
