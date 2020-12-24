@@ -1,6 +1,7 @@
 import traceback
 from utils import Logger
 import sys
+import re
 
 
 # FTP测试
@@ -42,7 +43,7 @@ class Ftp_play_upload:
             self.ser.write(cmd)
             self.ser.timeout = 5
             self.uploadfile = self.ser.read(200).decode(encoding='GB2312')
-            self.uploadfile = self.uploadfile.split('\r\n')[4].split(',')[2]
+            uploadfile = re.search(r'10240', self.uploadfile).group()
             self.ser.timeout = 0.5
             cmd = b'AT\r\n'
             self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
@@ -55,9 +56,9 @@ class Ftp_play_upload:
             self.ser.write(cmd)
             self.ser.timeout = 25
             self.downloadfile = self.ser.read(200).decode(encoding='GB2312')
-            self.downloadfile = self.downloadfile.split('\r\n')[4].split(',')[1]
+            downloadfile = re.search(r'10240', self.downloadfile).group()
 
-            if int(len(row)) == int(self.uploadfile) == int(self.downloadfile):
+            if int(len(row)) == int(uploadfile) == int(downloadfile):
                 self.log.logger.debug(u'FTP上传下载第%d次' % self.num)
                 self.log.logger.debug(u'本次FTP上传下载成功')
             else:

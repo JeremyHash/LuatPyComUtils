@@ -10,7 +10,7 @@ AT+FTPPW="123456"====.*====0.5
 AT+FTPPUTPATH="/"====.*====0.5
 AT+FTPPUTNAME="call.mp3"====.*====0.5
 AT+FTPFILEPUT=1,"call.mp3"====.*====1
-AT+FTPPUT=1====.*====15
+AT+FTPPUT=1====.*====20
 AT+FTPFILEPUT=0====.*====0.5
 AT+SAPBR=0,1====.*====1
 
