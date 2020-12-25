@@ -2,7 +2,7 @@ import re
 import traceback
 
 import serial
-from utils import Logger, utils
+from . import Logger, utils
 import sys
 from Ftp_downupload_play import Ftp_play
 

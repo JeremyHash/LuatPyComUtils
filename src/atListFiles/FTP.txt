@@ -111,8 +111,8 @@ AT+FTPSIZE====AT\+FTPSIZE\s{4}OK\s{4}\+FTPSIZE: 1,0,107\s{2}====3
 
 #FTP创建删除目录测试
 AT+FTPGETPATH="/DIRTest/"====AT\+FTPGETPATH="/DIRTest/"\s{4}OK\s{2}====0.5
-AT+FTPMKD====AT\+FTPMKD\s{4}OK\s{4}\+FTPMKD: 1,0\s{2}====15
-AT+FTPRMD====AT\+FTPRMD\s{4}OK\s{4}\+FTPRMD: 1,0\s{2}====15
+AT+FTPMKD====AT\+FTPMKD\s{4}OK\s{4}\+FTPMKD: 1,0\s{2}====20
+AT+FTPRMD====AT\+FTPRMD\s{4}OK\s{4}\+FTPRMD: 1,0\s{2}====20
 
 #错误FTP地址测试
 AT+FTPSERV="36.7.87.99"====AT\+FTPSERV="36.7.87.99"\s{4}OK\s{2}====0.5

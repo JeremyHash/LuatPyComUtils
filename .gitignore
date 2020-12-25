@@ -6,6 +6,7 @@ __pycache__/
 
 nohup.out
 /src/log/log*
+/src/log/FTP.txt
 /src/log/aliyun_test*
 /src/log/http_download_log*
 /src/log/tcp_ssl_test*

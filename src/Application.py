@@ -66,12 +66,13 @@ try:
             port = 'COM' + input('请指定设备端口号(只需要输入COM后数字):')
         # 如果没有查询到端口，则提示用户需要连接模块
         if "" == ports:
-            print("没有检测到端口，请连接模块")
+            print("没有检测到端口，请检查连接")
             sys.exit(0)
 
         # 请求输入测试功能
         while True:
-            fileName = input('请输入要测试的功能（INIT,BASE,FILE,TCPIP,FTP,HTTP,MQTT,SMS,PB,AUDIO,TMP,BLUETOOTH,FTPLAY），输入END结束，全选请输入ALL：')
+            fileName = input(
+                '请输入要测试的功能（INIT,BASE,FILE,TCPIP,FTP,HTTP,MQTT,SMS,PB,AUDIO,BLUETOOTH,FTPLAY,TMP），输入END结束，全选请输入ALL：')
             if fileName == 'END':
                 break
             if fileName == 'ALL':
@@ -85,12 +86,13 @@ try:
                 # ATListFileNames.append('SMS.txt')
                 ATListFileNames.append('PB.txt')
                 ATListFileNames.append('AUDIO.txt')
-                # ATListFileNames.append('TMP.txt')
                 # ATListFileNames.append('BLUETOOTH.txt')
                 ATListFileNames.append('FTPLAY.txt')
+                # ATListFileNames.append('TMP.txt')
                 break
             if fileName not in (
-                    'INIT', 'BASE', 'FILE', 'TCPIP', 'FTP', 'HTTP', 'MQTT', 'SMS', 'PB', 'AUDIO', 'TMP', 'BLUETOOTH', 'FTPLAY', 'ALL'):
+                    'INIT', 'BASE', 'FILE', 'TCPIP', 'FTP', 'HTTP', 'MQTT', 'SMS', 'PB', 'AUDIO', 'BLUETOOTH', 'FTPLAY',
+                    'TMP', 'ALL'):
                 print('输入的功能名称有误,请重新输入')
                 continue
             ATListFileNames.append(fileName + '.txt')
