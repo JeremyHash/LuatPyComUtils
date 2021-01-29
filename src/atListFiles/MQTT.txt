@@ -125,8 +125,8 @@ AT+MIPCLOSE====AT\+MIPCLOSE\s{4}OK\s{2}====3
 
 #不带证书的MQTTSSL连接
 AT+MQTTMSGSET=0====AT\+MQTTMSGSET=0\s{4}OK\s{2}====2
-AT+MCONFIG=jeremymqttwithoutcrt,mqtt_kaige_wx_user,eqzEXc5a====AT\+MCONFIG=jeremymqttwithoutcrt,mqtt_kaige_wx_user,eqzEXc5a\s{4}OK\s{2}====1
-AT+SSLMIPSTART=kaigemqtt.openluat.com,8886====AT\+SSLMIPSTART=kaigemqtt\.openluat\.com,8886\s{4}OK\s{4}CONNECT OK\s{2}====10
+AT+MCONFIG=jeremymqttwithoutcrt,yanjunjie,yanjunjie====AT\+MCONFIG=jeremymqttwithoutcrt,yanjunjie,yanjunjie\s{4}OK\s{2}====1
+AT+SSLMIPSTART=114.55.242.59,1883====AT\+SSLMIPSTART=114.55.242.59,1883\s{4}OK\s{4}CONNECT OK\s{2}====10
 AT+MCONNECT=1,60====AT\+MCONNECT=1,60\s{4}OK\s{4}CONNACK OK\s{2}====10
 AT+MSUB=MQTT-TEST2,2====AT\+MSUB=MQTT\-TEST2,2\s{4}OK\s{4}SUBACK\s{2}====3
 AT+MPUB=MQTT-TEST2,2,0,"hello,server!!!!--SSL without certificate"====AT\+MPUB=MQTT\-TEST2,2,0,"hello,server!!!!\-\-SSL without certificate"\s{4}OK\s{4}PUBREC\s{4}PUBCOMP\s{4}\+MSUB: "MQTT\-TEST2",41 byte,hello,server!!!!\-\-SSL without certificate\s{2}====5
