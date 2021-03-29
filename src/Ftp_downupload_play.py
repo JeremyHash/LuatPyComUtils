@@ -35,40 +35,47 @@ class Ftp_play_upload:
         self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
 
         # 动联专有命令
-        cmd = b'AT+CCAM=0\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+        cmd = b'ATI\r\n'
         self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'AT+CCAM=2\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'AT+REQ=4,254,17\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = bytes.fromhex('c1 e8 c1 e9 0D 0A')
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {str.upper(binascii.b2a_hex(self.ser.read(200)).decode(encoding='GB2312'))}")
-        cmd = b'AT+JBIG=5760,320,144\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        self.ser.write(bytes(self.lists))
-        self.ser.timeout = 2
-        self.log.logger.debug(f"收←◆  {str.upper(binascii.b2a_hex(self.ser.read(300)).decode(encoding='GB2312'))}")
-        cmd = b'AT+QRENCODE=0,0,15,"abcde12345ABCDE2345667890"\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {str.upper(binascii.b2a_hex(self.ser.read(200)).decode(encoding='GB2312'))}")
-        cmd = b'AT+CCAM=3\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
-        cmd = b'AT+CCAM=1\r\n'
-        self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
-        self.ser.write(cmd)
-        self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        editionDL = self.ser.read(200).decode(encoding='GB2312')
+        editionDL = re.search(r'DL', editionDL)
+        if editionDL:
+            cmd = b'AT+CCAM=0\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+            cmd = b'AT+CCAM=2\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+            cmd = b'AT+REQ=4,254,17\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+            cmd = bytes.fromhex('c1 e8 c1 e9 0D 0A')
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {str.upper(binascii.b2a_hex(self.ser.read(200)).decode(encoding='GB2312'))}")
+            cmd = b'AT+JBIG=5760,320,144\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+            self.ser.write(bytes(self.lists))
+            self.ser.timeout = 2
+            self.log.logger.debug(f"收←◆  {str.upper(binascii.b2a_hex(self.ser.read(300)).decode(encoding='GB2312'))}")
+            cmd = b'AT+QRENCODE=0,0,15,"abcde12345ABCDE2345667890"\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {str.upper(binascii.b2a_hex(self.ser.read(200)).decode(encoding='GB2312'))}")
+            cmd = b'AT+CCAM=3\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+            cmd = b'AT+CCAM=1\r\n'
+            self.log.logger.debug(f"发→◇  {cmd.decode(encoding='GB2312')}")
+            self.ser.write(cmd)
+            self.log.logger.debug(f"收←◆  {self.ser.read(200).decode(encoding='GB2312')}")
+        else:
+            pass
 
         # 播放音频
         cmd = b'AT+CAUDPLAY=1,"call.mp3"\r\n'
